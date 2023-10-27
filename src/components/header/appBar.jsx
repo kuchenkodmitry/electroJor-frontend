@@ -40,7 +40,78 @@ function ResponsiveAppBar() {
   return (
     <>
     <div className={s.AppBarBlock}>
-
+      <div className={s.logoBlock}>
+      <img src={Logo} alt="" width={67} height={67} />
+    <div className={s.logoTextBlock}>
+    <Typography
+            variant="h6"
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'BlinkMacSystemFont',
+              fontWeight: 700,
+              letterSpacing: '.0rem',
+              color: 'inherit',
+              textDecoration: 'none',
+              mr: 0
+            }}
+          >
+            ЭлектроЖор 
+          </Typography>
+          <Typography
+            variant="h6"
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'BlinkMacSystemFont',
+              fontWeight: 700,
+              letterSpacing: '.0rem',
+              color: 'inherit',
+              textDecoration: 'none',
+              mr: 0
+            }}
+          >
+            Электромонтажные работы 
+          </Typography>
+    </div>
+      </div>
+      <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{color: 'black' }}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box>
+          <Box>
+              <Typography
+              sx={{color: "#000",
+                fontFamily: "Inter",
+                fontSize: "23px",
+                fontStyle: "normal",
+                fontWeight: "400",
+                lineHeight: "normal", 
+              }}
+              >
+                +7-992-150-44-66
+              </Typography>
+              <Typography sx={{
+                color: "#5273B2",
+                fontFamily: "Inter",
+                fontSize: "15px",
+                fontStyle: "normal",
+                fontWeight: "400",
+                lineHeight: "normal",
+                textDecorationLine: "underline"
+              }}>
+                Заказать обратный звонок
+              </Typography>
+          </Box>
     </div>
     </>
   );

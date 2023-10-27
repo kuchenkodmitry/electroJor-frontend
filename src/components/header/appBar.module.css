@@ -1,0 +1,13 @@
+.AppBarBlock{
+    width: 1200px;
+    display: flex;
+    justify-content:space-between;
+    margin: 16px auto 11px auto;
+}
+.logoTextBlock{
+    display: flex;
+    flex-direction: column;
+}
+.logoBlock{
+    display: flex;
+}

@@ -66,5 +66,5 @@
 .threeBtn{
     display: flex;
     flex-direction: row;
-    gap: 35px;
+    gap: 19px;
 }
