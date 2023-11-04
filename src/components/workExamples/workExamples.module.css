@@ -5,3 +5,11 @@
     background: linear-gradient(90deg, rgba(254, 254, 255, 0.59) 0.04%, #E9F1FA 33.15%, #E9F1FA 73.11%, rgba(233, 241, 250, 0.00) 100.53%);
     margin: 40px auto 0;
 }
+
+.Typography{
+    font-family: "Poppins";
+}
+.cardBlock{
+    height: 264px;
+    width: 280px;
+}

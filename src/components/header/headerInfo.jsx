@@ -13,7 +13,6 @@ function InfoHeader() {
                     color: "#FFF",
                     textAlign: "right",
                     textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-                    fontFamily: "Roboto",
                     fontSize: "24px",
                     fontStyle: "normal",
                     fontHeight: "556",
@@ -33,7 +32,6 @@ function InfoHeader() {
                 <Typography sx={{
                     color: "#C6C6C6",
                     textAlign: "right",
-                    fontFamily: "Poppins",
                     fontSize: "20px",
                     fontStyle: "normal",
                     fontWeight: "250",

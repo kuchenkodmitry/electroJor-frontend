@@ -20,3 +20,14 @@
     right: 0px;
     border-radius: 0 0 40px 0;
 }
+.Typography{
+    font-family: "Poppins";
+    
+}
+
+@font-face {
+    font-family: "Poppins"; 
+    src: url("../fonts/Poppins/Poppins-Black.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+  }

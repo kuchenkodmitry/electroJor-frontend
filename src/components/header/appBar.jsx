@@ -49,8 +49,7 @@ function ResponsiveAppBar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'BlinkMacSystemFont',
-              fontWeight: 700,
+              fontWeight: 550,
               letterSpacing: '.0rem',
               color: 'inherit',
               textDecoration: 'none',
@@ -65,12 +64,12 @@ function ResponsiveAppBar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'BlinkMacSystemFont',
-              fontWeight: 700,
+              fontWeight: 540,
               letterSpacing: '.0rem',
               color: 'inherit',
               textDecoration: 'none',
-              mr: 0
+              mr: 0,
+              fontSize: "14px"
             }}
           >
             Электромонтажные работы 

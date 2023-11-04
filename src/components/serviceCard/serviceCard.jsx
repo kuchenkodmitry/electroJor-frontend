@@ -5,6 +5,9 @@ import house1 from './img/house1.png'
 import house2 from './img/house2.png'
 import office from "./img/office.png"
 import production from './img/production.png'
+import '../../App.css';
+
+
 
 function ServiceCard() {
     return (
@@ -13,12 +16,12 @@ function ServiceCard() {
         sx={{color: "#000",
             textAlign: "center",
             textShadow: "0px 4px 4px rgba(115, 97, 97, 0.25)",
-            fontFamily: "Roboto",
             fontSize: "28px",
             fontStyle: "normal",
-            fontWeight: "516",
+            fontWeight: "916px",
             lineHeight: "normal",
             letterSpacing: "3.22px",
+            fontFamily: "Roboto"
         }}
         >
         ВЫПОЛНЯЕМ ЛЮБЫЕ РАБОТЫ ПО МОНТАЖУ, ЗАМЕНЕ И РЕМОНТУ ЭЛЕКТРИКИ
