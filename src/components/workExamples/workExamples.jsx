@@ -21,7 +21,6 @@ const responsive = {
 
 const Gallery = () => {
     const items = [
-        <img src={Images} onDragStart={handleDragStart} role="presentation" />,
         <CardList/>
     ];
 
@@ -53,6 +52,9 @@ function WorkExamples () {
     Наши работы
     </h3>
     <Gallery/>
+    <div className={style.buttonMore}>
+    Посмотреть все работы
+    </div>
     </div>
     )
 }

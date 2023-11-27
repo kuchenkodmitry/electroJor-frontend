@@ -4,7 +4,7 @@ import FirstImg from "./img/1.png"
 const cards = [{
             id: 0,
             img: FirstImg,
-            title: "Монтаж",
+            title: "Монтаж Потолка",
             description: "",
         },
         {
@@ -19,49 +19,44 @@ const cards = [{
             description: "",
         },{
             id: 3,
-            img: "",
+            img: FirstImg,
             title: "Монтаж",
             description: "",
         },{
             id: 4,
-            img: "",
+            img: FirstImg,
             title: "Монтаж",
             description: "",
         },{
             id: 5,
-            img: "",
+            img: FirstImg,
             title: "Монтаж",
             description: "",
         },{
             id: 6,
-            img: "",
+            img: FirstImg,
             title: "Монтаж",
             description: "",
         },{
             id: 6,
-            img: "",
+            img: FirstImg,
             title: "Монтаж",
             description: "",
         },{
             id: 7,
-            img: "",
+            img: FirstImg,
             title: "Монтаж",
             description: "",
-        },{
-            id: 8,
-            img: "",
-            title: "Монтаж",
-            description: "",
-        },
+        }
 ]
 
 function CardList () {
     return (
-    <div style={{display: "grid", gridRow: ".2fr .2fr"}}>
+    <div className={style.cardBlock}>
     {cards.map(e => {
         return(
-        <div style={{backgroundImage: `url(${e.img})`}} className={style.cardBlock}>
-            {e.title}
+        <div style={{backgroundImage: `url(${e.img})`}} className={style.cardBlockStyle}>
+            <p style={{marginTop: "0px", marginBottom: "0px", height: "61px"}} className={style.titleStyle}>{e.title}</p>
         </div>)
     })}
     </div>

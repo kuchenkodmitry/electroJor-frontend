@@ -3,7 +3,10 @@ import ThreeBtn from '../buttons/threeSocialButton'
 import { Typography } from "@mui/material";
 import Box from '@mui/material/Box';
 import questionImg from './img/quest.png'
-
+import RussianFlagIco from "./img/RussianFlag.png"
+import BuilderIco from "./img/builder.png"
+import LikeIco from "./img/like.png"
+import ClockIco from "./img/clock.png"
 
 function InfoHeader() {
     return (
@@ -45,7 +48,7 @@ function InfoHeader() {
             </div>
             <div className={s.rightBlock}>
                 <Box className={s.listBlock}>
-                    <Typography className={s.listText}
+                    {/* <Typography className={s.listText}
                     sx={{width: "259px",
                         height: "40px",
                         flexShrink: "0",
@@ -59,20 +62,29 @@ function InfoHeader() {
                         }}>
                     За что нас ценят
                             <img src={questionImg} alt="" />
-                    </Typography>
-                    <Typography className={s.listText} sx={{
-                        width: "231px",
-                        height: "42px",
-                        flexShrink: "0",
+                    </Typography> */}
+                   <div style={{
+                    width: "231px",
+                    height: "50px",
+                    display: "flex",
+                    gap: "10px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    paddingLeft: "10px"
+                    }} className={s.listText}>
+                   <img height="25px" src={BuilderIco} alt="" />
+                   <Typography  sx={{
                         color: "#FFF",
                         fontFamily: "Archivo",
-                        fontSize: "13px",
+                        fontSize: "15px",
                         fontStyle: "normal",
                         fontWeight: "400",
                         lineHeight: "normal",
                     }}>
+                    
                     Только профессиональные специалисты
                     </Typography>
+                   </div>
                     <Typography className={s.listText} sx={{
                         width: "188px",
                         height: "42px",
@@ -84,6 +96,7 @@ function InfoHeader() {
                         fontWeight: "400",
                         lineHeight: "normal",
                     }}>
+                        <img src={LikeIco} alt="" />
                     Высокое качество выполнения работ
                     </Typography>
                     <Typography className={s.listText} sx={{
@@ -97,19 +110,44 @@ function InfoHeader() {
                         fontWeight: "400",
                         lineHeight: "normal",
                     }}>
+                        <img src={ClockIco} alt="" />
                     Выполнение работ в срок
                     </Typography>
                     
                 </Box>
-                <div>
-                    <Typography>
+                <div style={{display: "flex",  height: "200px", alignItems: "end", justifyContent: "end"}}>
+                <div className={s.callBackForm}>
+                    <Typography sx={{
+                        paddingLeft: "40px",
+                        color: "#FFF",
+                        fontFamily: "Poppins",
+                        fontSize: "24px",
+                        fontStyle: "normal",
+                        fontWeight: "100",
+                        lineHeight: "normal",
+                }}>
                     Заказать обратный звонок
                     </Typography>
-                    <Typography>
+                    <Typography sx={{
+                        paddingLeft: "40px",
+                        color: "white",
+                        fontFamily: "Poppins",
+                        fontSize: "14px",
+                        fontStyle: "normal",
+                        fontWeight: "0",
+                        lineHeight: "normal",
+                        marginBottom: "18px"
+                }}>
                     Оставьте ваш номер и мы вам перезвоним 
                     </Typography>
-                    <input type="text" />
-                    <button>Отправить</button>
+                    <div className={s.formSend}>
+                    <div style={{ display: "flex", justifyContent: "center", gap: "10px"}}>
+                        <img src={RussianFlagIco}/>
+                    <input placeholder=" +7 (999) 999 99 99" className={s.inputStyle} type="text" />
+                    </div>
+                    <button className={s.buttonSend}>Отправить</button>
+                    </div>
+                </div>
                 </div>
             </div>
         </div >

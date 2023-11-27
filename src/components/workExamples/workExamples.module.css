@@ -10,6 +10,56 @@
     font-family: "Poppins";
 }
 .cardBlock{
-    height: 264px;
-    width: 280px;
+    display: grid;
+    gap: 50px;
+    grid-template-columns: 0.1fr 0.1fr 0.1fr;
+    grid-template-rows: .1fr .1fr .1fr;
+    align-items: center;
+    justify-content: center;
+    
 }
+.titleStyle{
+    background: rgba(0, 171, 228, 0.67);
+    padding-left: 12px;
+    padding-top: 8px;
+    color:white;
+}
+.cardBlockStyle{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    cursor: pointer;
+    box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.25);
+    height: 265px; 
+    width: 278px;
+}
+.cardBlockStyle:hover{
+    animation-name: example;
+    animation-duration: 1s;
+}
+.buttonMore{
+    width: 496px;
+height: 51px;
+flex-shrink: 0;
+border-radius: 20px;
+background: #00ABE4;
+margin: 0 auto;
+color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+color: #FFF;
+font-family: Poppins;
+font-size: 24px;
+font-style: normal;
+font-weight: 900;
+line-height: normal;
+letter-spacing: 2.4px;
+cursor: pointer;
+}
+@keyframes example {
+    from {box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.25);
+    }
+    to {box-shadow: 2px 2px 40px black;
+    }
+  }

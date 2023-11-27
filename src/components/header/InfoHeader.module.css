@@ -1,8 +1,9 @@
-.main{
+.main {
     width: 1200px;
     display: flex;
     margin: 0 auto;
 }
+
 .rightBlock {
     width: 732px;
     height: 402px;
@@ -10,7 +11,7 @@
     border-radius: 0px 0px 150px 0px;
     background: url("./img/schetch1.png"), lightgray -0.754px 0px / 100.206% 101.769% no-repeat;
 }
-    
+
 .leftBlock {
     width: 550px;
     height: 402px;
@@ -23,13 +24,57 @@
     align-items: center;
     gap: 16px;
 }
-.listText{
+
+.listText {
     border-radius: 9px;
     background: linear-gradient(90deg, rgba(83, 105, 118, 0.80) 0%, rgba(41, 46, 73, 0.80) 100%);
 }
-.listBlock{
+
+.listBlock {
     margin: 11px 0 0 19px;
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+.buttonSend {
+    width: 132px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background: #FFF;
+    color: #000;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+    cursor: pointer;
+}
+
+.inputStyle {
+    width: 277px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    border: 1px solid #2359C1;
+    background: #FFF;
+}
+.formSend{
+    display: flex;
+    gap: 29px;
+    
+}
+.callBackForm{
+    width: 585px;
+height: 154px;
+flex-shrink: 0;
+width: 585px;
+height: 154px;
+flex-shrink: 0;
+border-radius: 45px 0px 150px 0px;
+background: linear-gradient(67deg, rgba(146, 174, 176, 0.60) -13.4%, rgba(69, 81, 86, 0.60) 79.54%);
+padding-left: 17px;
+padding-top: 10px;
 }
