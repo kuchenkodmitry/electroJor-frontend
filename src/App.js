@@ -8,10 +8,27 @@ import WorkExamples from './components/workExamples/workExamples';
 import Reviews from "./components/reviews/reviews"
 import About from "./components/about/about"
 import CallBackBottom from './components/callback/callBack3';
+import Footer from "./components/footer/footer"
+import { GallaryContext,ModalContext, Context, GallaryIndex, GallaryOpen } from './components/context';
+import React, { useState } from "react";
+import Modal from "./components/modal/modal"
+import Gallary from './components/PhotoGallary/gallary';
 
 function App() {
+  const [modalContext, setModalContext] = useState(["null"])
+  const [context, setContext] = useState(false);
+  const [gallaryContext, setGallaryContext] = useState([null]);
+  const [gallaryIndex, setGallaryIndex] = useState([null]);
+  const [gallaryOpen, setGallaryOpen] = useState(false);
   return (
     <>
+    <Context.Provider value={[context, setContext]}>
+    <ModalContext.Provider value={[modalContext, setModalContext]}>
+    <GallaryContext.Provider value={[gallaryContext, setGallaryContext]}>
+    <GallaryIndex.Provider value={[gallaryIndex, setGallaryIndex]}>
+    <GallaryOpen.Provider value={[gallaryOpen, setGallaryOpen]}>
+    <Gallary/>
+    <Modal/>
     <AppBar/>
     <InfoHeader/>
     <ServiceCard/>
@@ -21,6 +38,12 @@ function App() {
     <Reviews/>
     <About/>
     <CallBackBottom/>
+    <Footer/>
+    </GallaryOpen.Provider>
+    </GallaryIndex.Provider>
+    </GallaryContext.Provider>
+    </ModalContext.Provider>
+    </Context.Provider>
     </>
   );
 }

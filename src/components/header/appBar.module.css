@@ -14,3 +14,28 @@
     align-items: center;
     gap: 10px;
 }
+
+@media screen and (max-width : 1024px) {
+    
+}
+@media screen and (max-width : 800px) {
+    .AppBarBlock{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        margin: 0 0 0 0;
+    }
+    .logoTextBlock{
+        display: flex;
+        flex-direction: column;
+    }
+    .logoBlock{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+}
+@media screen and (max-width : 420px) {
+
+}

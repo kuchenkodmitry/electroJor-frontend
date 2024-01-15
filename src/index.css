@@ -17,3 +17,22 @@ code {
   font-style: normal; 
   font-weight: normal; 
 }
+@font-face {
+  font-family: 'inter'; 
+  src: url("./components/fonts/inter/Inter-Regular.ttf") format("truetype");
+  font-style: normal; 
+  font-weight: normal; 
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("./components/fonts/Roboto/Roboto-Regular.ttf");
+  font-style: normal; 
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url("./components/fonts/Roboto/Roboto-Bold.ttf");
+  font-style: normal; 
+  font-weight: bold;
+}

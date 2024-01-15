@@ -4,8 +4,11 @@ import TelegramIco from './img/TelegramIcon.png'
 import PhoneIco from './img/PhoneIcon.png'
 
 export function WhatsAppBtn() {
+    const LinkWhatsApp = () => {
+        window.open('https://api.whatsapp.com/send/?phone=%2B79093839946&text&type=phone_number&app_absent=0 ');
+        }
     return (
-        <div className={s.whatsapp}>
+        <div onClick={LinkWhatsApp} className={s.whatsapp}>
             <img width={'38'} height={"38"} src={WhatsAppIco} alt="" />
             <p>
                 Написать в What’s App
@@ -14,8 +17,11 @@ export function WhatsAppBtn() {
     )
 }
 export function TelegramBtn() {
+    const LinkTelegram = () => {
+        window.open('https://t.me/+79093839946');
+        }
     return (
-        <div className={s.telegram}>
+        <div onClick={LinkTelegram} className={s.telegram}>
             <img width={'38'} height={"38"} src={TelegramIco} alt="" />
             <p>Написать в Telegram</p>
         </div>
@@ -23,9 +29,9 @@ export function TelegramBtn() {
 }
 export function PhoneBtn() {
     return (
-        <div className={s.phone}>
+        <a href='tel:+79921504466' style={{textDecoration: "none"}} className={s.phone}>
             <img width={'38'} height={"38"} src={PhoneIco} alt="" />
             <p> Позвонить нам </p>
-        </div>
+        </a>
     )
 }
