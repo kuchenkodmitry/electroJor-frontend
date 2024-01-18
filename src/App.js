@@ -13,6 +13,7 @@ import { GallaryContext,ModalContext, Context, GallaryIndex, GallaryOpen } from 
 import React, { useState } from "react";
 import Modal from "./components/modal/modal"
 import Gallary from './components/PhotoGallary/gallary';
+import VkButton from "./components/buttons/vkButton"
 
 function App() {
   const [modalContext, setModalContext] = useState(["null"])

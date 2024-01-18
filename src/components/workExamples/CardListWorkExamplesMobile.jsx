@@ -620,12 +620,12 @@ function CardList() {
         <div className={style.cardBlock}>
             {cards.map(e => {
                 return (
-                    <div className={style.backgroundContent}>
-                        <div onClick={() => {
-                            setContext(true);
-                            setModalContext(e.html);
-                            setGallryContext(e.imgData);
-                        }} style={{ backgroundImage: `url(${e.img})`, backgroundSize: "cover" }} className={style.cardBlockStyle}>
+                    <div onClick={() => {
+                        setContext(true);
+                        setModalContext(e.html);
+                        setGallryContext(e.imgData);
+                    }} className={style.backgroundContent}>
+                        <div style={{ backgroundImage: `url(${e.img})`, backgroundSize: "cover" }} className={style.cardBlockStyle}>
                         </div>
                         <div className={style.titleFLex}>
                         <p className={style.titleSize}>{e.title}</p>

@@ -29,7 +29,7 @@ export function TelegramBtn() {
 }
 export function PhoneBtn() {
     return (
-        <a href='tel:+79921504466' style={{textDecoration: "none"}} className={s.phone}>
+        <a href='tel:+79093839946' style={{textDecoration: "none"}} className={s.phone}>
             <img width={'38'} height={"38"} src={PhoneIco} alt="" />
             <p> Позвонить нам </p>
         </a>

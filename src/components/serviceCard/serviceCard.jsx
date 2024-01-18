@@ -52,7 +52,7 @@ function ServiceCard() {
             </Typography>
             <Box sx={{display: {xs: "flex", md: "none"}}}>
                 <div className={s.cards}>
-                    <div onClick={() => setContext(true)} style={{
+                    <div  style={{
                         background: "linear-gradient(90deg, #D1913C 0%, #FFD194 100%)"
                     }} className={s.card}>
                         <Typography sx={{
@@ -149,7 +149,7 @@ function ServiceCard() {
                 <div className={s.cards}>
                     <div style={{
                         background: "linear-gradient(90deg, #D1913C 0%, #FFD194 100%)"
-                    }} onClick={() => setContext(true)} className={s.card}>
+                    }}  className={s.card}>
                         <Typography sx={{
                             margin: "15px 0 0 25px",
                             width: "175px",
@@ -171,7 +171,7 @@ function ServiceCard() {
                 </div>
                 <div style={{
                     background: "linear-gradient(90deg, #304352 0%, #D7D2CC 100%)"
-                }} onClick={() => setContext(true)} className={s.card}>
+                }}  className={s.card}>
                     <Typography sx={{
                             margin: "15px 0 0 25px",
                             width: "175px",
@@ -193,7 +193,7 @@ function ServiceCard() {
                 </div>
                 <div style={{
                     background: "linear-gradient(90deg, #2980B9 0%, #2C3E50 100%)"
-                }} onClick={() => setContext(true)} className={s.card}>
+                }}  className={s.card}>
                     <Typography sx={{
                             margin: "15px 0 0 25px",
                             width: "175px",
@@ -215,7 +215,7 @@ function ServiceCard() {
                 </div>
                 <div style={{
                     background: "linear-gradient(90deg, #00467F 0%, #A5CC82 100%)"
-                }} onClick={() => setContext(true)} className={s.card}>
+                }}  className={s.card}>
                     <Typography sx={{
                             textAlign: "right",
                             margin: "20px 25px 25px 25px",

@@ -16,23 +16,26 @@ import Logo from './logo.png'
 import s from './appBar.module.css'
 
 const pages = ['Услуги', 'Цены', 'Контакты', 'Наши работы'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const Text = [
   {
     name: "Услуги",
-    link: "#uslugi"
+    link: "#uslugi",
+    linkScroll: 700
   },
   {
     name: "О компании",
-    link: "#about"
+    link: "#about", 
+    linkScroll: 3800
   },
   {
     name: "Контакты",
-    link: "#footer"
+    link: "#footer",
+    linkScroll: 8000
   },
   {
     name: "Наши работы",
-    link: "#works"
+    link: "#works",
+    linkScroll: 2210
   },
 ]
 
@@ -197,6 +200,7 @@ function ResponsiveAppBar() {
               {Text.map((el) => (
                 <MenuItem key={el.name} onClick={() => {
                   handleCloseNavMenu();
+                  window.scrollTo(0, el.linkScroll)
                 }}>
                   <Typography textAlign="center">{el.name}</Typography>
                 </MenuItem>

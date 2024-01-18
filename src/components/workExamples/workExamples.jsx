@@ -12,6 +12,7 @@ import CardMobile from "./CardListWorkExamplesMobile";
 import CardMobile2 from "./CardListWorkExamplesMobile2";
 import { Box } from "@mui/material";
 import { ModalContext, Context } from "../context";
+import VkBtn from "../buttons/vkButton";
 
 const handleDragStart = (e) => e.preventDefault();
 
@@ -86,6 +87,9 @@ function WorkExamples () {
     }}>
     <GalleryMobile/>
     </Box>
+    <div className={style.vkBtnPosition}>
+    <VkBtn />
+    </div>
     </div>
     )
 }

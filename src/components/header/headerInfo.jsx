@@ -286,15 +286,15 @@ function InfoHeader() {
 
                     </div>
                     <div className={s.mobileSocialNetworkBtm}>
-                        <a style={{ backgroundColor: "#32B857" }} href="">
+                        <a style={{ backgroundColor: "#32B857" }} href="https://api.whatsapp.com/send/?phone=%2B79093839946&text&type=phone_number&app_absent=0 " target="_blank">  
                             <img src={WhatsAppIco} alt="" />
                             Написать в What’s App</a>
-                        <a style={{ backgroundColor: "#28A7E8" }} href="">
+                        <a style={{ backgroundColor: "#28A7E8" }} href="https://t.me/+79093839946"  target="_blank">
                             <img src={TelegramIco} alt="" />
                             Написать в telegram</a>
-                        <a style={{ backgroundColor: "black", borderRadius: "0 0 40px 0" }} href="">
+                        <a style={{ backgroundColor: "black", borderRadius: "0 0 40px 0" }} href="tel:+79921504466" target="_blank">
                             <img src={PhoneIco} alt="" />
-                            Позвонить <br /> нам</a>
+                            Позвонить<br /> нам</a>
                     </div>
                 </div >
             </Box>
