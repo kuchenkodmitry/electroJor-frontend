@@ -6,12 +6,12 @@ import WebFont from 'webfontloader';
 import { useContext, useEffect } from "react";
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import Images from "./img/switch_pic 1.png"
 import CardList from "./CardListWorkExamples";
-import CardMobile from "./CardListWorkExamplesMobile";
-import CardMobile2 from "./CardListWorkExamplesMobile2";
+// import CardMobile from "./CardListWorkExamplesMobile";
+// import CardMobile2 from "./CardListWorkExamplesMobile2";
 import { Box } from "@mui/material";
 import { ModalContext, Context } from "../context";
+import VkBtn from "../buttons/vkButton";
 
 const handleDragStart = (e) => e.preventDefault();
 
@@ -20,7 +20,6 @@ const responsive = {
     568: { items: 1 },
     1024: { items: 3 },
 };
-
 
 
 const Gallery = () => {
@@ -43,8 +42,8 @@ const Gallery = () => {
 
 const GalleryMobile = () => {
     const items = [
-        <CardMobile/>,
-        <CardMobile2/>
+        // <CardMobile/>,
+        // <CardMobile2/>
     ];
 
     const DataImg = {
@@ -86,6 +85,9 @@ function WorkExamples () {
     }}>
     <GalleryMobile/>
     </Box>
+    <div className={style.vkBtnPosition}>
+    <VkBtn />
+    </div>
     </div>
     )
 }

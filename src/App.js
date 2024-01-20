@@ -13,6 +13,7 @@ import { GallaryContext,ModalContext, Context, GallaryIndex, GallaryOpen } from 
 import React, { useState } from "react";
 import Modal from "./components/modal/modal"
 import Gallary from './components/PhotoGallary/gallary';
+import TestMap from './textMap.jsx';
 
 function App() {
   const [modalContext, setModalContext] = useState(["null"])
@@ -27,6 +28,7 @@ function App() {
     <GallaryContext.Provider value={[gallaryContext, setGallaryContext]}>
     <GallaryIndex.Provider value={[gallaryIndex, setGallaryIndex]}>
     <GallaryOpen.Provider value={[gallaryOpen, setGallaryOpen]}>
+    <TestMap/>
     <Gallary/>
     <Modal/>
     <AppBar/>
