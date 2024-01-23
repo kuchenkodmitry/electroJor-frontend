@@ -108,6 +108,12 @@ import P13img9 from "./img/pojects/13/9.jpg"
 import P13img10 from "./img/pojects/13/10.jpg"
 import P13logo from "./img/pojects/13/logo.jpg"
 
+import styleCardList from "./cardListStyle.module.css"
+import MyGallery from "../gallary/gallary"
+
+function OpenFullScreen (){
+    
+}
 
 let Cards = [{
     imgData: [
@@ -156,7 +162,37 @@ let Cards = [{
     img: P1logo,
     title: "",
     description: "",
-    html: ""
+    html: <div >
+        <h1 className={styleCardList.title}>Заголовок</h1>
+        <div className={styleCardList.flexContent}>
+            <div className={styleCardList.MyGalleryBlock}>
+                <MyGallery photoList={[
+                    {
+                        image: P1img1,
+                        caption: "Описание картинки"
+                    },
+                    {
+                        image: P1img2,
+                        caption: "Описание картинки"
+                    },
+                    {
+                        image: P1img3,
+                        caption: "Описание картинки"
+                    },
+                    {
+                        image: P1img4,
+                        caption: "Описание картинки"
+                    },
+                ]} />
+            </div>
+            <div>
+                <p className={styleCardList.description}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p className={styleCardList.description}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p className={styleCardList.description}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+
+            </div>
+        </div>
+    </div>
 }, {
     imgData: [
         {
@@ -204,7 +240,37 @@ let Cards = [{
     img: P2logo,
     title: "",
     description: "",
-    html: ""
+    html: <div >
+    <h1 className={styleCardList.title}>Заголовок</h1>
+        <div className={styleCardList.flexContent}>
+            <div className={styleCardList.MyGalleryBlock}>
+            <MyGallery photoList={[
+        {
+            image: P2img1,
+            caption: "Описание картинки"
+        },
+        {
+            image: P2img2,
+            caption: "Описание картинки"
+        },
+        {
+            image: P2img3,
+            caption: "Описание картинки"
+        },
+        {
+            image: P2img4,
+            caption: "Описание картинки"
+        },
+    ]} />
+    </div>
+            <div>
+            <p className={styleCardList.description}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p className={styleCardList.description}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p className={styleCardList.description}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+
+            </div>
+        </div>
+    </div>
 }, {
     imgData: [
         {
@@ -260,9 +326,43 @@ let Cards = [{
     ],
     id: 2,
     img: P3logo,
-    title: "Монтаж электропроводки в 3-комнатной квартире ЖК Бродвей",
+    title: "",
     description: "",
-    html: ""
+    html: <div >
+    <h1 className={styleCardList.title}>Заголовок</h1>
+        <div className={styleCardList.flexContent}>
+            <div className={styleCardList.MyGalleryBlock}>
+            <MyGallery photoList={[
+        {
+            image: P3img1,
+            caption: "Описание картинки"
+        },
+        {
+            image: P3img2,
+            caption: "Описание картинки"
+        },
+        {
+            image: P3img3,
+            caption: "Описание картинки"
+        },
+        {
+            image: P3img4,
+            caption: "Описание картинки"
+        },
+        {
+            image: P3img5,
+            caption: "Описание картинки"
+        },
+    ]} />
+    </div>
+            <div>
+            <p className={styleCardList.description}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p className={styleCardList.description}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p className={styleCardList.description}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+
+            </div>
+        </div>
+    </div>
 }, {
     imgData: [
         {
@@ -320,7 +420,28 @@ let Cards = [{
     img: P4logo,
     title: "",
     description: "",
-    html: ""
+    html: <div ><MyGallery photoList={[
+        {
+            image: P4img1,
+            caption: "Описание картинки"
+        },
+        {
+            image: P4img2,
+            caption: "Описание картинки"
+        },
+        {
+            image: P4img3,
+            caption: "Описание картинки"
+        },
+        {
+            image: P4img4,
+            caption: "Описание картинки"
+        },
+        {
+            image: P4img5,
+            caption: "Описание картинки"
+        },
+    ]} /></div>
 }, {
     imgData: [
         {
@@ -377,7 +498,28 @@ let Cards = [{
     img: P5logo,
     title: "",
     description: "",
-    html: ""
+    html: <div ><MyGallery photoList={[
+        {
+            image: P5img1,
+            caption: "Описание картинки"
+        },
+        {
+            image: P5img2,
+            caption: "Описание картинки"
+        },
+        {
+            image: P5img3,
+            caption: "Описание картинки"
+        },
+        {
+            image: P5img4,
+            caption: "Описание картинки"
+        },
+        {
+            image: P5img5,
+            caption: "Описание картинки"
+        },
+    ]} /></div>
 }, {
     imgData: [
         {
@@ -463,10 +605,43 @@ let Cards = [{
     ],
     id: 5,
     img: P6logo,
-    title: "Монтаж электропроводки в 3-комнатной квартире ЖК Бродвей",
+    title: "",
     description: "",
-    html: ""
-},{
+    html: <div ><MyGallery photoList={[
+        {
+            image: P6img1,
+            caption: "Описание картинки"
+        },
+        {
+            image: P6img2,
+            caption: "Описание картинки"
+        },
+        {
+            image: P6img3,
+            caption: "Описание картинки"
+        },
+        {
+            image: P6img4,
+            caption: "Описание картинки"
+        },
+        {
+            image: P6img5,
+            caption: "Описание картинки"
+        },
+        {
+            image: P6img6,
+            caption: "Описание картинки"
+        },
+        {
+            image: P6img7,
+            caption: "Описание картинки"
+        },
+        {
+            image: P6img8,
+            caption: "Описание картинки"
+        },
+    ]} /></div>
+}, {
     imgData: [
         {
             src: P7img1,
@@ -551,10 +726,43 @@ let Cards = [{
     ],
     id: 6,
     img: P7logo,
-    title: "Монтаж электропроводки в 3-комнатной квартире ЖК Бродвей",
+    title: "",
     description: "",
-    html: ""
-},{
+    html: <div ><MyGallery photoList={[
+        {
+            image: P7img1,
+            caption: "Описание картинки"
+        },
+        {
+            image: P7img2,
+            caption: "Описание картинки"
+        },
+        {
+            image: P7img3,
+            caption: "Описание картинки"
+        },
+        {
+            image: P7img4,
+            caption: "Описание картинки"
+        },
+        {
+            image: P7img5,
+            caption: "Описание картинки"
+        },
+        {
+            image: P7img6,
+            caption: "Описание картинки"
+        },
+        {
+            image: P7img7,
+            caption: "Описание картинки"
+        },
+        {
+            image: P7img8,
+            caption: "Описание картинки"
+        },
+    ]} /></div>
+}, {
     imgData: [
         {
             src: P8img1,
@@ -629,10 +837,39 @@ let Cards = [{
     ],
     id: 7,
     img: P8logo,
-    title: "Монтаж электропроводки в 3-комнатной квартире ЖК Бродвей",
+    title: "",
     description: "",
-    html: ""
-},{
+    html: <div ><MyGallery photoList={[
+        {
+            image: P7img1,
+            caption: "Описание картинки"
+        },
+        {
+            image: P7img2,
+            caption: "Описание картинки"
+        },
+        {
+            image: P7img3,
+            caption: "Описание картинки"
+        },
+        {
+            image: P7img4,
+            caption: "Описание картинки"
+        },
+        {
+            image: P7img5,
+            caption: "Описание картинки"
+        },
+        {
+            image: P7img6,
+            caption: "Описание картинки"
+        },
+        {
+            image: P7img7,
+            caption: "Описание картинки"
+        },
+    ]} /></div>
+}, {
     imgData: [
         {
             src: P9img1,
@@ -697,10 +934,35 @@ let Cards = [{
     ],
     id: 8,
     img: P9logo,
-    title: "Монтаж электропроводки в 3-комнатной квартире ЖК Бродвей",
+    title: "",
     description: "",
-    html: ""
-},{
+    html: <div ><MyGallery photoList={[
+        {
+            image: P9img1,
+            caption: "Описание картинки"
+        },
+        {
+            image: P9img2,
+            caption: "Описание картинки"
+        },
+        {
+            image: P9img3,
+            caption: "Описание картинки"
+        },
+        {
+            image: P9img4,
+            caption: "Описание картинки"
+        },
+        {
+            image: P9img5,
+            caption: "Описание картинки"
+        },
+        {
+            image: P9img6,
+            caption: "Описание картинки"
+        },
+    ]} /></div>
+}, {
     imgData: [
         {
             src: P10img1,
@@ -765,10 +1027,35 @@ let Cards = [{
     ],
     id: 9,
     img: P10logo,
-    title: "Монтаж электропроводки в 3-комнатной квартире ЖК Бродвей",
+    title: "",
     description: "",
-    html: ""
-},{
+    html: <div ><MyGallery photoList={[
+        {
+            image: P10img1,
+            caption: "Описание картинки"
+        },
+        {
+            image: P10img2,
+            caption: "Описание картинки"
+        },
+        {
+            image: P10img3,
+            caption: "Описание картинки"
+        },
+        {
+            image: P10img4,
+            caption: "Описание картинки"
+        },
+        {
+            image: P10img5,
+            caption: "Описание картинки"
+        },
+        {
+            image: P10img6,
+            caption: "Описание картинки"
+        },
+    ]} /></div>
+}, {
     imgData: [
         {
             src: P11img1,
@@ -863,10 +1150,47 @@ let Cards = [{
     ],
     id: 10,
     img: P11logo,
-    title: "Монтаж электропроводки в 3-комнатной квартире ЖК Бродвей",
+    title: "",
     description: "",
-    html: ""
-},{
+    html: <div ><MyGallery photoList={[
+        {
+            image: P11img1,
+            caption: "Описание картинки"
+        },
+        {
+            image: P11img2,
+            caption: "Описание картинки"
+        },
+        {
+            image: P11img3,
+            caption: "Описание картинки"
+        },
+        {
+            image: P11img4,
+            caption: "Описание картинки"
+        },
+        {
+            image: P11img5,
+            caption: "Описание картинки"
+        },
+        {
+            image: P11img6,
+            caption: "Описание картинки"
+        },
+        {
+            image: P11img7,
+            caption: "Описание картинки"
+        },
+        {
+            image: P11img8,
+            caption: "Описание картинки"
+        },
+        {
+            image: P11img9,
+            caption: "Описание картинки"
+        },
+    ]} /></div>
+}, {
     imgData: [
         {
             src: P12img1,
@@ -941,10 +1265,39 @@ let Cards = [{
     ],
     id: 11,
     img: P12logo,
-    title: "Монтаж электропроводки в 3-комнатной квартире ЖК Бродвей",
+    title: "",
     description: "",
-    html: ""
-},{
+    html: <div ><MyGallery photoList={[
+        {
+            image: P12img1,
+            caption: "Описание картинки"
+        },
+        {
+            image: P12img2,
+            caption: "Описание картинки"
+        },
+        {
+            image: P12img3,
+            caption: "Описание картинки"
+        },
+        {
+            image: P12img4,
+            caption: "Описание картинки"
+        },
+        {
+            image: P12img5,
+            caption: "Описание картинки"
+        },
+        {
+            image: P12img6,
+            caption: "Описание картинки"
+        },
+        {
+            image: P12img7,
+            caption: "Описание картинки"
+        },
+    ]} /></div>
+}, {
     imgData: [
         {
             src: P13img1,
@@ -1015,7 +1368,7 @@ let Cards = [{
             srcSet: [
                 { src: P13img7, width: 320, height: 213 },
             ]
-        },{
+        }, {
             src: P13img8,
             alt: 'Hats',
             id: 4,
@@ -1048,9 +1401,34 @@ let Cards = [{
     ],
     id: 12,
     img: P13logo,
-    title: "Монтаж электропроводки в 3-комнатной квартире ЖК Бродвей",
+    title: "",
     description: "",
-    html: ""
+    html: <div ><MyGallery photoList={[
+        {
+            image: P13img1,
+            caption: "Описание картинки"
+        },
+        {
+            image: P13img2,
+            caption: "Описание картинки"
+        },
+        {
+            image: P13img3,
+            caption: "Описание картинки"
+        },
+        {
+            image: P13img4,
+            caption: "Описание картинки"
+        },
+        {
+            image: P13img5,
+            caption: "Описание картинки"
+        },
+        {
+            image: P13img6,
+            caption: "Описание картинки"
+        }
+    ]} /></div>
 },
 ]
 

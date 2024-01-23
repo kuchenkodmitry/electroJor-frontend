@@ -14,6 +14,11 @@ import React, { useState } from "react";
 import Modal from "./components/modal/modal"
 import Gallary from './components/PhotoGallary/gallary';
 import TestMap from './textMap.jsx';
+import MyGallery from './components/gallary/gallary.jsx';
+import {MyComponent} from "./components/motion/motion.jsx"
+import { fadeIn } from 'react-animations'
+
+
 
 function App() {
   const [modalContext, setModalContext] = useState(["null"])
@@ -29,7 +34,7 @@ function App() {
     <GallaryIndex.Provider value={[gallaryIndex, setGallaryIndex]}>
     <GallaryOpen.Provider value={[gallaryOpen, setGallaryOpen]}>
     <TestMap/>
-    <Gallary/>
+    <Gallary />
     <Modal/>
     <AppBar/>
     <InfoHeader/>
