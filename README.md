@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# ElectroJor Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![React](https://img.shields.io/badge/React-18.0.0-blue)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow)
+![CSS](https://img.shields.io/badge/CSS-Modules-green)
+![License](https://img.shields.io/github/license/kuchenkodmitry/electroJor-frontend)
 
-## Available Scripts
+## Описание проекта
 
-In the project directory, you can run:
+ElectroJor - это веб-приложение, разработанное с использованием React, для компании "ЭлектроЖор". Оно предназначено для предоставления пользователям удобного интерфейса для взаимодействия с услугами и продуктами компании.
 
-### `npm start`
+## DEMO
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Проект работает по следующей ссылке: https://electrojor.ru/
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Функциональность
 
-### `npm test`
+- **Главная страница**: Отображает основные предложения и новости компании.
+- **Каталог продуктов**: Позволяет пользователям просматривать и фильтровать продукты.
+- **Корзина покупок**: Управление товарами в корзине и оформление заказа.
+- **Контакты**: Информация о компании и форма обратной связи.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Технологии
 
-### `npm run build`
+- **React**: Библиотека для построения пользовательских интерфейсов.
+- **React Router**: Для маршрутизации внутри приложения.
+- **CSS Modules**: Стилизация компонентов.
+- **Axios**: Для запросов к API.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Установка и запуск
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Клонирование репозитория**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```sh
+    git clone https://github.com/kuchenkodmitry/electroJor-frontend.git
+    cd electroJor-frontend
+    ```
 
-### `npm run eject`
+2. **Установка зависимостей**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```sh
+    npm install
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Запуск приложения**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    ```sh
+    npm start
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    Приложение будет доступно по адресу `http://localhost:3000`.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
