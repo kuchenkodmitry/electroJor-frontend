@@ -1,32 +1,53 @@
-# electroJor-frontend
+# ElectroJor Frontend
 
-Frontend разработанный для электромонтажной компании ЭлектроЖор 
+![React](https://img.shields.io/badge/React-18.0.0-blue)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow)
+![CSS](https://img.shields.io/badge/CSS-Modules-green)
+![License](https://img.shields.io/github/license/kuchenkodmitry/electroJor-frontend)
 
-## Технологии
-![React](https://img.shields.io/badge/-React-61daf8?logo=react&logoColor=black)
-![HTML5](https://img.shields.io/badge/-HTML5-e34f26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/-CSS3-1572b6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/-JavaScript-f7df1e?logo=javaScript&logoColor=black)
-![Webpack](https://img.shields.io/badge/-Webpack-99d6f8?logo=webpack&logoColor=black)
-![API](https://img.shields.io/badge/-api-yellow)
+## Описание проекта
 
-## Запуск проекта
+ElectroJor - это веб-приложение, разработанное с использованием React, для компании "ЭлектроЖор". Оно предназначено для предоставления пользователям удобного интерфейса для взаимодействия с услугами и продуктами компании.
 
-Для запуска проекта необходимо выполнить следующие действия:
-
-1. Склонировать проект на ваш компьютер с [Github](https://github.com/kuchenkodmitry/electroJor-frontend/tree/main) с помощью команды:
-```
-git clone https://github.com/kuchenkodmitry/electroJor-frontend.git
-```
-2. Установить зависимости:
-```
-npm install
-```
-3. Запустить проект:
-```
-npm start
-```
-
-## Ссылки проекта
+## DEMO
 
 Проект работает по следующей ссылке: https://electrojor.ru/
+
+## Функциональность
+
+- **Главная страница**: Отображает основные предложения и новости компании.
+- **Каталог продуктов**: Позволяет пользователям просматривать и фильтровать продукты.
+- **Корзина покупок**: Управление товарами в корзине и оформление заказа.
+- **Контакты**: Информация о компании и форма обратной связи.
+
+## Технологии
+
+- **React**: Библиотека для построения пользовательских интерфейсов.
+- **React Router**: Для маршрутизации внутри приложения.
+- **CSS Modules**: Стилизация компонентов.
+- **Axios**: Для запросов к API.
+- **Jest**: Для модульного тестирования.
+
+## Установка и запуск
+
+1. **Клонирование репозитория**
+
+    ```sh
+    git clone https://github.com/kuchenkodmitry/electroJor-frontend.git
+    cd electroJor-frontend
+    ```
+
+2. **Установка зависимостей**
+
+    ```sh
+    npm install
+    ```
+
+3. **Запуск приложения**
+
+    ```sh
+    npm start
+    ```
+
+    Приложение будет доступно по адресу `http://localhost:3000`.
+
