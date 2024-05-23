@@ -1,0 +1,213 @@
+ /* Расположение элементов NavBar */
+ .navBar {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     width: 1200px;
+     margin: 0 auto;
+ }
+
+ /* Надписи возле логотипа */
+ .logoTitle {
+     font-family: "SourceCodePro-Bold";
+     font-size: 26px;
+     line-height: 1;
+     margin: 0;
+     letter-spacing: 1px;
+ }
+
+ .logoDecription {
+     font-family: "SourceCodePro-Light";
+     /* display: none; */
+     line-height: 1;
+     width: 100px;
+     font-size: 18px;
+     margin: 0;
+
+ }
+
+ /* Стили логотипа */
+ .logo {
+     width: 100px;
+     height: 100px;
+ }
+
+ /* Расположение элементов блока LOGO */
+ .logoPositions {
+     padding: 3px 0 0 5px;
+     display: flex;
+     align-items: center;
+     gap: 15px;
+     cursor: pointer;
+ }
+
+ /* Кнопка выпадающего меню, только для мобильных устройств */
+ .mobileNavBtn {
+     display: none;
+ }
+
+ /* Кнопки меню */
+ .navButtons {
+    display: flex;
+    gap: 10px;
+ }
+/* стили кнопок меню ПК */
+ .navButtons a{
+    text-decoration: none;  
+    color: black;
+    font-size: 18px;
+    padding: 5px 10px;
+   }
+   .navButtons a:hover{
+    text-decoration: none;  
+    color: black;
+    font-size: 18px;
+    background-color: rgba(20, 24, 54, 0.208);
+   }
+/* Стили звонка по телефону */
+
+.blockCallback{
+
+}
+.phoneNumber{
+    font-family: "SourceCodePro-Regular";
+    margin: 0;
+    font-size: 22px;
+}
+.phoneCall{
+    font-family: "SourceCodePro-Bold";
+    margin: 0;
+    font-size: 17px;
+}
+
+ @media screen and (max-width : 1024px) {
+
+     /* Расположение элементов NavBar */
+     .navBar {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         width: 100%
+     }
+
+     /* Надписи возле логотипа */
+     .logoTitle {
+         font-family: "SourceCodePro-Bold";
+         font-size: 18px;
+         line-height: 1;
+         margin: 0;
+     }
+
+     .logoDecription {
+         font-family: "SourceCodePro-Light";
+         /* display: none; */
+         line-height: 1;
+         width: 100px;
+         font-size: 14px;
+         margin: 0;
+     }
+
+     /* Стили логотипа */
+     .logo {
+         width: 60px;
+         height: 60px;
+     }
+
+     /* Расположение элементов блока LOGO */
+     .logoPositions {
+         padding: 3px 0 0 5px;
+         display: flex;
+         align-items: center;
+         gap: 5px;
+         cursor: pointer;
+     }
+
+     /* Кнопка выпадающего меню, только для мобильных устройств */
+     .mobileNavBtn {
+         width: 100px;
+         height: 37px;
+         border-radius: 16px 0px 16px 0px;
+         box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+         background: linear-gradient(90.00deg, rgb(83, 105, 118), rgb(41, 46, 73) 100%);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: white;
+         margin-right: 7px;
+     }
+
+     /* Кнопки меню пк версии  */
+     .navButtons {
+         display: none;
+     }
+     /* Скрыть номер телефона на версии планшета */
+     .blockCallback{
+        display: none;
+     }
+ }
+
+ @media screen and (max-width : 800px) {
+
+     /* Расположение элементов NavBar */
+     .navBar {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         width: 100%
+     }
+
+     /* Надписи возле логотипа */
+     .logoTitle {
+         font-family: "SourceCodePro-Bold";
+         font-size: 18px;
+         line-height: 1;
+         margin: 0;
+     }
+
+     .logoDecription {
+         font-family: "SourceCodePro-Light";
+         /* display: none; */
+         line-height: 1;
+         width: 100px;
+         font-size: 14px;
+         margin: 0;
+     }
+
+     /* Стили логотипа */
+     .logo {
+         width: 60px;
+         height: 60px;
+     }
+
+     /* Расположение элементов блока LOGO */
+     .logoPositions {
+         padding: 3px 0 0 5px;
+         display: flex;
+         align-items: center;
+         gap: 5px;
+         cursor: pointer;
+     }
+
+     /* Кнопка выпадающего меню, только для мобильных устройств */
+     .mobileNavBtn {
+         width: 100px;
+         height: 37px;
+         border-radius: 16px 0px 16px 0px;
+         box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+         background: linear-gradient(90.00deg, rgb(83, 105, 118), rgb(41, 46, 73) 100%);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: white;
+         margin-right: 7px;
+     }
+
+     /* Кнопки меню пк версии  */
+     .navButtons {
+         display: none;
+     }
+     /* Скрыть номер телефона на версии для телефона */
+     .blockCallback{
+        display: none;
+     }
+ }

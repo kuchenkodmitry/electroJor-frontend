@@ -1,0 +1,142 @@
+.callbackBlock {
+    background: linear-gradient(90deg, rgba(254, 254, 255, 0.59) 0.04%, #E9F1FA 33.15%, #E9F1FA 73.11%, rgba(233, 241, 250, 0.00) 100.53%);
+    width: 1280px;
+    height: 311px;
+    flex-shrink: 0;
+    margin: 0 auto;
+}
+
+.textBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 23px 0 0 0;
+}
+
+.callBackForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.input {
+    border-radius: 6px;
+    border: 1px solid #2359C1;
+    background: #FFF;
+    width: 295px;
+    height: 34px;
+    flex-shrink: 0;
+    margin-right: 25px;
+}
+.button{
+    border-radius: 16px;
+background: #00ABE4;
+width: 152px;
+height: 40px;
+flex-shrink: 0;
+color: #FFF;
+font-family: Poppins;
+font-size: 16px;
+font-style: normal;
+font-weight: 800;
+line-height: normal;
+
+}
+
+@media screen and (max-width : 1024px) {
+    .callbackBlock {
+        background: linear-gradient(90deg, rgba(254, 254, 255, 0.59) 0.04%, #E9F1FA 33.15%, #E9F1FA 73.11%, rgba(233, 241, 250, 0.00) 100.53%);
+        width: 100%;
+        height: 311px;
+        flex-shrink: 0;
+        margin: 10px auto;
+    }
+    
+    .textBlock {
+        display: block;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 23px 25px;
+    }
+    
+    .callBackForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: end;
+        gap: 15px;
+        margin-bottom: 20px;
+        margin-top: 30px;
+    }
+    
+    .input {
+        border-radius: 6px;
+        border: 1px solid #2359C1;
+        background: #FFF;
+        width: 290px;
+        height: 38px;
+        flex-shrink: 0;
+        margin-right: 0;
+    }
+    .button{
+        border-radius: 16px 0px;
+        background: linear-gradient(90deg, #536976 0%, #292E49 100%);
+        box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+        width: 240px;
+        height: 54px;
+        flex-shrink: 0;
+    }
+}
+@media screen and (max-width : 800px) {
+    .callbackBlock {
+        background: linear-gradient(90deg, rgba(254, 254, 255, 0.59) 0.04%, #E9F1FA 33.15%, #E9F1FA 73.11%, rgba(233, 241, 250, 0.00) 100.53%);
+        width: 100%;
+        height: 311px;
+        flex-shrink: 0;
+        margin: 25px auto;
+    }
+    
+    .textBlock {
+        display: block;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 23px 25px;
+    }
+    
+    .callBackForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: end;
+        gap: 15px;
+        margin-bottom: 20px;
+        margin-top: 30px;
+    }
+    
+    .input {
+        border-radius: 6px;
+        border: 1px solid #2359C1;
+        background: #FFF;
+        width: 290px;
+        height: 38px;
+        flex-shrink: 0;
+        margin-right: 0;
+    }
+    .button{
+        border-radius: 16px 0px;
+        background: linear-gradient(90deg, #536976 0%, #292E49 100%);
+        box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+        width: 240px;
+        height: 54px;
+        flex-shrink: 0;
+    }
+}
+@media screen and (max-width : 420px) {
+
+}

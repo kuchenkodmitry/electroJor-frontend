@@ -1,0 +1,37 @@
+.rewiewsBlock{
+    display: flex;
+    width: 900px;
+    margin: 0 auto 60px;
+    text-align: center;
+    padding: 0 0 0 15rem;
+}
+.galaryBlock{
+    width: 1200px;
+    margin: 0 auto;
+}
+.images{
+    width: 600px;
+}
+
+@media screen and (max-width : 1024px) {
+    
+}
+@media screen and (max-width : 800px) {
+    .rewiewsBlock{
+        display: flex;
+        width: 100%;
+        margin: 0 auto 60px;
+        text-align: center;
+        padding: 0 0 0 0;
+    }
+    .galaryBlock{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .images{
+        width: 100%;
+    }
+}
+@media screen and (max-width : 420px) {
+
+}

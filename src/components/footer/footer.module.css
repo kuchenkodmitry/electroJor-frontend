@@ -1,0 +1,105 @@
+.linkWorks{
+    display: flex;
+    flex-direction: column;
+}
+.sections{
+    display: flex;
+    flex-direction: column;
+}
+.footerInfo{
+    display: flex;
+    flex-direction: column;
+}
+.footerFlex{
+    display: flex;
+    flex-direction: row;
+    width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+    line-height: 30px;
+}
+.footerFlex a{
+    text-decoration: none;
+    color: #0016A1;
+}
+.socialBtn{
+    display: grid;
+    gap: 30px;
+    grid-template-columns: .1fr .1fr .1fr;
+    margin-top: 30px;
+    padding: 20px;
+}
+.logoWithSocial{
+    width: 300px;
+}
+.logoText{
+display: flex;
+flex-direction: column;
+gap: 0px;
+align-items: end;
+justify-content: end;
+}
+.logoContent{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+.footerInfoFlex{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #1C274C;
+    margin-bottom: 17px;
+}
+
+@media screen and (max-width : 1024px) {
+    .footerFlex{
+        display: block;
+        flex-direction: row;
+        width: 100%;
+        margin: 0 auto;
+        justify-content: space-between;
+        
+    }
+    .footerInfo{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 260px;
+    }
+    .socialBtn{
+        display: grid;
+        gap: 30px;
+        grid-template-columns: .1fr .1fr .1fr;
+        margin-top: 30px;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width : 800px) {
+    .footerFlex{
+        display: block;
+        flex-direction: row;
+        width: 100%;
+        margin: 0 auto;
+        justify-content: space-between;
+        
+    }
+    .footerInfo{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 260px;
+    }
+    .socialBtn{
+        display: grid;
+        gap: 30px;
+        grid-template-columns: .1fr .1fr .1fr;
+        margin-top: 30px;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width : 420px) {
+
+}

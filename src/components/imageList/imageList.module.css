@@ -1,0 +1,19 @@
+.imageListSize{
+    margin: 0 auto;
+    width: 1000px; 
+    height: auto;
+}
+
+@media screen and (max-width : 1024px) {
+    
+}
+@media screen and (max-width : 800px) {
+    .imageListSize{
+        margin: 0 auto;
+    width: 100%; 
+    height: auto;
+    }
+}
+@media screen and (max-width : 420px) {
+
+}

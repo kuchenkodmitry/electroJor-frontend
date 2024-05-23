@@ -1,0 +1,74 @@
+.whatsapp {
+    width: 147px;
+    height: 73px;
+    border-radius: 16px;
+    border: 1px solid #32B857;
+    background: #FFF;
+    display: grid;
+    flex-direction:row;
+    align-items: center;
+    font-size: 12px;
+    grid-template-columns: 0.1fr 0.8fr;
+    gap: 5px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+
+.whatsapp:hover {
+    background: #32B857;
+    color: #FFF;
+}
+
+.telegram {
+    border-radius: 16px;
+    border: 1px solid #28A7E8;
+    background: #FFF;
+    width: 147px;
+    height: 73px;
+    display: flex;
+    flex-direction:row;
+    display: grid;
+    flex-direction:row;
+    align-items: center;
+    font-size: 12px;
+    grid-template-columns: 0.1fr 0.8fr;
+    gap: 5px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.telegram:hover {
+    background: #28A7E8;
+    color: #FFF;
+}
+
+
+.phone {
+    border-radius: 16px;
+    border: 1px solid #000000;
+    background: #FFF;
+    width: 147px;
+    height: 73px;
+    display: flex;
+    flex-direction:row;
+    display: grid;
+    flex-direction:row;
+    align-items: center;
+    font-size: 12px;
+    grid-template-columns: 0.1fr 0.8fr;
+    gap: 5px;
+    padding-left: 10px;
+    color: #000000;
+    cursor: pointer;
+}
+.phone:hover {
+    background: black;
+    color: #FFF;
+}
+
+.threeBtn{
+    display: flex;
+    flex-direction: row;
+    gap: 19px;
+}

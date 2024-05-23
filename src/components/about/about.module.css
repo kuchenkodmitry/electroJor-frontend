@@ -1,0 +1,120 @@
+.AboutContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 71px;
+    
+}
+
+
+.aboutBlock {
+    width: 1200px;
+    margin: 50px auto;
+}
+
+.paragraph {
+    color: #000;
+    font-family: Poppins;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: 1.6px;
+    width: 475px;
+    margin-bottom: 15px;
+}
+
+.text {
+    color: rgba(0, 0, 0, 0.66);
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 1.4px;
+    width: 522px;
+    margin-bottom: 15px;
+
+}
+/* .AboutContentText {
+    
+} */
+@media screen and (max-width : 1024px) {
+    .AboutContent {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 71px;
+        
+    }
+    
+    
+    .aboutBlock {
+        width: 1200px;
+        margin: 50px auto;
+    }
+    
+    .paragraph {
+        color: #000;
+        font-family: Poppins;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+        letter-spacing: 1.6px;
+        width: 475px;
+        margin-bottom: 15px;
+    }
+    
+    .text {
+        color: rgba(0, 0, 0, 0.66);
+        font-family: Poppins;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 1.4px;
+        width: 522px;
+        margin-bottom: 15px;
+    
+    }
+}
+@media screen and (max-width : 800px) {
+    .aboutBlock {
+        width: 100%;
+        margin: 0px auto;
+    }
+    .paragraph {
+        color: #000;
+        font-family: Poppins;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+        letter-spacing: 1.6px;
+        width: 340px;
+    }
+    .AboutContentText {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        height: 900px;
+        gap: 10px;
+        margin: 0 auto;
+    }
+    .text {
+        color: rgba(0, 0, 0, 0.66);
+        font-family: Poppins;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 1.4px;
+        width: 522px;
+        margin-bottom: 15px;
+    
+    }
+}
+@media screen and (max-width : 420px) {
+
+}
