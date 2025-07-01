@@ -1,18 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../axios/axios"
 
-export const fetchAuthMe = createAsyncThunk('auth/fetchAuthMe' ,  async (params) => {
-    const {data} = await axios.get('/auth/me') // Запрос на получение тегов
+export const fetchAuthMe = createAsyncThunk('auth/fetchAuthMe' ,  async () => {
+    const {data} = await axios.get('/me')
     return data
 })
 
 export const fetchAuth = createAsyncThunk('auth/fetchAuth' ,  async (params) => {
-    const {data} = await axios.post('/auth/login', params) // Запрос на получение тегов
+    const {data} = await axios.post('/login', params)
     return data
 })
 
 export const fetchRegister = createAsyncThunk('auth/fetchRegister' ,  async (params) => {
-    const {data} = await axios.post('/auth/register', params) // Запрос на получение тегов
+    const {data} = await axios.post('/register', params)
     return data
 })
 
@@ -92,3 +92,4 @@ const authSlice = createSlice({
 export const selectIsAuth = state => Boolean(state.auth.data)
 export const authReducer = authSlice.reducer
 export const { logout } = authSlice.actions // вытаскиваем действие (Удалить данные пользователя/ выйти из аккаунта)
+
