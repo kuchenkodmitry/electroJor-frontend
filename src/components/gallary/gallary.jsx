@@ -1,5 +1,5 @@
 // import { Carousel } from 'react-carousel-minimal';
-import { GallaryOpen, GallaryIndex } from "../context"
+import { GallaryOpen, GallaryIndex, GallaryContext } from "../context"
 import { useContext } from 'react';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
@@ -10,30 +10,37 @@ import s from './stylaGallery.module.css'
 function App({ photoList }) {
   const [gallaryOpen, setGallaryOpen] = useContext(GallaryOpen);
   const [gallaryIndex, setGallaryIndex] = useContext(GallaryIndex);
-  let data = [];
-  const objectData = photoList.map((e) => {
-    return (
-      <div className={s.sizingPhoto} >
-        <img style={{
-          // minHeight: "10px",
-          maxHeight: "fit-content",
-          MaxWidth: "auto",
-          // minWidth: "auto",
-          // display: "flex"
-          
+  const [gallaryContext, setGallaryContext] = useContext(GallaryContext);
 
-        }} src={e} />
+  const slides = photoList.map((url) => ({ src: url }));
+
+  const objectData = photoList.map((e, index) => {
+    return (
+      <div key={index} className={s.sizingPhoto}>
+        <img
+          src={e}
+          onClick={() => {
+            setGallaryContext(slides);
+            setGallaryIndex(index);
+            setGallaryOpen(true);
+          }}
+        />
       </div>
-    )
-  })
+    );
+  });
+
   return (
-    <div style={{
-      // maxHeight: "30%",
-      // minWidth: "70%"
-    }}>
-      <Carousel className={s.caruselSize}>
-      {objectData}
-    </Carousel>
+    <div>
+      <Carousel
+        className={s.caruselSize}
+        showThumbs={false}
+        showStatus={false}
+        infiniteLoop
+        useKeyboardArrows
+        dynamicHeight
+      >
+        {objectData}
+      </Carousel>
     </div>
   );
 }

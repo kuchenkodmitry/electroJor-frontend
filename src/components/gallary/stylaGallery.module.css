@@ -1,36 +1,27 @@
 .caruselSize{
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
 }
 .sizingPhoto{
-    height: 600px;
-    width: 800px;
+    height: 500px;
+    width: 100%;
+    max-width: 800px;
     align-items: center;
     justify-content: center;
     display: flex;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 @media screen and (max-width : 1024px) {
     .sizingPhoto{
-        height: 470px;
-        width: 635px;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-    }
-    .caruselSize{
-        width: 655px;
+        height: 400px;
     }
 }
 @media screen and (max-width : 800px) {
     .sizingPhoto{
         height: 250px;
-        width: 355px;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-    }
-    .caruselSize{
-        width: 355px;
     }
 }
 @media screen and (max-width : 420px) {
