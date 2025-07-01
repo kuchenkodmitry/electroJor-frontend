@@ -1,20 +1,24 @@
-.muneBtn{
-display: flex;
-flex-direction: row;
-text-decoration: none;
-gap: 15px;
-padding: 10px 10px;
-align-items: center;
-color: black;
-border: 2px solid rgb(0, 0, 0);
-box-shadow: -4px 4px 0px 0px rgb(0, 0, 0);
-background: rgb(255, 255, 255);
-width: 250px;
-margin-bottom: 15px;
+.muneBtn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    width: 250px;
+    margin-bottom: 15px;
+    text-decoration: none;
+    color: #212529;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
 }
-.text{
-    color: rgb(0, 0, 0);
-line-height: 100%;
-letter-spacing: 0%;
-text-align: left;
+
+.muneBtn:hover {
+    background-color: #e2e6ea;
+}
+
+.text {
+    color: #212529;
+    line-height: 100%;
+    text-align: left;
 }

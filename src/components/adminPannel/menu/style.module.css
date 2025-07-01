@@ -1,20 +1,19 @@
-.box{
-    /* Button */
-position: relative;
-width: 269px;
-height: fit-content;
-left: 0px;
-top: 80px;
-box-sizing: border-box;
-border: 2px solid rgb(0, 0, 0);
-box-shadow: -4px 4px 0px 0px rgb(0, 0, 0);
-background: rgb(255, 255, 255);
+.box {
+    position: relative;
+    width: 270px;
+    top: 80px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 20px;
 }
-.titleBlock{
-    margin: 0 auto;
+
+.titleBlock {
+    margin: 0 auto 20px;
     width: 236px;
+    text-align: center;
 }
-.menuPart{
-    margin: 0 auto;
-    width: 249px;
+
+.menuPart {
+    margin-bottom: 20px;
 }

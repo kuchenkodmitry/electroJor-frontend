@@ -21,7 +21,7 @@ function AdminPanel() {
         axios.get('/admin-exists').then(res => setExists(res.data.exists));
     }, []);
     return (
-        <div className={style.backgound}>
+        <div className={style.background}>
             <div className={style.layout}> 
                 <Header />
                {isLoading ? (
