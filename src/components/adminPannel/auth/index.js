@@ -28,7 +28,9 @@ export const UserIsAuth = () => {
                 fontFamily: "SourceCodePro-SemiBold",
                 fontSize: "16px"
             }}>
-                {isLoading ? "Привет" : "Привет," + data.fullName.split(' ')[0]}
+                {isLoading ?
+                    "Привет" :
+                    `Привет,${data?.fullName ? data.fullName.split(' ')[0] : data?.username}`}
             </Typography>
             <button onClick={onClickLogout} className={style.btnIsAuth}>Выйти</button>
         </div>
