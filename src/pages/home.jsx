@@ -2,6 +2,7 @@ import AppBar from '../components/header/appBar.jsx';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPosts } from '../redux/slices/posts.js';
+import { fetchPhone } from '../redux/slices/settings.js';
 import InfoHeader from '../components/header/headerInfo';
 import ServiceCard from '../components/serviceCard/serviceCard';
 import Callback1 from '../components/callback/callback1'
@@ -29,7 +30,8 @@ function Home() {
 
 
     React.useEffect(() => {
-        dispatch(fetchPosts()) //Производим экщон (параметр функция из слайса постс);
+        dispatch(fetchPosts());
+        dispatch(fetchPhone());
     }, [])
 
     return (

@@ -14,11 +14,14 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from './logo.png';
+import { useSelector } from "react-redux";
+import { phoneDigits } from "../../utils/phone";
 
 function InfoHeader() {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
+    const phone = useSelector((state) => state.settings.phone);
 
     function onSubmit(data) {
         window.Email.send({
@@ -68,8 +71,8 @@ function InfoHeader() {
 
                 {!isMobile && (
                     <div className={s.phoneBlock}>
-                        <Typography variant="body1" className={s.phoneNumber}>+7-909-383-99-46</Typography>
-                        <a href="tel:+79093839946" className={s.phoneLink}>Позвонить по телефону</a>
+                        <Typography variant="body1" className={s.phoneNumber}>{phone}</Typography>
+                        <a href={`tel:+${phoneDigits(phone)}`} className={s.phoneLink}>Позвонить по телефону</a>
                     </div>
                 )}
             </div>
@@ -87,7 +90,7 @@ function InfoHeader() {
                     <a href="#works" className={s.mobileNavLink} onClick={toggleMobileMenu}>Наши работы</a>
                     <a href="#footer" className={s.mobileNavLink} onClick={toggleMobileMenu}>Контакты</a>
                     <Link to="/admin" className={s.mobileNavLink} onClick={toggleMobileMenu}>Админ панель</Link>
-                    <a href="tel:+79093839946" className={s.mobilePhoneLink}>Позвонить: +7-909-383-99-46</a>
+                    <a href={`tel:+${phoneDigits(phone)}`} className={s.mobilePhoneLink}>Позвонить: {phone}</a>
                 </motion.div>
             )}
 
@@ -187,7 +190,7 @@ function InfoHeader() {
                             </Typography>
                             <div className={s.socialLinks}>
                                 <motion.a
-                                    href="https://t.me/+79093839946"
+                                    href={`https://t.me/+${phoneDigits(phone)}`}
                                     target="_blank"
                                     whileHover={{ y: -3 }}
                                     className={s.socialLink}
@@ -196,7 +199,7 @@ function InfoHeader() {
                                     <span>Telegram</span>
                                 </motion.a>
                                 <motion.a
-                                    href="https://api.whatsapp.com/send/?phone=%2B79093839946&text&type=phone_number&app_absent=0"
+                                    href={`https://api.whatsapp.com/send/?phone=%2B${phoneDigits(phone)}&text&type=phone_number&app_absent=0`}
                                     target="_blank"
                                     whileHover={{ y: -3 }}
                                     className={s.socialLink}
@@ -205,13 +208,13 @@ function InfoHeader() {
                                     <span>WhatsApp</span>
                                 </motion.a>
                                 <motion.a
-                                    href="tel:+79093839946"
+                                    href={`tel:+${phoneDigits(phone)}`}
                                     target="_blank"
                                     whileHover={{ y: -3 }}
                                     className={s.socialLink}
                                 >
                                     <img src={PhoneIco} alt="Телефон" />
-                                    <span>+7 909 383-99-46</span>
+                                    <span>{phone}</span>
                                 </motion.a>
                             </div>
                         </div>
