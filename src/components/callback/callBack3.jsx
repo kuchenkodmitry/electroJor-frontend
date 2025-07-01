@@ -7,6 +7,7 @@ import { maskPhoneInput } from "../../utils/phone";
 import CircularProgress from '@mui/material/CircularProgress';
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import axios from "../../axios/axios";
 
 function CallBackBottom() {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -21,15 +22,7 @@ function CallBackBottom() {
     async function onSubmit(data) {
         setIsLoading(true);
         try {
-            await window.Email.send({
-                Host: "smtp.elasticemail.com",
-                Username: "dmitry.kuchenko@yandex.ru",
-                Password: "20562E48951EB96B7D241652CEBB816A908E",
-                To: 'dniwe.exe@ya.ru',
-                From: "st1m2123@gmail.com",
-                Subject: "Новый клиент",
-                Body: `Имя: ${data.name} Телефон: ${data.phone}`
-            });
+            await axios.post('/feedback', data);
             setSubmitSuccess(true);
         } catch (error) {
             alert("Произошла ошибка при отправке. Пожалуйста, попробуйте позже.");
