@@ -25,10 +25,10 @@ function NavBar() {
       </div>
       <div className={style.blockCallback}>
         <p className={style.phoneNumber}>
-        +7-909-383-99-46
+          +7-909-383-99-46
         </p>
         <a href="" className={style.phoneCall}>
-        Позвонить по телефону 
+          Позвонить по телефону
         </a>
       </div>
       <NavDropdown className={style.mobileNavBtn} title="Меню" id="basic-nav-dropdown">
