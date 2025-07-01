@@ -21,13 +21,19 @@
     "styled-components": "^6.0.8",
     "web-vitals": "^2.1.4",
     "webfontloader": "^1.6.28",
-    "yet-another-react-lightbox": "^3.15.6"
+    "yet-another-react-lightbox": "^3.15.6",
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "concurrently": "^8.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:frontend": "react-scripts start",
+    "start:backend": "node backend/server.js",
+    "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\""
   },
   "eslintConfig": {
     "extends": [
