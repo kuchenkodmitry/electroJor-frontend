@@ -1,19 +1,76 @@
-.whatsapp {
+/* styleBtn.module.css */
+.threeBtn {
+    display: flex;
+    flex-direction: row;
+    gap: 19px;
+}
+
+/* Общие стили для всех кнопок */
+.socialBtn {
     width: 147px;
     height: 73px;
     border-radius: 16px;
-    border: 1px solid #32B857;
     background: #FFF;
     display: grid;
-    flex-direction:row;
+    grid-template-columns: 38px 1fr;
     align-items: center;
-    font-size: 12px;
-    grid-template-columns: 0.1fr 0.8fr;
     gap: 5px;
-    padding-left: 10px;
+    padding: 0 10px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.socialBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
+
+.socialBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.socialBtn:hover::before {
+    transform: translateX(100%);
+}
+
+.socialBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.socialBtn p {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.socialBtn img {
+    transition: transform 0.3s ease;
+}
+
+.socialBtn:hover img {
+    transform: scale(1.1);
+}
+
+/* Стили для конкретных кнопок */
+.whatsapp {
+    border: 1px solid #32B857;
+    color: #32B857;
+}
 
 .whatsapp:hover {
     background: #32B857;
@@ -21,21 +78,8 @@
 }
 
 .telegram {
-    border-radius: 16px;
     border: 1px solid #28A7E8;
-    background: #FFF;
-    width: 147px;
-    height: 73px;
-    display: flex;
-    flex-direction:row;
-    display: grid;
-    flex-direction:row;
-    align-items: center;
-    font-size: 12px;
-    grid-template-columns: 0.1fr 0.8fr;
-    gap: 5px;
-    padding-left: 10px;
-    cursor: pointer;
+    color: #28A7E8;
 }
 
 .telegram:hover {
@@ -43,32 +87,12 @@
     color: #FFF;
 }
 
-
 .phone {
-    border-radius: 16px;
-    border: 1px solid #000000;
-    background: #FFF;
-    width: 147px;
-    height: 73px;
-    display: flex;
-    flex-direction:row;
-    display: grid;
-    flex-direction:row;
-    align-items: center;
-    font-size: 12px;
-    grid-template-columns: 0.1fr 0.8fr;
-    gap: 5px;
-    padding-left: 10px;
-    color: #000000;
-    cursor: pointer;
-}
-.phone:hover {
-    background: black;
-    color: #FFF;
+    border: 1px solid #000;
+    color: #000;
 }
 
-.threeBtn{
-    display: flex;
-    flex-direction: row;
-    gap: 19px;
+.phone:hover {
+    background: #000;
+    color: #FFF;
 }

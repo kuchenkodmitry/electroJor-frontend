@@ -55,7 +55,6 @@ function InfoHeader() {
                         <a href="#about" className={s.navLink}>О компании</a>
                         <a href="#works" className={s.navLink}>Наши работы</a>
                         <a href="#footer" className={s.navLink}>Контакты</a>
-                        <Link to="/admin" className={s.adminLink}>Админ панель</Link>
                     </nav>
                 ) : (
                     <button className={s.mobileMenuButton} onClick={toggleMobileMenu}>
@@ -75,7 +74,7 @@ function InfoHeader() {
 
             {/* Мобильное меню */}
             {isMobile && mobileMenuOpen && (
-                <motion.div 
+                <motion.div
                     className={s.mobileMenu}
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -148,41 +147,57 @@ function InfoHeader() {
 
                         <form onSubmit={handleSubmit(onSubmit)} className={s.formSend}>
                             <div className={s.inputGroup}>
-                                <input
-                                    placeholder="Ваше имя"
-                                    className={`${s.inputStyle} ${s.nameInput}`}
-                                    type="text"
-                                    {...register('name', { required: true })}
-                                />
-                                <div className={s.phoneInput}>
-                                    <img src={RussianFlagIco} alt="Россия" className={s.flagIcon} />
+                                <div className={s.inputContainer}>
+                                    <label className={s.inputLabel}>Ваше имя</label>
                                     <input
-                                        placeholder="+7 (___) ___-__-__"
-                                        className={s.inputStyle}
-                                        type="tel"
-                                        {...register('phone', {
-                                            required: "Введите номер телефона",
-                                            pattern: {
-                                                value: /\d+/,
-                                                message: "Только цифры"
-                                            },
+                                        placeholder="Иван Иванов"
+                                        className={s.nameInput}
+                                        type="text"
+                                        {...register('name', {
+                                            required: "Введите ваше имя",
                                             minLength: {
-                                                value: 10,
-                                                message: "Минимум 10 цифр"
-                                            },
-                                            onChange: (e) => {
-                                                e.target.value = maskPhoneInput(e.target.value);
-                                            },
+                                                value: 2,
+                                                message: "Минимум 2 символа"
+                                            }
                                         })}
-                                        aria-invalid={errors.phone ? "true" : "false"}
-                                        required
+                                        aria-invalid={errors.name ? "true" : "false"}
                                     />
+                                    {errors.name && <p className={s.errorMessage}>{errors.name.message}</p>}
                                 </div>
+
+                                <div className={s.inputContainer}>
+                                    <label className={s.inputLabel}>Номер телефона</label>
+                                    <div className={s.phoneInputContainer}>
+                                        <img src={RussianFlagIco} alt="Россия" className={s.flagIcon} />
+                                        <input
+                                            placeholder="+7 (___) ___-__-__"
+                                            className={s.phoneInput}
+                                            type="tel"
+                                            {...register('phone', {
+                                                required: "Введите номер телефона",
+                                                pattern: {
+                                                    value: /\d+/,
+                                                    message: "Только цифры"
+                                                },
+                                                minLength: {
+                                                    value: 10,
+                                                    message: "Минимум 10 цифр"
+                                                },
+                                                onChange: (e) => {
+                                                    e.target.value = maskPhoneInput(e.target.value);
+                                                },
+                                            })}
+                                            aria-invalid={errors.phone ? "true" : "false"}
+                                        />
+                                    </div>
+                                    {errors.phone && <p className={s.errorMessage}>{errors.phone.message}</p>}
+                                </div>
+
                                 <motion.button
                                     type="submit"
                                     className={s.buttonSend}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
                                 >
                                     Позвоните мне
                                 </motion.button>

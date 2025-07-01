@@ -1,9 +1,9 @@
 import imgVkLogo from './img/VK Logo 1.png'
 import s from './vkButton.module.css'
 
-function VkBtn () {
-    function targetToVk () {
-        window.open( "https://vk.com/elektriks34",'_blank')
+function VkBtn() {
+    function targetToVk() {
+        window.open("https://vk.com/elektriks34", '_blank')
     }
     return (
         <div onClick={targetToVk} className={s.vkbtn}>

@@ -10,6 +10,7 @@ import NoPhoto from "./images/no-foto-2.jpg"
 import 'easymde/dist/easymde.min.css';
 import SimpleMDE from 'react-simplemde-editor';
 import { useNavigate, useParams } from "react-router-dom"
+import MDEditor from '@uiw/react-md-editor';
 
 const styleTitle = {
   fontFamily: "SourceCodePro-SemiBold",
@@ -110,47 +111,47 @@ function EditPost() {
       alert('Ошибка загрузки фото')
     }
   };
-  
+
   const mapList = arrayTimes.map((e) => {
     return (
       <div style={{
         display: "flex"
       }}>
         <p style={{
-        display: "block",
-        width: "300px",
-        overflow: "hidden",
-        whiteSpace: "nowrap",
-        textOverflow: "ellipsis",
-      }} key={e}>
-        {e}
-      </p>
-      <p onClick={() => {
-        const deleteLink = arrayImageUrl.filter((el) => el != e)
-        setArrayImageUrl(deleteLink);
-        setArrayTimes(deleteLink)
-        setUpdate(true);
-        console.log(arrayImageUrl);
-      }} style={{
-        background: "red",
-        color: "white",
-        borderRadius: "10px",
-        padding: "1px 8px 3px",
-        webkitBoxShadow: "8px 7px 10px 0px rgba(124, 133, 140, 0.2)",
-        mozBoxShadow: "8px 7px 10px 0px rgba(124, 133, 140, 0.2)",
-        boxShadow: "8px 7px 10px 0px rgba(124, 133, 140, 0.2)",
-        fontFamily: "SourceCodePro-SemiBold",
-        cursor: "pointer"
-      }}>Удалить</p> 
+          display: "block",
+          width: "300px",
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          textOverflow: "ellipsis",
+        }} key={e}>
+          {e}
+        </p>
+        <p onClick={() => {
+          const deleteLink = arrayImageUrl.filter((el) => el != e)
+          setArrayImageUrl(deleteLink);
+          setArrayTimes(deleteLink)
+          setUpdate(true);
+          console.log(arrayImageUrl);
+        }} style={{
+          background: "red",
+          color: "white",
+          borderRadius: "10px",
+          padding: "1px 8px 3px",
+          webkitBoxShadow: "8px 7px 10px 0px rgba(124, 133, 140, 0.2)",
+          mozBoxShadow: "8px 7px 10px 0px rgba(124, 133, 140, 0.2)",
+          boxShadow: "8px 7px 10px 0px rgba(124, 133, 140, 0.2)",
+          fontFamily: "SourceCodePro-SemiBold",
+          cursor: "pointer"
+        }}>Удалить</p>
       </div>
     )
   })
 
   React.useEffect(() => {
-    if(update){
+    if (update) {
       setArrayImageUrl(arrayTimes);
-    setPhotoMapList(mapList)
-    setUpdate(false)
+      setPhotoMapList(mapList)
+      setUpdate(false)
     }
   }, [update]);
 
@@ -203,17 +204,17 @@ function EditPost() {
         </div>
       </div>
       <Typography sx={{
-            fontFamily: "SourceCodePro-Light",
-            fontSize: "18px",
-            lineHeight: "100%",
-            letterSpacing: "0%",
-            textAlign: "left",
-            width: "700px",
-            color: "rgba(174, 174, 174, 0.759)",
-            marginBottom: "50px"
-          }}>
-              Загружаемый файл не должен привышать размер в 1 мб и должен иметь уникальное имя. Чтобы сжать изображение воспользуйтесь ресурсом: <a href="https://www.iloveimg.com/ru/compress-image" target="_blank">Перейти на ресурс сжатия фото</a>
-            </Typography>
+        fontFamily: "SourceCodePro-Light",
+        fontSize: "18px",
+        lineHeight: "100%",
+        letterSpacing: "0%",
+        textAlign: "left",
+        width: "700px",
+        color: "rgba(174, 174, 174, 0.759)",
+        marginBottom: "50px"
+      }}>
+        Загружаемый файл не должен привышать размер в 1 мб и должен иметь уникальное имя. Чтобы сжать изображение воспользуйтесь ресурсом: <a href="https://www.iloveimg.com/ru/compress-image" target="_blank">Перейти на ресурс сжатия фото</a>
+      </Typography>
       <img src={Arrow2} alt="" />
       <div className={style.titleEdit}>
         <Typography sx={styleSubTitile}>
@@ -232,33 +233,37 @@ function EditPost() {
           Введите текст статьи в редактор:
         </Typography>
         <Typography sx={{
-            fontFamily: "SourceCodePro-Light",
-            fontSize: "18px",
-            lineHeight: "100%",
-            letterSpacing: "0%",
-            textAlign: "left",
-            width: "500px",
-            color: "rgba(174, 174, 174, 0.759)"
-          }} style={{ marginTop: "50px" }}>
-            Инструкция, как пользоваться редактором {<a href="https://paulradzkov.com/2014/markdown_cheatsheet/" target="_blank">Перейти к инструкции</a>} 
+          fontFamily: "SourceCodePro-Light",
+          fontSize: "18px",
+          lineHeight: "100%",
+          letterSpacing: "0%",
+          textAlign: "left",
+          width: "500px",
+          color: "rgba(174, 174, 174, 0.759)"
+        }} style={{ marginTop: "50px" }}>
+          Инструкция, как пользоваться редактором {<a href="https://paulradzkov.com/2014/markdown_cheatsheet/" target="_blank">Перейти к инструкции</a>}
         </Typography>
-        <SimpleMDE value={text} onChange={onChange} className={style.mdeEditor} />
+        <MDEditor
+          value={text}
+          onChange={setText}
+          height={500}
+        />
       </div>
       <div>
         <div style={{
           display: "flex", gap: "15px", alignItems: "center", marginBottom: "30px"
         }}>
-        <div style={{
-          flexDirection: "column"
-        }} className={style.inputAndButton}>
-          <Typography sx={{marginBottom: "0", ...styleSubTitile}} style={{ marginTop: "50px" }}>
-            Загрузить фото для галлереи
-          </Typography>
-          <input onChange={(e) => { setPhotoURL(e.target.value) }} style={styleInput} placeholder="Ссылка на фото" />
-          <button onClick={() => inputPhotoRef.current.click()} className={style.btnUpload}>Обзор</button>
-          <input ref={inputPhotoRef} type="file" onChange={handleAddImage} hidden />
-        </div>
-        <Typography sx={{
+          <div style={{
+            flexDirection: "column"
+          }} className={style.inputAndButton}>
+            <Typography sx={{ marginBottom: "0", ...styleSubTitile }} style={{ marginTop: "50px" }}>
+              Загрузить фото для галлереи
+            </Typography>
+            <input onChange={(e) => { setPhotoURL(e.target.value) }} style={styleInput} placeholder="Ссылка на фото" />
+            <button onClick={() => inputPhotoRef.current.click()} className={style.btnUpload}>Обзор</button>
+            <input ref={inputPhotoRef} type="file" onChange={handleAddImage} hidden />
+          </div>
+          <Typography sx={{
             fontFamily: "SourceCodePro-Light",
             fontSize: "18px",
             lineHeight: "100%",
@@ -267,17 +272,17 @@ function EditPost() {
             width: "300px",
             color: "rgba(174, 174, 174, 0.759)"
           }} style={{ marginTop: "50px" }}>
-              Загружаемый файл не должен привышать размер в 1 мб и должен иметь уникальное имя. Чтобы сжать изображение воспользуйтесь ресурсом: <a href="https://www.iloveimg.com/ru/compress-image" target="_blank">Перейти на ресурс сжатия фото</a>
-            </Typography>
+            Загружаемый файл не должен привышать размер в 1 мб и должен иметь уникальное имя. Чтобы сжать изображение воспользуйтесь ресурсом: <a href="https://www.iloveimg.com/ru/compress-image" target="_blank">Перейти на ресурс сжатия фото</a>
+          </Typography>
         </div>
         <Typography
-        sx={{
-          fontFamily: "SourceCodePro-Regular",
-          fontSize: "22px",
-          lineHeight: "100%",
-          letterSpacing: "0%",
-          textAlign: "left",
-        }}
+          sx={{
+            fontFamily: "SourceCodePro-Regular",
+            fontSize: "22px",
+            lineHeight: "100%",
+            letterSpacing: "0%",
+            textAlign: "left",
+          }}
         >Загруженные файлы:</Typography>
         {photoMapList}
       </div>

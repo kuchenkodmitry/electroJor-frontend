@@ -1,144 +1,143 @@
-import style from "./callback1.module.css"
-import Typography from "@mui/material/Typography"
-import TreeSocialBtn from "../buttons/threeSocialButton"
-import FlagImg from "./img/flag.png"
-import pliers from "./img/pliers.png"
-import { Box } from "@mui/material"
+import style from "./callback1.module.css";
+import Typography from "@mui/material/Typography";
+import TreeSocialBtn from "../buttons/threeSocialButton";
+import FlagImg from "./img/flag.png";
+import pliers from "./img/pliers.png";
+import { Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { maskPhoneInput } from "../../utils/phone";
 import axios from "../../axios/axios";
+import { motion } from "framer-motion";
 
 function CallBack1() {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+        reset
+    } = useForm();
+
     async function onSubmit(data) {
         try {
             await axios.post('/feedback', data);
-            alert('Заявка отправлена');
+            alert('Спасибо! Мы свяжемся с вами в течение 15 минут.');
+            reset();
         } catch (e) {
-            alert('Ошибка отправки');
+            alert('Произошла ошибка. Пожалуйста, попробуйте еще раз или свяжитесь с нами другим способом.');
         }
     }
+
     return (
-        <div className={style.callbackBlock}>
-            <div className={style.textBlock}>
-                <Typography
-                    sx={
-                        {
-                            color: "#000",
-                            textAlign: "center",
-                            fontFamily: "Poppins",
-                            fontSize: "28px",
-                            fontStyle: "normal",
-                            fontWeight: "700",
-                            lineHeight: "normal",
-                            letterSpacing: "2.8px",
-                            display: {xs: "none", md: "flex"}
-                        }
-                    }
-                >
-                    Не нашли нужную услугу ?
-                </Typography>
-                <Typography
-                    sx={
-                        {
-                            color: "#000",
-                            textAlign: "left",
-                            fontFamily: "Poppins",
-                            fontSize: "20px",
-                            fontStyle: "normal",
-                            fontWeight: "500",
-                            lineHeight: "normal",
-                            letterSpacing: "2.8px",
-                            width: "250px",
-                            display: {xs: "flex", md: "none"}
-                        }
-                    }
-                >
-                    Не нашли нужную услугу ?
-                </Typography>
-                <Typography
-                    sx={{
-                        color: " #000",
-                        textAlign: "center",
-                        fontFamily: "Poppins",
-                        fontSize: "18px",
-                        fontStyle: "normal",
-                        fontWeight: "275",
-                        lineHeight: "normal",
-                        letterSpacing: "1.8px",
-                        display: {xs: "none", md: "flex"}
-                    }}
-                >
-                    Свжитесь с нами или оставьте свой номер и мы сами перезвоним как можно быстрее !
-                </Typography>
-                
-                <form onSubmit={handleSubmit(onSubmit)} className={style.callBackForm}>
-                <Box sx={{
-                    display: {xs: "flex", md: "none"},
-                    flexDirection: "column",
-                    alignItems: "end"
-                }}>
-                    <Typography sx={{
-                        fontSize: "22.4px",
-                        color: "#343434"
-                    }}>
-                    Заказать обратный звонок
+        <Box
+            className={style.callbackBlock}
+            component={motion.div}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+        >
+            <Box className={style.contentWrapper}>
+                <Box className={style.textBlock}>
+                    {/* Заголовки */}
+                    <Typography
+                        variant="h3"
+                        className={style.title}
+                    >
+                        Не нашли нужную услугу?
                     </Typography>
-                    <Typography sx={{
-                        fontSize: "14px",
-                        color: "#343434"
-                    }}>
-                    Оставьте ваш номер и мы вам перезвоним 
-                    </Typography>
-                </Box>
-                    <Box sx={{
-                        display: {xs: "none" , md: "flex"}
-                    }}>
-                    <img src={FlagImg} alt="qwe" />
+
+
+
+                    {/* Форма */}
+                    <Box
+                        component="form"
+                        onSubmit={handleSubmit(onSubmit)}
+                        className={style.callBackForm}
+                    >
+
+
+                        <div className={style.inputGroup}>
+                            <Box className={style.flagIcon}>
+                                <img src={FlagImg} alt="Флаг" />
+                            </Box>
+                            <Box className={style.inputWrapper}>
+                                <input
+                                    placeholder="+7 (___) ___-__-__"
+                                    className={style.phoneInput}
+                                    type="tel"
+                                    {...register('phone', {
+                                        required: "Укажите телефон",
+                                        pattern: {
+                                            value: /^(\+7|8)[0-9]{10}$/,
+                                            message: "Некорректный номер"
+                                        },
+                                        onChange: (e) => {
+                                            e.target.value = maskPhoneInput(e.target.value);
+                                        },
+                                    })}
+                                    aria-invalid={errors.phone ? "true" : "false"}
+                                />
+                                {errors.phone && (
+                                    <span className={style.errorMessage}>{errors.phone.message}</span>
+                                )}
+                            </Box>
+
+                            <Box className={style.inputWrapper}>
+                                <input
+                                    placeholder="Ваше имя"
+                                    className={style.nameInput}
+                                    type="text"
+                                    {...register('name', {
+                                        required: "Укажите ваше имя",
+                                        minLength: {
+                                            value: 2,
+                                            message: "Минимум 2 символа"
+                                        }
+                                    })}
+                                    aria-invalid={errors.name ? "true" : "false"}
+                                />
+                                {errors.name && (
+                                    <span className={style.errorMessage}>{errors.name.message}</span>
+                                )}
+                            </Box>
+
+
+                            <button
+                                type="submit"
+                                className={style.submitButton}
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? (
+                                    <span className={style.spinner}></span>
+                                ) : (
+                                    "Жду звонка"
+                                )}
+                            </button>
+                        </div>
+                        <Typography
+                            variant="body1"
+                            className={style.subtitle}
+                        >
+                            Свяжитесь с нами или оставьте номер — перезвоним в течение 15 минут
+                        </Typography>
                     </Box>
-                    <input placeholder="Ваше имя" className={style.nameInput} type="text" {...register('name', { required: true })} />
-                    <input placeholder="+7 (___) ___-__-__" className={style.input} type="text" id="standard-basic" label="Телефон" variant="standard" {...register('phone', {
-                                required: "Заполните поле с номером телефона", pattern: {
-                                    value: /\d+/, 
-                                    message: "Это поле только для цыфр"
-                                }, minLength: {
-                                    value: 10,
-                                    message: "Минимальное количество символов в номере телефона 10"
-                                },
-                                onChange: (e) => {
-                                    e.target.value = maskPhoneInput(e.target.value);
-                                },
-                            })}
-                                aria-invalid={errors.phone ? "true" : "false"}
-                                required/>
-                    <button type="submit" className={style.button} >Отправить</button>
-                </form>
-                <Box sx={{
-                    display: { xs: "none", md: "flex"}
-                }}>
-                <TreeSocialBtn style={{ gap: 35 }} />
+
+                    <Box className={style.socialButtons}>
+                        <TreeSocialBtn />
+                    </Box>
                 </Box>
 
-            </div>
-            <Box sx={{
-                display: {xs: "none", md: "flex"}
-            }}>
-            <img style={{
-                marginLeft: "150px", marginTop: "-25px", width: "157px",
-                height: "98px",
-                flexShrink: "0"
-            }} src={pliers} alt="" />
+                {/* Декоративные элементы */}
+                <Box className={style.toolsImage}>
+                    <motion.img
+                        src={pliers}
+                        alt="Инструменты"
+                        animate={{ y: [0, -5, 0] }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                    />
+                </Box>
             </Box>
-            <Box sx={{
-                display: {xs: "flex", md: "none"}
-            }}>
-            <img style={{
-                marginLeft: "5px", marginTop: "-53px", width: "80px", height: "60px",
-                flexShrink: "0"
-            }} src={pliers} alt="" />
-            </Box>
-        </div>
+        </Box>
     )
 }
 
-export default CallBack1
+export default CallBack1;
