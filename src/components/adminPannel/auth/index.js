@@ -28,7 +28,9 @@ export const UserIsAuth = () => {
                 fontFamily: "SourceCodePro-SemiBold",
                 fontSize: "16px"
             }}>
-                {isLoading ? "Привет" : "Привет," + data.fullName.split(' ')[0]}
+                {isLoading ?
+                    "Привет" :
+                    `Привет,${data?.fullName ? data.fullName.split(' ')[0] : data?.username}`}
             </Typography>
             <button onClick={onClickLogout} className={style.btnIsAuth}>Выйти</button>
         </div>
@@ -42,7 +44,7 @@ function Auth() {
         errors, isValid
     } } = useForm({
         defaultValues: {
-            email: '',
+            username: '',
             password: ''
         }, mode: 'onChange'
     })
@@ -83,9 +85,9 @@ function Auth() {
                         >
                             Введите логин
                         </Typography>
-                        <input placeholder="Логин" className={style.inputS} error={Boolean(errors.email?.message)}
-                            helperText={errors.email?.message}
-                            {...register('email', { required: 'Укажите email' })}/>
+                        <input placeholder="Логин" className={style.inputS} error={Boolean(errors.username?.message)}
+                            helperText={errors.username?.message}
+                            {...register('username', { required: 'Укажите логин' })}/>
                     </div>
                     <div className={style.inputBox}>
                         <Typography sx={{
