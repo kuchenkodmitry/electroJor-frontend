@@ -4,6 +4,7 @@ import { open } from 'sqlite';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import path from 'path';
+import multer from 'multer';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -12,8 +13,10 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3001;
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';
+const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
 app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
@@ -36,6 +39,15 @@ let db;
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       username TEXT UNIQUE,
       password TEXT
+    );
+    CREATE TABLE IF NOT EXISTS posts (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT,
+      text TEXT,
+      description TEXT,
+      imageUrl TEXT,
+      gallaryUrl TEXT,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP
     );
   `);
 })();
@@ -96,6 +108,65 @@ app.get('/api/me', authMiddleware, async (req, res) => {
 app.get('/api/admin-exists', async (req, res) => {
   const row = await db.get('SELECT 1 FROM users LIMIT 1');
   res.json({ exists: !!row });
+});
+
+// ----- Posts CRUD -----
+app.get('/api/posts', async (req, res) => {
+  const rows = await db.all('SELECT * FROM posts ORDER BY created_at DESC');
+  const posts = rows.map((r) => ({ ...r, gallaryUrl: r.gallaryUrl ? JSON.parse(r.gallaryUrl) : [] }));
+  res.json(posts);
+});
+
+app.get('/api/posts/:id', async (req, res) => {
+  const post = await db.get('SELECT * FROM posts WHERE id = ?', req.params.id);
+  if (!post) return res.status(404).json({ message: 'Post not found' });
+  post.gallaryUrl = post.gallaryUrl ? JSON.parse(post.gallaryUrl) : [];
+  res.json(post);
+});
+
+app.post('/api/posts', authMiddleware, async (req, res) => {
+  const { title = '', text = '', description = '', imageUrl = '', gallaryUrl = [] } = req.body;
+  const result = await db.run(
+    'INSERT INTO posts(title, text, description, imageUrl, gallaryUrl) VALUES(?, ?, ?, ?, ?)',
+    title,
+    text,
+    description,
+    imageUrl,
+    JSON.stringify(gallaryUrl)
+  );
+  const post = await db.get('SELECT * FROM posts WHERE id = ?', result.lastID);
+  post.gallaryUrl = post.gallaryUrl ? JSON.parse(post.gallaryUrl) : [];
+  res.status(201).json(post);
+});
+
+app.patch('/api/posts/:id', authMiddleware, async (req, res) => {
+  const { title = '', text = '', description = '', imageUrl = '', gallaryUrl = [] } = req.body;
+  const exists = await db.get('SELECT id FROM posts WHERE id = ?', req.params.id);
+  if (!exists) return res.status(404).json({ message: 'Post not found' });
+  await db.run(
+    'UPDATE posts SET title = ?, text = ?, description = ?, imageUrl = ?, gallaryUrl = ? WHERE id = ?',
+    title,
+    text,
+    description,
+    imageUrl,
+    JSON.stringify(gallaryUrl),
+    req.params.id
+  );
+  const post = await db.get('SELECT * FROM posts WHERE id = ?', req.params.id);
+  post.gallaryUrl = post.gallaryUrl ? JSON.parse(post.gallaryUrl) : [];
+  res.json(post);
+});
+
+app.delete('/api/posts/:id', authMiddleware, async (req, res) => {
+  const post = await db.get('SELECT * FROM posts WHERE id = ?', req.params.id);
+  if (!post) return res.status(404).json({ message: 'Post not found' });
+  await db.run('DELETE FROM posts WHERE id = ?', req.params.id);
+  res.json({ message: 'Post deleted', doc: post });
+});
+
+app.post('/api/uploads', authMiddleware, upload.single('image'), (req, res) => {
+  if (!req.file) return res.status(400).json({ message: 'No file uploaded' });
+  res.json({ url: `/uploads/${req.file.filename}` });
 });
 
 // 🧱 Отдача фронта
