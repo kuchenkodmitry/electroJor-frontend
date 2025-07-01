@@ -5,21 +5,17 @@ import styled from "./callback.module.css"
 import { Box } from "@mui/material"
 import { useForm } from "react-hook-form";
 import { maskPhoneInput } from "../../utils/phone";
+import axios from "../../axios/axios";
 
 function CallBackBottom() {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    function onSubmit(data) {
-        window.Email.send({
-            Host : "smtp.elasticemail.com",
-            Username : "dmitry.kuchenko@yandex.ru",
-            Password : "20562E48951EB96B7D241652CEBB816A908E",
-            To : 'dniwe.exe@ya.ru',
-            From : "st1m2123@gmail.com",
-            Subject : "Новый клиент",
-            Body : `Имя: ${data.name} Телефон: ${data.phone}`
-        }).then(
-          message => alert(message)
-        );
+    async function onSubmit(data) {
+        try {
+            await axios.post('/feedback', data);
+            alert('Заявка отправлена');
+        } catch (e) {
+            alert('Ошибка отправки');
+        }
     }
     return (
         <>
