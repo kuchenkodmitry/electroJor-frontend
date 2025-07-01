@@ -1,6 +1,5 @@
 import s from "./InfoHeader.module.css"
-import ThreeBtn from '../buttons/threeSocialButton'
-import { Typography } from "@mui/material";
+import { Typography, useMediaQuery } from "@mui/material";
 import Box from '@mui/material/Box';
 import RussianFlagIco from "./img/RussianFlag.png"
 import BuilderIco from "./img/builder.png"
@@ -11,10 +10,16 @@ import TelegramIco from '../buttons/img/TelegramIcon.png'
 import PhoneIco from '../buttons/img/PhoneIcon.png'
 import { useForm } from "react-hook-form";
 import vkIco from "./img/download.png"
-// import { Telegram } from "@mui/icons-material";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from './logo.png';
 
 function InfoHeader() {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const isMobile = useMediaQuery('(max-width: 768px)');
+
     function onSubmit(data) {
         window.Email.send({
             Host: "smtp.elasticemail.com",
@@ -29,121 +34,191 @@ function InfoHeader() {
         );
     }
 
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!mobileMenuOpen);
+    };
+
     return (
-
         <div className={s.main}>
-            <div className={s.backgroundPattern}>
-                <div className={s.titleHeader}>
-                    <img src="" alt="" />
-                    <p>
-                        Электромонтажные работы в городе Волгаград и Волгоградской области
-                    </p>
-                    <img src="" alt="" />
-                </div>
-            </div>
-            <div className={s.leftBlock}>
-                <div className={s.leftBlockContent}>
-                    <p className={s.leftBlockTitle}>
-                        ЭлектроЖор - электромонтажные работы в городе Волгаград и Волгоградской области
-                    </p>
-                    <p className={s.leftBlockDescription}>
-                        Электромонтаж от профессионалов. Создание и замена электропроводки в квартирах, домах, офисах и производственных помещениях. Качество и надежность.
-                    </p>
-                    <div className={s.socialBtn}>
-                        <ThreeBtn />
+            {/* Верхняя панель с меню */}
+            <div className={s.topBar}>
+                <div className={s.logoContainer}>
+                    <img src={logo} alt="ЭлектроЖор" className={s.logo} />
+                    <div className={s.logoText}>
+                        <Typography variant="h6" className={s.logoTitle}>ЭлектроЖор</Typography>
+                        <Typography variant="caption" className={s.logoSubtitle}>Электромонтажные работы</Typography>
                     </div>
                 </div>
+
+                {!isMobile ? (
+                    <nav className={s.navMenu}>
+                        <a href="#uslugi" className={s.navLink}>Услуги</a>
+                        <a href="#about" className={s.navLink}>О компании</a>
+                        <a href="#works" className={s.navLink}>Наши работы</a>
+                        <a href="#footer" className={s.navLink}>Контакты</a>
+                        <Link to="/admin" className={s.adminLink}>Админ панель</Link>
+                    </nav>
+                ) : (
+                    <button className={s.mobileMenuButton} onClick={toggleMobileMenu}>
+                        <span className={s.menuIcon}></span>
+                        <span className={s.menuIcon}></span>
+                        <span className={s.menuIcon}></span>
+                    </button>
+                )}
+
+                {!isMobile && (
+                    <div className={s.phoneBlock}>
+                        <Typography variant="body1" className={s.phoneNumber}>+7-909-383-99-46</Typography>
+                        <a href="tel:+79093839946" className={s.phoneLink}>Позвонить по телефону</a>
+                    </div>
+                )}
             </div>
 
-            <div className={s.rightBlock}>
-                {/* <p className={s.mobileTitleRight}>Электромонтажные работы в Волгаграде и Волгоградской области</p> */}
-                <div className={s.flexMobileBottom}>
-                    <div className={s.mobileSocial}>
-                        <a className={s.formSocialBtn} href="https://t.me/+79093839946" target="_blank">
-                            <img src={TelegramIco} alt="" />
-                        </a>
-                        <a className={s.formSocialBtn} href="https://api.whatsapp.com/send/?phone=%2B79093839946&text&type=phone_number&app_absent=0" target="_blank">
-                            <img src={WhatsAppIco} alt="" />
-                        </a>
-                        <a className={s.formSocialBtn} href="tel:+79093839946" target="_blank">
-                            <img src={PhoneIco} alt="" />
-                        </a>
-                        <a className={s.formSocialBtn} href="https://vk.com/elektriks34" target="_blank">
-                            <img src={vkIco} alt="" />
-                        </a>
-                    </div>
-                    <Box className={s.listBlock}>
-                        <div className={s.listText}>
-                            <img draggable="false" height="20px" src={BuilderIco} alt="" />
-                            <p className={s.listTextRight}>
-                                профессионалы
-                            </p>
-                        </div>
-                        <div className={s.listText}>
-                            <p className={s.listTextRight}>
-                                Высокое качество
-                            </p>
-                            <img height="20px" src={LikeIco} alt="" />
-                        </div>
-                        <div className={s.listText}>
-                            <img height={"22px"} src={ClockIco} alt="" />
-                            <p className={s.listTextRight}>
-                                Выполнение в срок
-                            </p>
-                        </div>
-                    </Box>
-                </div>
+            {/* Мобильное меню */}
+            {isMobile && mobileMenuOpen && (
+                <motion.div 
+                    className={s.mobileMenu}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <a href="#uslugi" className={s.mobileNavLink} onClick={toggleMobileMenu}>Услуги</a>
+                    <a href="#about" className={s.mobileNavLink} onClick={toggleMobileMenu}>О компании</a>
+                    <a href="#works" className={s.mobileNavLink} onClick={toggleMobileMenu}>Наши работы</a>
+                    <a href="#footer" className={s.mobileNavLink} onClick={toggleMobileMenu}>Контакты</a>
+                    <Link to="/admin" className={s.mobileNavLink} onClick={toggleMobileMenu}>Админ панель</Link>
+                    <a href="tel:+79093839946" className={s.mobilePhoneLink}>Позвонить: +7-909-383-99-46</a>
+                </motion.div>
+            )}
 
-                <div style={{ display: "flex", height: "200px", alignItems: "end", justifyContent: "end" }}>
-                    <div className={s.callBackForm}>
-                        <div className={s.rightText}>
-                            <Typography sx={{
-                                paddingLeft: "40px",
-                                color: "#FFF",
-                                fontFamily: "Poppins",
-                                fontSize: "24px",
-                                fontStyle: "normal",
-                                fontWeight: "100",
-                                lineHeight: "normal",
-                            }}>
-                                Заказать обратный звонок
-                            </Typography>
-                            <Typography sx={{
-                                paddingLeft: "40px",
-                                color: "white",
-                                fontFamily: "inter",
-                                fontSize: "14px",
-                                fontStyle: "normal",
-                                fontWeight: "0",
-                                lineHeight: "normal",
-                                marginBottom: "18px",
-                                color: "rgba(255, 255, 255, 0.67)"
-                            }}>
-                                Оставьте ваш номер и мы вам перезвоним
-                            </Typography>
+            <div className={s.contentWrapper}>
+                {/* Левый блок - информация о компании */}
+                <motion.div
+                    className={s.leftBlock}
+                    initial={{ x: -50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <div className={s.leftBlockContent}>
+                        <Typography variant="h4" className={s.leftBlockTitle}>
+                            ЭлектроЖор
+                        </Typography>
+                        <Typography variant="subtitle1" className={s.leftBlockSubtitle}>
+                            Профессиональные электромонтажные работы
+                        </Typography>
+
+                        <ul className={s.featuresList}>
+                            <li>Монтаж и замена электропроводки</li>
+                            <li>Установка щитков и автоматов</li>
+                            <li>Ремонт и обслуживание</li>
+                            <li>Сборка электрощитов</li>
+                            <li>Наружное освещение</li>
+                        </ul>
+
+                        <div className={s.advantages}>
+                            <div className={s.advantageItem}>
+                                <div className={s.advantageIcon}><img src={BuilderIco} alt="Профессионалы" /></div>
+                                <span>Опытные мастера</span>
+                            </div>
+                            <div className={s.advantageItem}>
+                                <div className={s.advantageIcon}><img src={LikeIco} alt="Качество" /></div>
+                                <span>Гарантия качества</span>
+                            </div>
+                            <div className={s.advantageItem}>
+                                <div className={s.advantageIcon}><img src={ClockIco} alt="Сроки" /></div>
+                                <span>Соблюдение сроков</span>
+                            </div>
                         </div>
+                    </div>
+                </motion.div>
+
+                {/* Правый блок - форма и контакты */}
+                <motion.div
+                    className={s.rightBlock}
+                    initial={{ x: 50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                    <div className={s.contactForm}>
+                        <Typography variant="h5" className={s.formTitle}>
+                            Бесплатная консультация
+                        </Typography>
+                        <Typography variant="body2" className={s.formSubtitle}>
+                            Оставьте заявку и наш специалист свяжется с вами в течение 15 минут
+                        </Typography>
+
                         <form onSubmit={handleSubmit(onSubmit)} className={s.formSend}>
-                            <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
-                                <img src={RussianFlagIco} />
-                                <input placeholder=" +7 (999) 999 99 99" className={s.inputStyle} type="text" id="standard-basic" label="Телефон" variant="standard" {...register('phone', {
-                                    required: "Заполните поле с номером телефона", pattern: {
-                                        value: /\d+/,
-                                        message: "Это поле только для цыфр"
-                                    }, minLength: {
-                                        value: 10,
-                                        message: "Минимальное количество символов в номере телефона 10"
-                                    },
-                                })}
-                                    aria-invalid={errors.phone ? "true" : "false"}
-                                    required />
-                                <button type="submit" className={s.buttonSend}>Отправить</button>
+                            <div className={s.inputGroup}>
+                                <div className={s.phoneInput}>
+                                    <img src={RussianFlagIco} alt="Россия" className={s.flagIcon} />
+                                    <input
+                                        placeholder="+7 (___) ___-__-__"
+                                        className={s.inputStyle}
+                                        type="tel"
+                                        {...register('phone', {
+                                            required: "Введите номер телефона",
+                                            pattern: {
+                                                value: /\d+/,
+                                                message: "Только цифры"
+                                            },
+                                            minLength: {
+                                                value: 10,
+                                                message: "Минимум 10 цифр"
+                                            },
+                                        })}
+                                        aria-invalid={errors.phone ? "true" : "false"}
+                                        required
+                                    />
+                                </div>
+                                <motion.button
+                                    type="submit"
+                                    className={s.buttonSend}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    Позвоните мне
+                                </motion.button>
                             </div>
                         </form>
-                    </div>
 
-                </div>
+                        <div className={s.contacts}>
+                            <Typography variant="body1" className={s.contactsTitle}>
+                                Или свяжитесь с нами:
+                            </Typography>
+                            <div className={s.socialLinks}>
+                                <motion.a
+                                    href="https://t.me/+79093839946"
+                                    target="_blank"
+                                    whileHover={{ y: -3 }}
+                                    className={s.socialLink}
+                                >
+                                    <img src={TelegramIco} alt="Telegram" />
+                                    <span>Telegram</span>
+                                </motion.a>
+                                <motion.a
+                                    href="https://api.whatsapp.com/send/?phone=%2B79093839946&text&type=phone_number&app_absent=0"
+                                    target="_blank"
+                                    whileHover={{ y: -3 }}
+                                    className={s.socialLink}
+                                >
+                                    <img src={WhatsAppIco} alt="WhatsApp" />
+                                    <span>WhatsApp</span>
+                                </motion.a>
+                                <motion.a
+                                    href="tel:+79093839946"
+                                    target="_blank"
+                                    whileHover={{ y: -3 }}
+                                    className={s.socialLink}
+                                >
+                                    <img src={PhoneIco} alt="Телефон" />
+                                    <span>+7 909 383-99-46</span>
+                                </motion.a>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
             </div>
-        </div >
+        </div>
     )
 }
 

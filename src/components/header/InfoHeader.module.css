@@ -1,481 +1,546 @@
-/* Позиционирование контента */
-.main {
-    width: 1200px;
-    margin: 20px auto 0;
-    display: flex;
-    box-shadow: 4px 4px 15px 0px rgba(54, 54, 54, 0.53);
-    border-radius: 150px 0px 150px 0px;
-}
-
-/* позиционирование контента внутри блок левого блока */
-.leftBlock {
-    width: 550px;
-    height: 360px;
-    border-radius: 150px 0px 0px 0px;
-    background: linear-gradient(90.00deg, rgb(83, 105, 118), rgb(41, 46, 73) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Позиционирование текста внутри  левого блока */
-.leftBlockContent {
-    width: 550px;
-    display: flex;
-    /* justify-content: end; */
-    flex-direction: column;
-    align-items: end;
-    width: max-content;
-    gap: 25px;
-}
-
-/* Стилизация текста левого блока */
-.leftBlockTitle {
-    color: #FFF;
-    text-align: right;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-size: 22px;
-    /* font-style: normal; */
-    /* line-height: normal; */
-    /* font-variant: all-small-caps; */
-    /* letter-spacing: 2.04px; */
-    width: 401px;
-    /* height: 133px; */
-    font-family: "SourceCodePro-Regular";
-    /* margin-top: 3; */
-    margin: 0;
-    line-height: 1.3;
-}
-
-.leftBlockDescription {
-    font-family: "SourceCodePro-Light";
-    color: #C6C6C6;
-    text-align: right;
-    font-size: 18px;
-    font-style: normal;
-    /* font-weight: 250; */
-    line-height: normal;
-    width: 381px;
-    margin: 0;
-    line-height: 1.2;
-}
-
-/* Ситили правого блока */
-.rightBlock {
-    background: center / cover no-repeat url(/src/components/header/img/schetch.png);
-    width: 732px;
-    border-radius: 0 0px 150px 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-/* Стилизация формы обратного вызова */
-.callBackForm {
-    width: 585px;
-    height: 154px;
-    border-radius: 45px 0px 150px 0px;
-    background: linear-gradient(36.38deg, rgba(25, 30, 31, 0.925) -13.369%, rgba(69, 81, 86, 0.773) 73.283%);
-}
-
-/* Кнопка отправки обратного вызова */
-.buttonSend {
-    border-radius: 16px;
-    background: rgb(255, 255, 255);
-    width: 132px;
-    height: 30px;
-}
-
-/* Стилизация input в форме отправки */
-.inputStyle {
-    box-sizing: border-box;
-    border: 1px solid rgb(35, 89, 193);
-    border-radius: 6px;
-    background: rgb(255, 255, 255);
-    width: 277px;
-    height: 30px;
-}
-
-/* позиционирование текста в блоке обратного звонка */
-.rightText {
-    margin-left: 60px;
-}
-
-/* Верхняя часть правого блока, список приемуществ */
-.listBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    margin-left: 10px;
-}
-/* Фон списка преимуществ */
-.listText {
-    border-radius: 22.65px 20px 0px 20.6px;
-    background: linear-gradient(36.38deg, rgba(25, 30, 31, 0.925) -13.369%, rgba(69, 81, 86, 0.773) 73.283%);
-    height: 42px;
-    display: flex;
-    width: 250px;
-    gap: 17px;
-    padding: 4px 0 4px 11px;
-    align-items: center;
-    /* justify-content: center; */
-}
-/* Стилизация текста приемуществ */
-.listTextRight{
-    color: white;
-    font-family: "SourceCodePro-Regular";
-    margin: 0;
-}
-/* Cкрыть мобильные социальные кнопки */
-.mobileSocial{
-    display: none;
-}
-/* Скрыть омбильное позиционирование */
-/* .flexMobileBottom{
-    display: none;
-} */
-.backgroundPattern{
-    display: none;
-}
-@media screen and (max-width : 1024px) {
-    /* Позиционирование контента */
+/* Основные стили */
 .main {
     width: 100%;
-    margin: 10px auto 0;
-    display: flex;
-    box-shadow: 4px 4px 15px 0px rgba(54, 54, 54, 0.53);
-    border-radius: 150px 0px 150px 0px;
-}
-
-/* позиционирование контента внутри блок левого блока */
-.leftBlock {
-    width: 50%;
-    height: 360px;
-    border-radius: 150px 0px 0px 0px;
-    background-image: url('carbon-fibre-big.png');
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Позиционирование текста внутри  левого блока */
-.leftBlockContent {
-    width: 100%;
-    display: flex;
-    /* justify-content: st; */
-    flex-direction: column;
-    /* align-items: end; */
-    /* width: max-content; */
-    gap: 10px;
-    margin-right: 30px;
-}
-
-/* Стилизация текста левого блока */
-.leftBlockTitle {
-    color: #FFF;
-    text-align: right;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-size: 18px;
-    /* font-style: normal; */
-    /* line-height: normal; */
-    /* font-variant: all-small-caps; */
-    /* letter-spacing: 2.04px; */
-    width: 301px;
-    /* height: 133px; */
-    font-family: "SourceCodePro-Regular";
-    /* margin-top: 3; */
-    margin: 0;
-    line-height: 1.3;
-}
-
-.leftBlockDescription {
-    font-family: "SourceCodePro-Light";
-    color: #C6C6C6;
-    text-align: right;
-    font-size: 18px;
-    font-style: normal;
-    /* font-weight: 250; */
-    line-height: normal;
-    width: 381px;
-    margin: 0;
-    line-height: 1.2;
-}
-
-/* Ситили правого блока */
-.rightBlock {
-    background: center / cover no-repeat url(/src/components/header/img/schetch.png);
-    width: 50%;
-    border-radius: 0 0px 150px 0px;
-    display: flex;
-    gap: 5px;
-    height: 360px;
-        
-}
-
-/* Стилизация формы обратного вызова */
-.callBackForm {
-    display: none;
-}
-
-/* Кнопка отправки обратного вызова */
-.buttonSend {
-    border-radius: 16px;
-    background: rgb(255, 255, 255);
-    width: 102px;
-    height: 30px;
-}
-
-/* Стилизация input в форме отправки */
-.inputStyle {
-    box-sizing: border-box;
-    border: 1px solid rgb(35, 89, 193);
-    border-radius: 6px;
-    background: rgb(255, 255, 255);
-    width: 170px;
-    height: 30px;
-}
-
-/* позиционирование текста в блоке обратного звонка */
-.rightText {
-    margin-left: 5px;
-}
-
-/* Верхняя часть правого блока, список приемуществ */
-.listBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    margin-left: 10px;
-}
-/* Фон списка преимуществ */
-.listText {
-    border-radius: 22.65px 20px 0px 20.6px;
-    background: linear-gradient(36.38deg, rgba(25, 30, 31, 0.925) -13.369%, rgba(69, 81, 86, 0.773) 73.283%);
-    height: 42px;
-    display: flex;
-    width: 250px;
-    gap: 17px;
-    padding: 4px 0 4px 11px;
-    align-items: center;
-    /* justify-content: center; */
-}
-/* Стилизация текста приемуществ */
-.listTextRight{
-    color: white;
-    font-family: "SourceCodePro-Regular";
-    margin: 0;
-}
-.socialBtn{
-    display: none;
-}
-/* Мобильные социальные кнопки */
-.mobileSocial{
-    background: linear-gradient(36.38deg, rgba(25, 30, 31, 0.925) -13.369%, rgba(69, 81, 86, 0.773) 73.283%);
-    width: 310px;
-    height: 90px;
-    border-radius: 50px;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    margin-left: 10px;
-}
-.formSocialBtn{
-    background: linear-gradient(36.38deg, rgba(88, 105, 108, 0.925) -13.369%, rgba(127, 149, 158, 0.773) 73.283%);
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-    /* height: 50px; */
-}
-.flexMobileBottom{
-    display: flex; 
-    flex-direction: column-reverse;
-    justify-content: space-around;
-    gap: 80px;
-}
-}
-
-@media screen and (max-width : 800px) {
-    /* Позиционирование контента */
-.main {
-    width: 100%;
-    margin: 10px 0;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 4px 4px 15px 0px rgba(54, 54, 54, 0.53);
-    border-radius:0px;
-}
-
-/* позиционирование контента внутри блок левого блока */
-.leftBlock {
-    display: none
-}
-
-/* Позиционирование текста внутри  левого блока */
-.leftBlockContent {
-    width: 550px;
-    display: flex;
-    /* justify-content: end; */
-    flex-direction: column;
-    align-items: end;
-    width: max-content;
-    gap: 10px;
-}
-
-/* Стилизация текста левого блока */
-.leftBlockTitle {
-    color: #FFF;
-    text-align: right;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-size: 19px;
-    /* font-style: normal; */
-    /* line-height: normal; */
-    /* font-variant: all-small-caps; */
-    /* letter-spacing: 2.04px; */
-    width: 301px;
-    /* height: 133px; */
-    font-family: "SourceCodePro-Regular";
-    /* margin-top: 3; */
-    margin: 0;
-    line-height: 1.3;
-}
-
-.leftBlockDescription {
-    display: none;
-}
-
-/* Ситили правого блока */
-.rightBlock {
-    background: center / cover no-repeat url(/src/components/header/img/schetch.png);
-    width: 100%;
-    height: 330px;
-    border-radius: 0 0px 0px 0px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-/* Стилизация формы обратного вызова */
-.callBackForm {
-   display: none;
-}
-
-/* Кнопка отправки обратного вызова */
-.buttonSend {
-    border-radius: 16px;
-    background: rgb(255, 255, 255);
-    width: 132px;
-    height: 30px;
-}
-
-/* Стилизация input в форме отправки */
-.inputStyle {
-    box-sizing: border-box;
-    border: 1px solid rgb(35, 89, 193);
-    border-radius: 6px;
-    background: rgb(255, 255, 255);
-    width: 277px;
-    height: 30px;
-}
-
-/* позиционирование текста в блоке обратного звонка */
-.rightText {
-    margin-left: 60px;
-}
-
-/* Верхняя часть правого блока, список приемуществ */
-.listBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    margin-left: 10px;
-}
-/* Фон списка преимуществ */
-.listText {
-    border-radius: 22.65px 20px 0px 20.6px;
-    background: linear-gradient(36.38deg, rgba(25, 30, 31, 0.925) -13.369%, rgba(69, 81, 86, 0.773) 73.283%);
-    height: 42px;
-    display: flex;
-    width: 250px;
-    gap: 17px;
-    padding: 4px 0 4px 11px;
-    align-items: center;
-    /* justify-content: center; */
-}
-/* Стилизация текста приемуществ */
-.listTextRight{
-    color: white;
-    font-family: "SourceCodePro-Regular";
-    margin: 0;
-}
-/* Скрытие кнопок социальных сетей */
-.socialBtn{
-    display: none;
-}
-/* Мобильные социальные кнопки */
-.mobileSocial{
-    background: linear-gradient(36.38deg, rgba(25, 30, 31, 0.925) -13.369%, rgba(69, 81, 86, 0.773) 73.283%);
-    width: 310px;
-    height: 90px;
-    border-radius: 50px;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    margin-left: 10px;
-}
-.formSocialBtn{
-    background: linear-gradient(36.38deg, rgba(88, 105, 108, 0.925) -13.369%, rgba(127, 149, 158, 0.773) 73.283%);
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-    /* height: 50px; */
-}
-/* Прижать к низу контент со списком и кнопками */
-.flexMobileBottom{
-    display: flex; 
-    flex-direction: column-reverse;
-    justify-content: space-around;
-    gap: 60px;
-}
-/* .mobileTitleRight{
-    margin: 0 0 0 10px;
-    background: linear-gradient(36.38deg, rgba(25, 30, 31, 0.925) -13.369%, rgba(69, 81, 86, 0.773) 73.283%);
-    font-family: 'SourceCodePro-Regular';
-    color: white;
-    width: 300px;
-} */
-.titleHeader{
-    /* background: linear-gradient(36.38deg, rgba(25, 30, 31, 0.925) -13.369%, rgba(69, 81, 86, 0.773) 73.283%); */
-    color: white;
-    margin: 0px;
-}
-.titleHeader p{
-    width: 300px;
+    max-width: 1200px;
     margin: 0 auto;
-    font-family: 'SourceCodePro-Regular';
-    font-size: 18px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: white;
 }
-.backgroundPattern{
-    background-image: url('carbon-fibre-big.png');
-    /* background-size: 10px; */
-    /* border: #C6C6C6 solid; */
-    /* border-radius: 15px ; */
-    height: 100px;
+
+/* Верхняя панель с меню */
+.topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.logoText {
+    display: flex;
+    flex-direction: column;
+}
+
+.logoTitle {
+    font-weight: 700 !important;
+    color: #2c3e50 !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+}
+
+.logoSubtitle {
+    color: #7f8c8d !important;
+    font-size: 0.8rem !important;
+    margin-top: 3px !important;
+}
+
+/* Навигационное меню */
+.navMenu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navLink {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navLink:hover {
+    color: #3498db;
+    background: rgba(52, 152, 219, 0.1);
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #3498db;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navLink:hover::after {
+    width: 70%;
+}
+
+.adminLink {
+    color: #e74c3c !important;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.adminLink:hover {
+    background: rgba(231, 76, 60, 0.1);
+}
+
+/* Блок с телефоном */
+.phoneBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.phoneNumber {
+    font-weight: 600 !important;
+    color: #2c3e50 !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+}
+
+.phoneLink {
+    color: #3498db !important;
+    text-decoration: none;
+    font-size: 0.9rem !important;
+    margin-top: 3px !important;
+    transition: all 0.2s ease;
+}
+
+.phoneLink:hover {
+    text-decoration: underline;
+}
+
+/* Мобильное меню */
+.mobileMenuButton {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 101;
+}
+
+.menuIcon {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.mobileMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+}
+
+.mobileNavLink {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.mobileNavLink:hover {
+    background: rgba(52, 152, 219, 0.1);
+    color: #3498db;
+}
+
+.mobilePhoneLink {
+    margin-top: 15px;
+    padding: 12px 15px;
+    background: #3498db;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Адаптивность */
+@media screen and (max-width: 1024px) {
+    .navMenu {
+        gap: 15px;
+    }
+
+    .navLink,
+    .adminLink {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+
+    .phoneNumber {
+        font-size: 1rem !important;
+    }
+
+    .phoneLink {
+        font-size: 0.8rem !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .navMenu,
+    .phoneBlock {
+        display: none;
+    }
+
+    .mobileMenuButton {
+        display: flex;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .logoTitle {
+        font-size: 1.1rem !important;
+    }
+
+    .logoSubtitle {
+        font-size: 0.7rem !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .topBar {
+        padding: 12px 20px;
+    }
+
+    .logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .mobileMenu {
+        padding: 15px;
+    }
+
+    .mobileNavLink,
+    .mobilePhoneLink {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Левый блок */
+.leftBlock {
+    flex: 1;
+    padding: 40px;
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.leftBlockContent {
+    max-width: 500px;
+}
+
+.leftBlockTitle {
+    color: white !important;
+    font-weight: 700 !important;
+    margin-bottom: 8px !important;
+    font-size: 2.2rem !important;
+    position: relative;
+    display: inline-block;
+}
+
+.leftBlockTitle::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #f39c12;
+}
+
+.leftBlockSubtitle {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 400 !important;
+    margin-bottom: 24px !important;
+    font-size: 1.2rem !important;
+}
+
+.featuresList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+}
+
+.featuresList li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.featuresList li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.advantages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.advantageItem {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+}
+
+.advantageIcon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 15px 15px 0 0;
 }
+
+.advantageIcon img {
+    width: 100%;
+    height: auto;
+    filter: invert(85%) sepia(30%) saturate(719%) hue-rotate(330deg) brightness(103%) contrast(92%);
+}
+
+/* Правый блок */
+.rightBlock {
+    flex: 1;
+    padding: 40px;
+    background: url(/src/components/header/img/schetch.png) center/cover no-repeat;
+    position: relative;
+}
+
+.rightBlock::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+.contactForm {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+.formTitle {
+    color: white !important;
+    font-weight: 600 !important;
+    margin-bottom: 8px !important;
+    font-size: 1.8rem !important;
+}
+
+.formSubtitle {
+    color: rgba(255, 255, 255, 0.8) !important;
+    margin-bottom: 25px !important;
+    font-size: 1rem !important;
+}
+
+.formSend {
+    margin-bottom: 30px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.phoneInput {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 8px;
+    padding: 5px 15px;
+}
+
+.flagIcon {
+    width: 20px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.inputStyle {
+    border: none;
+    outline: none;
+    padding: 12px 0;
+    font-size: 1rem;
+    flex: 1;
+    background: transparent;
+}
+
+.inputStyle::placeholder {
+    color: #aaa;
+}
+
+.buttonSend {
+    background: #f39c12 !important;
+    color: white !important;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.contacts {
+    margin-top: 30px;
+}
+
+.contactsTitle {
+    color: rgba(255, 255, 255, 0.8) !important;
+    margin-bottom: 15px !important;
+    font-size: 1rem !important;
+}
+
+.socialLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.socialLink {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.socialLink img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+/* Адаптивность */
+@media screen and (max-width: 1024px) {
+    .contentWrapper {
+        flex-direction: column;
+    }
+
+    .leftBlock,
+    .rightBlock {
+        padding: 30px;
+    }
+
+    .leftBlockTitle {
+        font-size: 1.8rem !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .topBanner {
+        padding: 10px 15px;
+    }
+
+    .bannerText {
+        font-size: 0.9rem !important;
+    }
+
+    .leftBlock,
+    .rightBlock {
+        padding: 25px;
+    }
+
+    .leftBlockTitle {
+        font-size: 1.6rem !important;
+    }
+
+    .formTitle {
+        font-size: 1.5rem !important;
+    }
+
+    .advantages {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .topBanner {
+        display: none;
+    }
+
+    .leftBlock,
+    .rightBlock {
+        padding: 20px;
+    }
+
+    .leftBlockTitle {
+        font-size: 1.4rem !important;
+    }
+
+    .leftBlockSubtitle {
+        font-size: 1rem !important;
+    }
+
+    .formTitle {
+        font-size: 1.3rem !important;
+    }
 }
