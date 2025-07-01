@@ -150,7 +150,7 @@ function InfoHeader() {
                             <div className={s.inputGroup}>
                                 <input
                                     placeholder="Ваше имя"
-                                    className={s.inputStyle}
+                                    className={`${s.inputStyle} ${s.nameInput}`}
                                     type="text"
                                     {...register('name', { required: true })}
                                 />
