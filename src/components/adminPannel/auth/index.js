@@ -42,7 +42,7 @@ function Auth() {
         errors, isValid
     } } = useForm({
         defaultValues: {
-            email: '',
+            username: '',
             password: ''
         }, mode: 'onChange'
     })
@@ -83,9 +83,9 @@ function Auth() {
                         >
                             Введите логин
                         </Typography>
-                        <input placeholder="Логин" className={style.inputS} error={Boolean(errors.email?.message)}
-                            helperText={errors.email?.message}
-                            {...register('email', { required: 'Укажите email' })}/>
+                        <input placeholder="Логин" className={style.inputS} error={Boolean(errors.username?.message)}
+                            helperText={errors.username?.message}
+                            {...register('username', { required: 'Укажите логин' })}/>
                     </div>
                     <div className={style.inputBox}>
                         <Typography sx={{
