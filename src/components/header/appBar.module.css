@@ -52,17 +52,23 @@
     gap: 10px;
  }
 /* стили кнопок меню ПК */
- .navButtons a{
-    text-decoration: none;  
+.navButtons a{
+   text-decoration: none;
+   color: black;
+   font-size: 18px;
+   padding: 5px 10px;
+  }
+.adminLink {
+    text-decoration: none;
     color: black;
     font-size: 18px;
     padding: 5px 10px;
-   }
-   .navButtons a:hover{
-    text-decoration: none;  
-    color: black;
-    font-size: 18px;
-    background-color: rgba(20, 24, 54, 0.208);
+}
+  .navButtons a:hover{
+   text-decoration: none;
+   color: black;
+   font-size: 18px;
+   background-color: rgba(20, 24, 54, 0.208);
    }
 /* Стили звонка по телефону */
 
