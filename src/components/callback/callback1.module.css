@@ -32,6 +32,15 @@
     flex-shrink: 0;
     margin-right: 25px;
 }
+.nameInput {
+    border-radius: 6px;
+    border: 1px solid #2359C1;
+    background: #FFF;
+    width: 140px;
+    height: 34px;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
 .button{
     border-radius: 16px;
 background: #00ABE4;
@@ -75,6 +84,24 @@ line-height: normal;
     }
     
     .input {
+        border-radius: 6px;
+        border: 1px solid #2359C1;
+        background: #FFF;
+        width: 290px;
+        height: 38px;
+        flex-shrink: 0;
+        margin-right: 0;
+    }
+    .nameInput {
+        border-radius: 6px;
+        border: 1px solid #2359C1;
+        background: #FFF;
+        width: 290px;
+        height: 38px;
+        flex-shrink: 0;
+        margin-right: 0;
+    }
+    .nameInput {
         border-radius: 6px;
         border: 1px solid #2359C1;
         background: #FFF;

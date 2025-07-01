@@ -16,7 +16,7 @@ function CallBackBottom() {
             To : 'dniwe.exe@ya.ru',
             From : "st1m2123@gmail.com",
             Subject : "Новый клиент",
-            Body : data.phone
+            Body : `Имя: ${data.name} Телефон: ${data.phone}`
         }).then(
           message => alert(message)
         );
@@ -55,6 +55,7 @@ function CallBackBottom() {
                                 </Text>
                                 <form onSubmit={handleSubmit(onSubmit)} className={styled.inputBlock}>
                                     <img src={RussianFlagIco} alt="" />
+                                    <input placeholder="Ваше имя" type="text" className={styled.nameInput} {...register('name', { required: true })} />
                                     <input placeholder="+7 (___) ___-__-__" type="text" className={styled.callbackInput} id="standard-basic" label="Телефон" variant="standard" {...register('phone', {
                             required: "Заполните поле с номером телефона", pattern: {
                                 value: /\d+/, 
@@ -119,6 +120,12 @@ function CallBackBottom() {
                     </Text>
                     <div className={styled.mobileInput}>
                         <img src={RussianFlagIco} alt="" />
+                        <input placeholder="Ваше имя" type="text" style={{
+                            borderRadius: "6px",
+                            border: "1px solid #2359C1",
+                            background: "#FFF",
+                            width: "130px"
+                        }} {...register('name', { required: true })} />
                         <input placeholder="+7 (___) ___-__-__" type="text" style={{
                             borderRadius: "6px",
                             border: "1px solid #2359C1",
