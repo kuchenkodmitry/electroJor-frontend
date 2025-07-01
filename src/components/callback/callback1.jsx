@@ -5,6 +5,7 @@ import FlagImg from "./img/flag.png"
 import pliers from "./img/pliers.png"
 import { Box } from "@mui/material"
 import { useForm } from "react-hook-form";
+import { maskPhoneInput } from "../../utils/phone";
 
 function CallBack1() {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -99,13 +100,16 @@ function CallBack1() {
                     }}>
                     <img src={FlagImg} alt="qwe" />
                     </Box>
-                    <input placeholder=" +7 (999) 999 99 99" className={style.input} type="text" id="standard-basic" label="Телефон" variant="standard" {...register('phone', {
+                    <input placeholder="+7 (___) ___-__-__" className={style.input} type="text" id="standard-basic" label="Телефон" variant="standard" {...register('phone', {
                                 required: "Заполните поле с номером телефона", pattern: {
-                                    value: /\d+/,
+                                    value: /\d+/, 
                                     message: "Это поле только для цыфр"
                                 }, minLength: {
                                     value: 10,
                                     message: "Минимальное количество символов в номере телефона 10"
+                                },
+                                onChange: (e) => {
+                                    e.target.value = maskPhoneInput(e.target.value);
                                 },
                             })}
                                 aria-invalid={errors.phone ? "true" : "false"}

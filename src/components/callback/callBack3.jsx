@@ -4,6 +4,7 @@ import RussianFlagIco from './img/flag.png'
 import styled from "./callback.module.css"
 import { Box } from "@mui/material"
 import { useForm } from "react-hook-form";
+import { maskPhoneInput } from "../../utils/phone";
 
 function CallBackBottom() {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -54,13 +55,16 @@ function CallBackBottom() {
                                 </Text>
                                 <form onSubmit={handleSubmit(onSubmit)} className={styled.inputBlock}>
                                     <img src={RussianFlagIco} alt="" />
-                                    <input placeholder=" +7 (999) 999 99 99" type="text" className={styled.callbackInput} id="standard-basic" label="Телефон" variant="standard" {...register('phone', {
+                                    <input placeholder="+7 (___) ___-__-__" type="text" className={styled.callbackInput} id="standard-basic" label="Телефон" variant="standard" {...register('phone', {
                             required: "Заполните поле с номером телефона", pattern: {
-                                value: /\d+/,
+                                value: /\d+/, 
                                 message: "Это поле только для цыфр"
                             }, minLength: {
                                 value: 10,
                                 message: "Минимальное количество символов в номере телефона 10"
+                            },
+                            onChange: (e) => {
+                                e.target.value = maskPhoneInput(e.target.value);
                             },
                         })}
                             aria-invalid={errors.phone ? "true" : "false"}
@@ -115,18 +119,21 @@ function CallBackBottom() {
                     </Text>
                     <div className={styled.mobileInput}>
                         <img src={RussianFlagIco} alt="" />
-                        <input placeholder=" +7 (999) 999 99 99" type="text" style={{
+                        <input placeholder="+7 (___) ___-__-__" type="text" style={{
                             borderRadius: "6px",
                             border: "1px solid #2359C1",
                             background: "#FFF",
                             width: "160px"
                         }}id="standard-basic" label="Телефон" variant="standard" {...register('phone', {
                             required: "Заполните поле с номером телефона", pattern: {
-                                value: /\d+/,
+                                value: /\d+/, 
                                 message: "Это поле только для цыфр"
                             }, minLength: {
                                 value: 10,
                                 message: "Минимальное количество символов в номере телефона 10"
+                            },
+                            onChange: (e) => {
+                                e.target.value = maskPhoneInput(e.target.value);
                             },
                         })}
                             aria-invalid={errors.phone ? "true" : "false"}

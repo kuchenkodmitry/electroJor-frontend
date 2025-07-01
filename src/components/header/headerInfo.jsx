@@ -15,7 +15,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from './logo.png';
 import { useSelector } from "react-redux";
-import { phoneDigits } from "../../utils/phone";
+import { phoneDigits, maskPhoneInput } from "../../utils/phone";
 
 function InfoHeader() {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -167,6 +167,9 @@ function InfoHeader() {
                                             minLength: {
                                                 value: 10,
                                                 message: "Минимум 10 цифр"
+                                            },
+                                            onChange: (e) => {
+                                                e.target.value = maskPhoneInput(e.target.value);
                                             },
                                         })}
                                         aria-invalid={errors.phone ? "true" : "false"}
