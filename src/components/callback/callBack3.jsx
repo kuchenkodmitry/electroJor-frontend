@@ -1,170 +1,152 @@
-import ElectricWorkerImg from "./img/ElectricWorker.png"
-import Text from "@mui/material/Typography"
-import RussianFlagIco from './img/flag.png'
-import styled from "./callback.module.css"
-import { Box } from "@mui/material"
+import ElectricWorkerImg from "./img/ElectricWorker.png";
+import Text from "@mui/material/Typography";
+import styled from "./callback.module.css";
+import { Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { maskPhoneInput } from "../../utils/phone";
+import CircularProgress from '@mui/material/CircularProgress';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 function CallBackBottom() {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    function onSubmit(data) {
-        window.Email.send({
-            Host : "smtp.elasticemail.com",
-            Username : "dmitry.kuchenko@yandex.ru",
-            Password : "20562E48951EB96B7D241652CEBB816A908E",
-            To : 'dniwe.exe@ya.ru',
-            From : "st1m2123@gmail.com",
-            Subject : "Новый клиент",
-            Body : `Имя: ${data.name} Телефон: ${data.phone}`
-        }).then(
-          message => alert(message)
+    const [isLoading, setIsLoading] = useState(false);
+    const [submitSuccess, setSubmitSuccess] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        setIsVisible(true);
+    }, []);
+
+    async function onSubmit(data) {
+        setIsLoading(true);
+        try {
+            await window.Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "dmitry.kuchenko@yandex.ru",
+                Password: "20562E48951EB96B7D241652CEBB816A908E",
+                To: 'dniwe.exe@ya.ru',
+                From: "st1m2123@gmail.com",
+                Subject: "Новый клиент",
+                Body: `Имя: ${data.name} Телефон: ${data.phone}`
+            });
+            setSubmitSuccess(true);
+        } catch (error) {
+            alert("Произошла ошибка при отправке. Пожалуйста, попробуйте позже.");
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    if (submitSuccess) {
+        return (
+            <Box sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '400px',
+                backgroundColor: 'rgba(49, 77, 180, 0.9)',
+                color: 'white',
+                textAlign: 'center',
+                padding: '20px',
+                borderRadius: '20px',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
+                margin: '120px auto 50px',
+                maxWidth: '1200px'
+            }}>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <Text variant="h5" sx={{ fontWeight: 500, fontSize: '2rem' }}>
+                        Спасибо! Мы получили вашу заявку и перезвоним вам в течение 20 минут.
+                    </Text>
+                </motion.div>
+            </Box>
         );
     }
+
     return (
-        <>
-            <Box sx={{
-                display: { xs: "none", md: "flex" }
-            }}>
-                <div className={styled.backgoundCallBack}>
-                    <div className={styled.blur}>
-                        <img className={styled.builderImg} src={ElectricWorkerImg} alt="" />
-                        <div className={styled.contentCallbackBox}>
-                            <Text sx={{
-                                color: "#FFF",
-                                textAlign: "right",
-                                fontFamily: "Poppins",
-                                fontSize: "36px",
-                                fontStyle: "normal",
-                                fontWeight: "500",
-                                lineHeight: "normal",
-                                letterSpacing: "1px",
-                                marginRight: "40px"
-                            }}>Остались вопросы? Перезвоним в течении 20 минут !</Text>
-                            <div className={styled.callbackBox}>
-                                <Text sx={{
-                                    marginLeft: "70px",
-                                    color: "rgba(0, 0, 0, 0.40)",
-                                    fontSize: "13px",
-                                    fontStyle: "normal",
-                                    fontWeight: "200",
-                                    lineHeight: "normal",
-                                    letterSpacing: "1.625px",
-                                }}>
-                                    Номер телефона*
-                                </Text>
-                                <form onSubmit={handleSubmit(onSubmit)} className={styled.inputBlock}>
-                                    <img src={RussianFlagIco} alt="" />
-                                    <input placeholder="Ваше имя" type="text" className={styled.nameInput} {...register('name', { required: true })} />
-                                    <input placeholder="+7 (___) ___-__-__" type="text" className={styled.callbackInput} id="standard-basic" label="Телефон" variant="standard" {...register('phone', {
-                            required: "Заполните поле с номером телефона", pattern: {
-                                value: /\d+/, 
-                                message: "Это поле только для цыфр"
-                            }, minLength: {
-                                value: 10,
-                                message: "Минимальное количество символов в номере телефона 10"
-                            },
-                            onChange: (e) => {
-                                e.target.value = maskPhoneInput(e.target.value);
-                            },
-                        })}
-                            aria-invalid={errors.phone ? "true" : "false"}
-                            required/>
-                                    <button type="submit" className={styled.sendBtn}>Отправить</button>
-                                </form>
-                                <Text sx={{
-                                    marginLeft: "70px",
-                                    marginTop: "10px",
-                                    color: "rgba(0, 0, 0, 0.40)",
-                                    fontSize: "13px",
-                                    fontStyle: "normal",
-                                    fontWeight: "200",
-                                    lineHeight: "normal",
-                                    letterSpacing: "1.625px",
-                                }}>
-                                    Нажимая кнопку, вы даете согласие на обработку персональных данных
-                                </Text>
+        <motion.div
+            className={styled.backgoundCallBack}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isVisible ? 1 : 0 }}
+            transition={{ duration: 0.8 }}
+        >
+            <div className={styled.blur}>
+                <motion.div
+                    className={styled.imageContainer}
+                    initial={{ x: -50, opacity: 0 }}
+                    animate={{ x: isVisible ? 0 : -50, opacity: isVisible ? 1 : 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                    <img
+                        src={ElectricWorkerImg}
+                        alt="Electric Worker"
+                        className={styled.builderImg}
+                    />
+                </motion.div>
+                <div className={styled.callBackFortm}>
+                    <motion.h3
+                        className={styled.callBackPart}
+                        initial={{ x: 50, opacity: 0 }}
+                        animate={{ x: isVisible ? 0 : 50, opacity: isVisible ? 1 : 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                    >
+                        Остались вопросы? Перезвоним в течение 20 минут!
+                    </motion.h3>
+                    <motion.form
+                        className={styled.callBackFroms}
+                        onSubmit={handleSubmit(onSubmit)}
+                        initial={{ y: 50, opacity: 0 }}
+                        animate={{ y: isVisible ? 0 : 50, opacity: isVisible ? 1 : 0 }}
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                    >
+                        <div className={styled.flexInputs}>
+                            <div className={styled.inputContent}>
+                                <label className={styled.inputLabel}>Номер телефона*</label>
+                                <input
+                                    type="tel"
+                                    {...register("phone", { required: true })}
+                                    className={styled.inputField}
+                                    placeholder="+7 (___) ___-__-__"
+                                    onInput={maskPhoneInput}
+                                />
+                                {errors.phone && <span className={styled.error}>Обязательное поле</span>}
                             </div>
+                            <div className={styled.inputContent}>
+                                <label className={styled.inputLabel}>Ваше имя*</label>
+                                <input
+                                    type="text"
+                                    {...register("name", { required: true })}
+                                    className={styled.inputField}
+                                    placeholder="Иван Иванов"
+                                />
+                                {errors.name && <span className={styled.error}>Обязательное поле</span>}
+                            </div>
+                            <motion.button
+                                className={styled.submitButton}
+                                type="submit"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                disabled={isLoading}
+                            >
+                                {isLoading ? (
+                                    <CircularProgress size={24} color="inherit" />
+                                ) : (
+                                    "Отправить!"
+                                )}
+                            </motion.button>
                         </div>
-                    </div>
-
+                        <p className={styled.consentText}>
+                            Нажимая кнопку, вы даёте согласие на обработку ваших персональных данных.
+                        </p>
+                    </motion.form>
                 </div>
-            </Box>
-            <Box sx={{
-                display: {xs: 'flex', md: "none"}
-            }} className={styled.mobileCallback}>
-                <Text sx={{
-                    color: "#FFF",
-                    textAlign: "right",
-                    fontFamily: "Poppins",
-                    fontSize: "18px",
-                    fontStyle: "normal",
-                    fontWeight: "500",
-                    lineHeight: "normal",
-                    letterSpacing: "1px",
-                    width: "240px",
-                    marginRight:"30px",
-                    marginTop: "40px"
-                }}>Остались вопросы? Перезвоним в течении 20 минут !</Text>
-                <form onSubmit={handleSubmit(onSubmit)} className={styled.mobileInputBox}>
-                    <Text sx={{
-                        color: "rgba(0, 0, 0, 0.40)",
-                        fontFamily: "inter",
-                        fontSize: "13px",
-                        fontStyle: "normal",
-                        fontWeight: "300",
-                        lineHeight: "normal",
-                        letterSpacing: "1.625px",
-                    }}>
-                        Номер телефона*
-                    </Text>
-                    <div className={styled.mobileInput}>
-                        <img src={RussianFlagIco} alt="" />
-                        <input placeholder="Ваше имя" type="text" style={{
-                            borderRadius: "6px",
-                            border: "1px solid #2359C1",
-                            background: "#FFF",
-                            width: "130px"
-                        }} {...register('name', { required: true })} />
-                        <input placeholder="+7 (___) ___-__-__" type="text" style={{
-                            borderRadius: "6px",
-                            border: "1px solid #2359C1",
-                            background: "#FFF",
-                            width: "160px"
-                        }}id="standard-basic" label="Телефон" variant="standard" {...register('phone', {
-                            required: "Заполните поле с номером телефона", pattern: {
-                                value: /\d+/, 
-                                message: "Это поле только для цыфр"
-                            }, minLength: {
-                                value: 10,
-                                message: "Минимальное количество символов в номере телефона 10"
-                            },
-                            onChange: (e) => {
-                                e.target.value = maskPhoneInput(e.target.value);
-                            },
-                        })}
-                            aria-invalid={errors.phone ? "true" : "false"}
-                            required/>
-                    </div>
-                    <Text sx={{
-                        color: "rgba(0, 0, 0, 0.40)",
-                        fontFamily: "inter",
-                        fontSize: "13px",
-                        fontStyle: "normal",
-                        fontWeight: "300",
-                        lineHeight: "normal",
-                        letterSpacing: "1.625px",
-                    }}>
-                        Нажимая кнопку, вы даете согласие на обработку персональных данных
-                    </Text>
-                    <button type="submit" className={styled.mobileBtn}>
-                        Отправить
-                    </button>
-                </form>
-            </Box>
-        </>
-
-    )
+            </div>
+        </motion.div>
+    );
 }
 
 export default CallBackBottom;
