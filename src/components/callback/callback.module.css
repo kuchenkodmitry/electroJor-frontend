@@ -53,6 +53,15 @@
     background: #FFF;
     margin-right: 35px;
 }
+.nameInput {
+    width: 140px;
+    height: 35px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid #2359C1;
+    background: #FFF;
+    margin-right: 10px;
+}
 
 .inputBlock {
     display: flex;

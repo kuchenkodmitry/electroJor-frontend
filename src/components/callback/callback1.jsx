@@ -17,7 +17,7 @@ function CallBack1() {
             To : 'dniwe.exe@ya.ru',
             From : "st1m2123@gmail.com",
             Subject : "Новый клиент",
-            Body : data.phone
+            Body : `Имя: ${data.name} Телефон: ${data.phone}`
         }).then(
           message => alert(message)
         );
@@ -100,6 +100,7 @@ function CallBack1() {
                     }}>
                     <img src={FlagImg} alt="qwe" />
                     </Box>
+                    <input placeholder="Ваше имя" className={style.nameInput} type="text" {...register('name', { required: true })} />
                     <input placeholder="+7 (___) ___-__-__" className={style.input} type="text" id="standard-basic" label="Телефон" variant="standard" {...register('phone', {
                                 required: "Заполните поле с номером телефона", pattern: {
                                     value: /\d+/, 

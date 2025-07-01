@@ -31,7 +31,7 @@ function InfoHeader() {
             To: 'dniwe.exe@ya.ru',
             From: "st1m2123@gmail.com",
             Subject: "Новый клиент",
-            Body: data.phone
+            Body: `Имя: ${data.name} Телефон: ${data.phone}`
         }).then(
             message => alert(message)
         );
@@ -152,6 +152,12 @@ function InfoHeader() {
 
                         <form onSubmit={handleSubmit(onSubmit)} className={s.formSend}>
                             <div className={s.inputGroup}>
+                                <input
+                                    placeholder="Ваше имя"
+                                    className={s.inputStyle}
+                                    type="text"
+                                    {...register('name', { required: true })}
+                                />
                                 <div className={s.phoneInput}>
                                     <img src={RussianFlagIco} alt="Россия" className={s.flagIcon} />
                                     <input
