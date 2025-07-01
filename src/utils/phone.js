@@ -9,6 +9,7 @@ export function formatPhone(phone) {
 
 export function maskPhoneInput(value) {
   const digits = phoneDigits(value).slice(0, 11);
+  if (digits.length === 0) return "";
   let result = "+7";
   if (digits.length > 1) result += `-(${digits.slice(1, 4)}`;
   if (digits.length >= 4) result += ")-" + digits.slice(4, 7);
