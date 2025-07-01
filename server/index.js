@@ -13,6 +13,8 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3001;
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';
+const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN || '';
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '';
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
 app.use(express.json());
@@ -52,6 +54,12 @@ let db;
     CREATE TABLE IF NOT EXISTS settings (
       key TEXT PRIMARY KEY,
       value TEXT
+    );
+    CREATE TABLE IF NOT EXISTS feedback (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT,
+      phone TEXT,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP
     );
   `);
   await db.run(
@@ -130,6 +138,39 @@ app.put('/api/settings/phone', authMiddleware, async (req, res) => {
     phone
   );
   res.json({ phone });
+});
+
+// ----- Feedback -----
+app.post('/api/feedback', async (req, res) => {
+  const { name = '', phone = '' } = req.body;
+  const result = await db.run(
+    'INSERT INTO feedback(name, phone) VALUES(?, ?)',
+    name,
+    phone
+  );
+  if (TELEGRAM_TOKEN && TELEGRAM_CHAT_ID) {
+    try {
+      await fetch(
+        `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: `Новая заявка\nИмя: ${name}\nТелефон: ${phone}`
+          })
+        }
+      );
+    } catch (e) {
+      console.error('Failed to send Telegram message', e);
+    }
+  }
+  res.status(201).json({ id: result.lastID });
+});
+
+app.get('/api/feedback', authMiddleware, async (req, res) => {
+  const rows = await db.all('SELECT * FROM feedback ORDER BY created_at DESC');
+  res.json(rows);
 });
 
 // ----- Posts CRUD -----
