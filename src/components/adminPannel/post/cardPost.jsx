@@ -4,20 +4,20 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { fetchPostRemove } from "../../../redux/slices/posts"
 
-function CardPost({title, description, UrlImage, _id}) {
+function CardPost({ title, description, UrlImage, id }) {
     const Navigate = useNavigate()
     const dispatch = useDispatch()
     
 
     const handleNavPost = () => {
-        Navigate(`/admin/fullpost-${_id}`)
+        Navigate(`/admin/fullpost-${id}`)
     }
 
     const onClickRemove = () => {
         const result = window.confirm("Уверены, что хотите удалить ?");
         if (result){
             alert("Пост удалён")
-            dispatch(fetchPostRemove(_id))
+            dispatch(fetchPostRemove(id))
             Navigate('/admin/posts')
         } else {
             alert("удаление отменено")
@@ -25,7 +25,7 @@ function CardPost({title, description, UrlImage, _id}) {
       };
 
     const onClickEdit = () => {
-        Navigate(`/admin/edit-${_id}`)
+        Navigate(`/admin/edit-${id}`)
     }
 
     return ( 

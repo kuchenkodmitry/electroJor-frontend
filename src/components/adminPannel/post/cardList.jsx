@@ -32,13 +32,17 @@ function CardList() {
     Редактирование и удаление постов
     </Typography>
     <div className={style.listBlock}>
-    {(isLoadingPosts? [...Array(9)] : posts.items).map(e => isLoadingPosts?  
-    <PostLoading/> : <CardPost 
-    _id={e._id}
-    title={e.title}
-    UrlImage={e.imageUrl}
-    description={e.description}
-    />
+    {(isLoadingPosts ? [...Array(9)] : posts.items).map((e) =>
+        isLoadingPosts ? (
+            <PostLoading/>
+        ) : (
+            <CardPost
+                id={e.id}
+                title={e.title}
+                UrlImage={e.imageUrl}
+                description={e.description}
+            />
+        )
     )}
     </div>
     </>
