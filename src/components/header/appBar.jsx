@@ -1,8 +1,7 @@
-import style from "./appBar.module.css";
+import style from "./appBar.module.css"
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from './logo.png';
-import { Link } from 'react-router-dom';
+import logo from './logo.png'
 
 function NavBar() {
   return (
@@ -21,7 +20,6 @@ function NavBar() {
         <a href="#about">О компании</a>
         <a href="#footer">Наши работы</a>
         <a href="#works">Контакты</a>
-        <Link className={style.adminLink} to="/admin">Админ панель</Link>
       </div>
       <div className={style.blockCallback}>
         <p className={style.phoneNumber}>
@@ -43,8 +41,6 @@ function NavBar() {
         <NavDropdown.Item href="#footer">
           Контакты
         </NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item href="/admin">Админ панель</NavDropdown.Item>
       </NavDropdown>
     </div>
   )
