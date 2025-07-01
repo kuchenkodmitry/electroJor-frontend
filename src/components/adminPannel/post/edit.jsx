@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react"
-import axios from '../../../axios/axios'
+import axios, { API_ROOT } from '../../../axios/axios'
 import style from "./style.module.css"
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
@@ -88,7 +88,7 @@ function EditPost() {
       formData.append('image', file)
       const { data } = await axios.post('/uploads', formData)
       console.log(data)
-      setImageUrl(`http://api.electrojor.ru${data.url}`)
+      setImageUrl(`${API_ROOT}${data.url}`)
     } catch (err) {
       console.warn(err)
       alert('Ошибка загрузки фото')
@@ -102,7 +102,7 @@ function EditPost() {
       formData.append('image', file)
       const { data } = await axios.post('/uploads', formData)
       console.log(data)
-      arrayTimes.push(`http://api.electrojor.ru${data.url}`)
+      arrayTimes.push(`${API_ROOT}${data.url}`)
       console.log(arrayTimes);
       setUpdate(true)
     } catch (err) {
