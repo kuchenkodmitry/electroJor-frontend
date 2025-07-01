@@ -1,12 +1,11 @@
-.backgound {
-    min-height: 1200px;
-    max-height: fit-content;
-    background-color: #f4f6eb;
-    padding: 0 0 70px 0;
-    /* opacity: 0.6; */
-    background: linear-gradient(135deg, #f1ece455 20%, transparent 20%) -37px 0/ 74px 74px, linear-gradient(225deg, #f1ece4 25%, transparent 25%) -37px 0/ 74px 74px, linear-gradient(315deg, #f1ece455 25%, transparent 25%) 0px 0/ 74px 74px, linear-gradient(45deg, #f1ece4 25%, #f4f6eb 25%) 0px 0/ 74px 74px;
+.background {
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    padding-bottom: 70px;
 }
+
 .layout{
     max-width: 1200px;
     margin: 0 auto;
+    padding-top: 20px;
 }
