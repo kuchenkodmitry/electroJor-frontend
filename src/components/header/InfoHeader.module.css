@@ -410,6 +410,20 @@
     padding: 5px 15px;
 }
 
+.phoneInput input {
+    color: #000;
+    width: 100%;
+}
+
+.nameInput {
+    background: white;
+    border-radius: 8px;
+    padding: 5px 15px;
+    color: #000;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .flagIcon {
     width: 20px;
     height: auto;
