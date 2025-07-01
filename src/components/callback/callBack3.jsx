@@ -104,7 +104,9 @@ function CallBackBottom() {
                                     {...register("phone", { required: true })}
                                     className={styled.inputField}
                                     placeholder="+7 (___) ___-__-__"
-                                    onInput={maskPhoneInput}
+                                    onInput={(e) => {
+                                        e.target.value = maskPhoneInput(e.target.value);
+                                    }}
                                 />
                                 {errors.phone && <span className={styled.error}>Обязательное поле</span>}
                             </div>

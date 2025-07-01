@@ -25,7 +25,7 @@ function ServiceCard() {
                         <p className={s.firstCardTitle}>
                         Монтаж Электрики в Новостройке
                     </p>
-                    <img src={house1} className={s.img} />
+                    <img src={house1} className={s.house1} />
                 </div>
                 <div style={{
                     background: "linear-gradient(90deg, #304352 0%, #D7D2CC 100%)"
@@ -41,7 +41,7 @@ function ServiceCard() {
                     <p className={s.tridCardTitle}>
                         Монтаж в производственных помещениях
                     </p>
-                    <img width="160px" src={production} style={{ borderRadius: "0 0 30px 30px" }} className={s.img} />
+                    <img width="160px" src={production} style={{ borderRadius: "0 0 30px 30px" }} className={s.production} />
                 </div>
                 <div style={{
                     background: "linear-gradient(90deg, #00467F 0%, #A5CC82 100%)"
