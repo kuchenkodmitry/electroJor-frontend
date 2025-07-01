@@ -49,7 +49,14 @@ let db;
       gallaryUrl TEXT,
       created_at TEXT DEFAULT CURRENT_TIMESTAMP
     );
+    CREATE TABLE IF NOT EXISTS settings (
+      key TEXT PRIMARY KEY,
+      value TEXT
+    );
   `);
+  await db.run(
+    "INSERT OR IGNORE INTO settings(key, value) VALUES('phone', '+7-909-383-99-46')"
+  );
 })();
 
 // 🔒 Middleware для проверки JWT
@@ -108,6 +115,21 @@ app.get('/api/me', authMiddleware, async (req, res) => {
 app.get('/api/admin-exists', async (req, res) => {
   const row = await db.get('SELECT 1 FROM users LIMIT 1');
   res.json({ exists: !!row });
+});
+
+// ----- Settings -----
+app.get('/api/settings/phone', async (req, res) => {
+  const row = await db.get("SELECT value FROM settings WHERE key = 'phone'");
+  res.json({ phone: row ? row.value : '' });
+});
+
+app.put('/api/settings/phone', authMiddleware, async (req, res) => {
+  const { phone = '' } = req.body;
+  await db.run(
+    "INSERT INTO settings(key, value) VALUES('phone', ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+    phone
+  );
+  res.json({ phone });
 });
 
 // ----- Posts CRUD -----

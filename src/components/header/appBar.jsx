@@ -3,8 +3,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.png';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { phoneDigits } from '../../utils/phone';
 
 function NavBar() {
+  const phone = useSelector((state) => state.settings.phone);
   return (
     <div className={style.navBar}>
       <div className={style.logoPositions}>
@@ -25,9 +28,9 @@ function NavBar() {
       </div>
       <div className={style.blockCallback}>
         <p className={style.phoneNumber}>
-          +7-909-383-99-46
+          {phone}
         </p>
-        <a href="" className={style.phoneCall}>
+        <a href={`tel:+${phoneDigits(phone)}`} className={style.phoneCall}>
           Позвонить по телефону
         </a>
       </div>

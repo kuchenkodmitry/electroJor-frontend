@@ -4,6 +4,7 @@ import FullPost from "../fullPost"
 import { useParams } from "react-router-dom"
 import CardList from '../post/cardList'
 import EditPost from "../post/edit"
+import EditPhone from "../phone/edit"
 import { Typography } from "@mui/material"
 
 function ContentArea() {
@@ -21,6 +22,13 @@ function ContentArea() {
             return (
                 <div className={style.areaBox}>
                     <CardList/>
+                </div>
+            )
+        }
+        if (params == 'phone') {
+            return (
+                <div className={style.areaBox}>
+                    <EditPhone/>
                 </div>
             )
         }

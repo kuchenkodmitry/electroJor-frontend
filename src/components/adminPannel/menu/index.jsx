@@ -44,7 +44,8 @@ const btnData = [
         btn: [
             {
                 ImageUrl: Team,
-                btnName: "Изменить" 
+                btnName: "Изменить",
+                linkTo: '/admin/phone'
             },
         ]
     },
