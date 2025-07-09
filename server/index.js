@@ -5,6 +5,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import path from 'path';
 import multer from 'multer';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -17,7 +18,26 @@ const PORT = process.env.PORT || 3001;
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';
 const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN || '';
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '';
-const upload = multer({ dest: path.join(__dirname, 'uploads') });
+
+let sharp;
+try {
+  sharp = (await import('sharp')).default;
+} catch {
+  console.warn('⚠️ sharp module not available, image optimization disabled');
+}
+
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, 'uploads'),
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const base = path.basename(file.originalname, ext)
+      .replace(/[^a-z0-9]/gi, '_')
+      .toLowerCase();
+    cb(null, `${base}-${Date.now()}${ext}`);
+  }
+});
+
+const upload = multer({ storage });
 
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -243,9 +263,24 @@ app.delete('/api/posts/:id', authMiddleware, async (req, res) => {
   res.json({ message: 'Post deleted', doc: post });
 });
 
-app.post('/api/uploads', authMiddleware, upload.single('image'), (req, res) => {
-  if (!req.file) return res.status(400).json({ message: 'No file uploaded' });
-  res.json({ url: `/uploads/${req.file.filename}` });
+app.post('/api/uploads', authMiddleware, upload.single('image'), async (req, res) => {
+  try {
+    if (!req.file) return res.status(400).json({ message: 'No file uploaded' });
+
+    const filePath = path.join(req.file.destination, req.file.filename);
+    if (sharp) {
+      await sharp(filePath)
+        .resize({ width: 1920, withoutEnlargement: true })
+        .jpeg({ quality: 80 })
+        .toBuffer()
+        .then((data) => fs.writeFileSync(filePath, data));
+    }
+
+    res.json({ url: `/uploads/${req.file.filename}` });
+  } catch (e) {
+    console.error('Image processing error', e);
+    res.status(500).json({ message: 'Upload failed' });
+  }
 });
 
 // 🧱 Отдача фронта
