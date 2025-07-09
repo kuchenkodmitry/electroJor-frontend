@@ -10,7 +10,7 @@ function Header() {
             <div className={style.headerContainer}>
                 <div className={style.brandWrapper}>
                     <div className={style.logoContainer}>
-                        <ElectricBolt className={style.logoIcon} />
+                        {/* <ElectricBolt className={style.logoIcon} /> */}
                         <img src={logo} alt="Логотип ЭлектроЖор" className={style.logoImage} />
                     </div>
                     <div className={style.brandText}>

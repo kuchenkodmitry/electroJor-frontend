@@ -11,7 +11,7 @@ const btnData = [
                 Icon: Edit,
                 btnName: "Редактировать",
                 linkTo: '/admin/posts',
-                color: "#4CAF50"
+                color: "#4CAF50",
             },
             {
                 Icon: Add,

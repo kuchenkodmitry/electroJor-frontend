@@ -1,7 +1,7 @@
 .contentArea {
-    flex: 1;
-    padding: 2rem;
-    margin-left: 340px;
+    /* flex: 1; */
+    /* padding: 2rem; */
+    /* margin-left: 340px; */
     /* Ширина сайдбара + отступ */
 }
 
@@ -12,6 +12,7 @@
     min-height: calc(100vh - 200px);
     padding: 2rem;
     transition: all 0.3s ease;
+    min-width: 850px;
 }
 
 .welcomeContainer {

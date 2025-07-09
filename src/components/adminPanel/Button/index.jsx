@@ -17,7 +17,7 @@ const Button = forwardRef(({ icon, text, path, color = "#4e73df" }, ref) => {
             ref={ref}
         >
             <div className={style.iconContainer}>
-                <img src={icon} alt={`${text} icon`} className={style.btnIcon} />
+                <img src={icon} className={style.btnIcon} />
             </div>
             <Typography variant="body1" className={style.btnText}>
                 {text}
