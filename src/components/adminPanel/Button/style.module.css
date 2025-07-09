@@ -36,10 +36,8 @@
 }
 
 .btnIcon {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: brightness(0) saturate(100%) invert(30%) sepia(50%) saturate(1000%) hue-rotate(210deg) brightness(90%) contrast(90%);
+    font-size: 24px;
+    color: var(--btn-color);
 }
 
 .btnText {
