@@ -27,7 +27,7 @@ function AdminPanel() {
                {isLoading ? (
                    <Loading />
                ) : isAuth ? (
-                   <IsAuth />
+                   <AdminLayout />
                ) : exists ? (
                    <Auth />
                ) : (
