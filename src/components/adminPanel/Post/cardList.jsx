@@ -4,7 +4,7 @@ import CardPost from "./cardPost";
 import { Typography, Grid, Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../../../redux/slices/posts';
-import PostLoading from '../skeleton/skeleton';
+import PostLoading from '../Skeleton/skeleton';
 import { Add } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 
