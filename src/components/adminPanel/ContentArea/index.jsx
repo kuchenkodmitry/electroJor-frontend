@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import style from "./style.module.css";
-import FullPost from "../fullPost";
+import FullPost from "../FullPost";
 import { useParams } from "react-router-dom";
-import CardList from '../post/cardList';
-import EditPost from "../post/edit";
-import EditPhone from "../phone/edit";
-import EditPassword from "../password/edit";
+import CardList from '../Post/cardList';
+import EditPost from "../Post/edit";
+import EditPhone from "../Phone/edit";
+import EditPassword from "../Password/edit";
 import { Typography, Box } from "@mui/material";
 import { ElectricBolt } from "@mui/icons-material";
 
