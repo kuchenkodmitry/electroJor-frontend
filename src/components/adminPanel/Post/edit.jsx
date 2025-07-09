@@ -60,10 +60,6 @@ const EditPost = () => {
       const file = event.target.files[0];
       if (!file) return;
 
-      if (file.size > 1024 * 1024) { // 1MB limit
-        setError("Файл слишком большой (макс. 1MB)");
-        return;
-      }
 
       const formData = new FormData();
       formData.append('image', file);
@@ -223,10 +219,7 @@ const EditPost = () => {
         </Box>
 
         <Typography variant="body2" className={style.imageHint}>
-          Максимальный размер файла: 1MB. Для сжатия изображений используйте{' '}
-          <a href="https://www.iloveimg.com/ru/compress-image" target="_blank" rel="noopener noreferrer">
-            онлайн-инструмент
-          </a>.
+          Изображения до 10MB принимаются без ограничений. Файл будет оптимизирован автоматически.
         </Typography>
       </Paper>
 
