@@ -31,7 +31,11 @@ const storage = multer.diskStorage({
   }
 });
 
-const upload = multer({ storage });
+// Increase the default file size limit to 50MB to allow large image uploads
+const upload = multer({
+  storage,
+  limits: { fileSize: 50 * 1024 * 1024 },
+});
 
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
