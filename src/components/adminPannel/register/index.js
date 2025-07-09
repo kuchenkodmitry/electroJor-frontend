@@ -1,4 +1,4 @@
-import style from '../Auth/style.module.css';
+import style from '../auth/style.module.css';
 import { Button, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';

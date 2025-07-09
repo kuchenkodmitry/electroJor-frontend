@@ -21,7 +21,7 @@ function EditPassword() {
   };
 
   return (
-    <div className={style.container}>
+    <div>
       <Typography
         sx={{
           fontFamily: "SourceCodePro-SemiBold",
