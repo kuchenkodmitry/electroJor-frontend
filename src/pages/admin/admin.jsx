@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../../components/adminPannel/header/index';
-import Auth from '../../components/adminPannel/auth/index';
-import Register from '../../components/adminPannel/register/index';
+import Header from '../../components/adminPanel/Header';
+import Auth from '../../components/adminPanel/Auth';
+import Register from '../../components/adminPanel/Register';
 import style from './style.module.css';
-import IsAuth from '../../components/adminPannel/isAuth';
-import Loading  from "../../components/adminPannel/loading/loading";
+import AdminLayout from '../../components/adminPanel/AdminLayout';
+import Loading  from '../../components/adminPanel/Loading/loading';
 import { selectIsAuth, fetchAuthMe } from '../../redux/slices/auth';
 import { useSelector, useDispatch } from "react-redux";
 import axios from '../../axios/axios';
