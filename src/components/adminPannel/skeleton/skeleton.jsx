@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Skeleton from '@mui/material/Skeleton';
-import s from '../Post/style.module.css'
+import s from '../post/style.module.css'
 
 export default function PostLoading() {
   return (
@@ -14,4 +14,5 @@ export default function PostLoading() {
             <button className={s.btnEdit}>Изменить</button>
         </div>
       </div>
-  );}
+  );
+}

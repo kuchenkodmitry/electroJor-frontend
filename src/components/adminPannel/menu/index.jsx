@@ -1,5 +1,5 @@
 import style from "./style.module.css";
-import Button from "../Button";
+import Button from "../button/index";
 import { Typography } from "@mui/material";
 import { ElectricBolt, Edit, Add, Reviews, Contacts, Construction, Settings, AccountCircle, ArrowDownward } from "@mui/icons-material";
 
