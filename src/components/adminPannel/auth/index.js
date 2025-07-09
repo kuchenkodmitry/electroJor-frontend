@@ -1,120 +1,141 @@
-import style from "./style.module.css"
-import { Button, TextField, Typography } from "@mui/material"
-import { useSelector, useDispatch } from "react-redux"
-import { useForm } from "react-hook-form"
-import { selectIsAuth, fetchAuth, logout } from "../../../redux/slices/auth"
+import style from "./style.module.css";
+import { Button, TextField, Typography, Box, CircularProgress, Alert } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+import { selectIsAuth, fetchAuth, logout } from "../../../redux/slices/auth";
+import { Lock, Person, ExitToApp } from "@mui/icons-material";
+import { motion } from "framer-motion";
 
 export const UserIsAuth = () => {
-    const { data, status } = useSelector((state) => state.auth)
-    const isLoading = status === "loading"
-    const isAuth = useSelector(selectIsAuth)
-    const dispatch = useDispatch()
+    const { data, status } = useSelector((state) => state.auth);
+    const isLoading = status === "loading";
+    const dispatch = useDispatch();
 
     const onClickLogout = () => {
-        if(window.confirm('Вы уверенны, что хотите выйти ')){
-          dispatch(logout());
-          window.localStorage.removeItem('token')
+        if (window.confirm('Вы уверены, что хотите выйти?')) {
+            dispatch(logout());
+            window.localStorage.removeItem('token');
         }
-      };
-
+    };
 
     return (
-        <div className={style.userIsAuth}>
-            <Typography sx={{
-                /* Sign up */
-                bottom: "10px",
-                width: "156px",
-                height: "28px",
-                fontFamily: "SourceCodePro-SemiBold",
-                fontSize: "16px"
-            }}>
-                {isLoading ?
-                    "Привет" :
-                    `Привет,${data?.fullName ? data.fullName.split(' ')[0] : data?.username}`}
-            </Typography>
-            <button onClick={onClickLogout} className={style.btnIsAuth}>Выйти</button>
-        </div>
-    )
-}
+        <motion.div
+            className={style.userIsAuth}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+        >
+            <Box className={style.userInfo}>
+                <Typography variant="subtitle1" className={style.greeting}>
+                    {isLoading ? (
+                        <CircularProgress size={20} />
+                    ) : (
+                        `Привет, ${data?.fullName ? data.fullName.split(' ')[0] : data?.username || 'Гость'}`
+                    )}
+                </Typography>
+                <Button
+                    variant="outlined"
+                    color="error"
+                    startIcon={<ExitToApp />}
+                    onClick={onClickLogout}
+                    className={style.logoutBtn}
+                >
+                    Выйти
+                </Button>
+            </Box>
+        </motion.div>
+    );
+};
 
 function Auth() {
-    const dispatch = useDispatch()
-    const isAuth = useSelector(selectIsAuth)
-    const { register, handleSubmit, setError, formState: {
-        errors, isValid
-    } } = useForm({
+    const dispatch = useDispatch();
+    const { status } = useSelector((state) => state.auth);
+    const isLoading = status === "loading";
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isValid }
+    } = useForm({
         defaultValues: {
             username: '',
             password: ''
-        }, mode: 'onChange'
-    })
+        },
+        mode: 'onChange'
+    });
 
     const onSubmit = async (values) => {
-        console.log("Тык");
-        const data = await dispatch(fetchAuth(values))
+        const data = await dispatch(fetchAuth(values));
+
         if (!data.payload) {
-            console.log(data);
-            return alert("Не удалось авторизоваться")
+            return <Alert severity="error">Не удалось авторизоваться</Alert>;
         }
 
         if ("token" in data.payload) {
-            window.localStorage.setItem('token', data.payload.token)
+            window.localStorage.setItem('token', data.payload.token);
         }
-    }
+    };
 
     return (
-        <div className={style.authBox}>
-            <Typography sx={{
-                fontSize: "22px",
-                fontFamily: "Inter-SemiBold",
-                width: "370px"
-            }} className={style.title}>
-                Выполните авторизацию, чтобы продолжить
-            </Typography>
-            <form className={style.fromAuth} onSubmit={handleSubmit(onSubmit)}>
-                <div className={style.auth}>
-                    <div className={style.inputBox}>
-                        <Typography sx={{
-                            fontFamily: "Inter",
-                            fontSize: "18px",
-                            fontWeight: "600",
-                            lineGeight: "28px",
-                            letterSpacing: "0%",
-                            textAlign: "left",
+        <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className={style.authContainer}
+        >
+            <Box className={style.authCard}>
+                <Typography variant="h5" className={style.authTitle}>
+                    <Lock className={style.authIcon} />
+                    Авторизация
+                </Typography>
+
+                <form onSubmit={handleSubmit(onSubmit)} className={style.authForm}>
+                    <TextField
+                        fullWidth
+                        label="Логин"
+                        variant="outlined"
+                        margin="normal"
+                        InputProps={{
+                            startAdornment: <Person className={style.inputIcon} />
                         }}
-                        >
-                            Введите логин
-                        </Typography>
-                        <input placeholder="Логин" className={style.inputS} error={Boolean(errors.username?.message)}
-                            helperText={errors.username?.message}
-                            {...register('username', { required: 'Укажите логин' })}/>
-                    </div>
-                    <div className={style.inputBox}>
-                        <Typography sx={{
-                            fontFamily: "Inter",
-                            fontSize: "18px",
-                            fontWeight: "600",
-                            lineGeight: "28px",
-                            letterSpacing: "0%",
-                            textAlign: "left",
-                        }} >
-                            Введите пароль
-                        </Typography>
-                        <input placeholder="Пароль" type="password" className={style.inputS} 
-                        error={Boolean(errors.password?.message)} 
-                        helperText={errors.password?.message}{...register('password', {required: 'Укажите пароль'})}
-                        />
-                    </div>
-                </div>
-                <Button sx={{
-                    color: "black",
-                    marginLeft: "162px",
-                    marginTop: "30px",
-                    fontFamily: "SourceCodePro-SemiBold"
-                }} className={style.button} type="submit">Войти</Button>
-            </form>
-        </div>
-    )
+                        error={Boolean(errors.username)}
+                        helperText={errors.username?.message}
+                        {...register('username', { required: 'Укажите логин' })}
+                    />
+
+                    <TextField
+                        fullWidth
+                        label="Пароль"
+                        type="password"
+                        variant="outlined"
+                        margin="normal"
+                        InputProps={{
+                            startAdornment: <Lock className={style.inputIcon} />
+                        }}
+                        error={Boolean(errors.password)}
+                        helperText={errors.password?.message}
+                        {...register('password', { required: 'Укажите пароль' })}
+                    />
+
+                    <Button
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        type="submit"
+                        disabled={!isValid || isLoading}
+                        className={style.submitButton}
+                    >
+                        {isLoading ? (
+                            <CircularProgress size={24} color="inherit" />
+                        ) : (
+                            'Войти'
+                        )}
+                    </Button>
+                </form>
+            </Box>
+        </motion.div>
+    );
 }
 
-export default Auth
+export default Auth;

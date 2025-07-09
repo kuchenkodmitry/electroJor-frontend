@@ -1,0 +1,127 @@
+.root {
+    padding: 2rem 0;
+}
+
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    gap: 1.5rem;
+}
+
+.loadingText {
+    color: #2c3e50;
+    font-weight: 500 !important;
+}
+
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    gap: 1rem;
+    text-align: center;
+    padding: 2rem;
+}
+
+.errorIcon {
+    font-size: 4rem !important;
+    color: #e74c3c;
+}
+
+.errorText {
+    color: #e74c3c;
+    font-weight: 700 !important;
+}
+
+.errorDescription {
+    color: #7f8c8d;
+    max-width: 500px;
+}
+
+.emptyContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    gap: 1rem;
+}
+
+.emptyIcon {
+    font-size: 4rem !important;
+    color: #f1c40f;
+}
+
+.emptyText {
+    color: #2c3e50;
+    font-weight: 700 !important;
+}
+
+.postContainer {
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.postTitle {
+    font-weight: 700 !important;
+    color: #2c3e50;
+    margin-bottom: 2rem !important;
+    text-align: center;
+}
+
+.imageContainer {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.postImage {
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.postDescription {
+    color: #7f8c8d !important;
+    font-size: 1.2rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 2rem !important;
+    text-align: center;
+    font-style: italic;
+}
+
+.markdownContainer {
+    margin-top: 2rem;
+}
+
+.markdownHeading {
+    font-weight: 600 !important;
+    color: #2c3e50;
+    margin: 1.5rem 0 1rem 0 !important;
+}
+
+.markdownParagraph {
+    color: #34495e;
+    line-height: 1.8 !important;
+    margin-bottom: 1rem !important;
+}
+
+@media (max-width: 768px) {
+    .postContainer {
+        padding: 1rem;
+    }
+
+    .postTitle {
+        font-size: 2rem !important;
+    }
+
+    .postDescription {
+        font-size: 1rem !important;
+    }
+}

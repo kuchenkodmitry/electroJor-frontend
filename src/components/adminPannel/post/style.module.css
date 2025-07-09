@@ -1,137 +1,123 @@
+.container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.title {
+    font-weight: 700 !important;
+    color: #2d3748;
+    margin: 0 !important;
+}
+
+.createButton {
+    background-color: #4c51bf !important;
+    color: white !important;
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 8px !important;
+    text-transform: none !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+.createButton:hover {
+    background-color: #434190 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.postsGrid {
+    margin-top: 1rem !important;
+}
+
+/* Стили для карточки поста (обновленные) */
 .cardBlock {
-    border-radius: 15px;
-    background: rgb(255, 255, 255);
-    width: 252px;
-    height: 321px;
-    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
-    border: solid rgba(151, 151, 151, 0.108) 1p;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    position:relative;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
-.cardTitle{
-    margin: 0; /* Убираем внешний отступ */
-    -webkit-line-clamp: 2; /* Число отображаемых строк */
-    display: -webkit-box; 
-    -webkit-box-orient: vertical; /* Вертикальная ориентация */
+
+.cardBlock:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.cardTitle {
+    font-weight: 600 !important;
+    margin: 1rem 1rem 0.5rem !important;
+    color: #2d3748;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-.listBlock {
-    display: grid;
-    grid-template-columns: .2fr .2fr .2fr;
-    gap: 15px;
-    margin: 30px auto;
-    width: 780px;
+.cardImage {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.cardDescription {
+    color: #718096 !important;
+    margin: 0 1rem 1rem !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.btnBox {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.02);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .btnEdit {
-    border-radius: 5px;
-    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
-    background: rgb(217, 217, 217);
-    width: 88px;
-    height: 32px;
-    cursor: pointer;
-}
-.btnBox{
-    /* margin-top: 20px; */
-    display: flex;
-    justify-content: space-between;
-    width: 230px;
-    position: absolute;
-    bottom: 10px;
+    padding: 0.5rem 1rem !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    transition: all 0.2s ease !important;
 }
 
-
-/*Стили редактирования страницы  */
-
-.EditBlock{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+/* Адаптивность */
+@media (max-width: 900px) {
+    .postsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.imageBlock{
- display: flex;
- align-items: center;
- flex-direction: column;
-}
+@media (max-width: 600px) {
+    .container {
+        padding: 1rem;
+    }
 
-.imageUploadBlock{
-    margin-top: 42px;
-    margin-bottom: 60px;
-    display: flex;
-    gap: 70px;
-}
+    .postsGrid {
+        grid-template-columns: 1fr;
+    }
 
-.imageUpload{
-width: 314px;
-height: 209px;
-border-radius: 46px;
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-
-.inputUploadImage{
-width: 325px;
-display: flex;
-flex-direction: column;
-gap: 30px
-}
-
-.titleEdit{
-    margin-top: 40px;
-    display: flex;
-    justify-content: space-between;
-    gap: 120px;
-}
-
-.inputAndButton{
-display: flex;
-gap: 20px
-}
-
-.btnUpload{
-width: 109px;
-height: 38px;
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 16px 18px 16px 18px;
-border: 2px solid rgb(0, 0, 0);
-box-shadow: -4px 4px 0px 0px rgb(0, 0, 0);
-background: rgb(255, 255, 255);
-font-family: "SourceCodePro-SemiBold";
-font-size: 16px;
-line-height: 100%;
-letter-spacing: 0%;
-cursor: pointer;
-}
-.mdeEditor{
-    width: 100%;
-    margin-top: 15px;
-}
-.editorBlock{
-    width: 656px;
-}
-.savePost{
-    margin-top: 75px;
-width: 526px;
-height: 48px;
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 16px 18px 16px 18px;
-box-sizing: border-box;
-border: 2px solid rgb(0, 0, 0);
-box-shadow: -4px 4px 0px 0px rgb(0, 0, 0);
-background: rgb(255, 255, 255);
-font-family: "SourceCodePro-SemiBold";
-font-size: 24px;
-line-height: 100%;
-letter-spacing: 0%;
-cursor: pointer;
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

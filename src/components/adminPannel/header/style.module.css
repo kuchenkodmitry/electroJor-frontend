@@ -1,49 +1,110 @@
-.contentBox {
-    max-width: 1200px;
-    min-height: 80px;
+.adminHeader {
+    background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+}
+
+.headerContainer {
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #343a40;
+    padding: 1rem 0;
+}
+
+.brandWrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.logoIcon {
+    color: #f1c40f;
+    font-size: 2.5rem !important;
+    margin-right: -0.8rem;
+    z-index: 1;
+    filter: drop-shadow(0 0 5px rgba(241, 196, 15, 0.5));
+}
+
+.logoImage {
+    height: 50px;
+    width: auto;
     border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.flexLogo {
+.brandText {
     display: flex;
-    align-items: center;
-    gap: 15px;
+    flex-direction: column;
 }
 
-.button {
-    width: 200px;
-    height: 45px;
+.brandTitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700 !important;
+    color: white;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 6px 12px;
-    background-color: #007bff;
-    color: #fff;
+    gap: 0.8rem;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+}
+
+.brandBadge {
+    background: #e74c3c;
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.brandSubtitle {
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: 300 !important;
+    margin-top: 0.2rem !important;
+    font-size: 0.9rem !important;
+}
+
+.returnButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
     text-decoration: none;
-    font-family: "SourceCodePro-SemiBold";
-    font-size: 18px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
 }
 
-.button:hover {
-    background-color: #0056b3;
+.returnButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.logoTitle {
-    font-family: 'Inter-SemiBold';
-    font-size: 28px;
-    color: #ffffff;
+.buttonIcon {
+    font-size: 1.2rem !important;
 }
 
-.logoDescription {
-    font-family: 'Inter-ExtraLight';
-    font-size: 18px;
-    color: #f8f9fa;
+.headerDivider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+    width: 100%;
 }

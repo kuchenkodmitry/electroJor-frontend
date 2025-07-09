@@ -1,24 +1,93 @@
-.muneBtn {
+.menuBtn {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    width: 250px;
-    margin-bottom: 15px;
+    gap: 12px;
+    padding: 12px 16px;
+    width: 100%;
+    max-width: 280px;
+    margin-bottom: 12px;
     text-decoration: none;
-    color: #212529;
-    background-color: #f8f9fa;
-    border: 1px solid #ced4da;
-    border-radius: 6px;
-    transition: background-color 0.2s ease;
+    color: #2d3748;
+    background-color: white;
+    border-left: 4px solid var(--btn-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
 }
 
-.muneBtn:hover {
-    background-color: #e2e6ea;
+.menuBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: var(--hover-color);
 }
 
-.text {
-    color: #212529;
-    line-height: 100%;
+.menuBtn:active {
+    transform: translateY(0);
+}
+
+.iconContainer {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnIcon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(30%) sepia(50%) saturate(1000%) hue-rotate(210deg) brightness(90%) contrast(90%);
+}
+
+.btnText {
+    flex-grow: 1;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 15px !important;
+    color: #2d3748 !important;
+    line-height: 1.4 !important;
     text-align: left;
+    transition: color 0.2s ease;
+}
+
+.arrowIcon {
+    color: #a0aec0;
+    font-size: 18px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.menuBtn:hover .arrowIcon {
+    transform: translateX(3px);
+    color: var(--btn-color);
+}
+
+/* Анимация подчеркивания */
+.menuBtn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--btn-color);
+    transition: width 0.3s ease;
+}
+
+.menuBtn:hover::after {
+    width: 100%;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .menuBtn {
+        padding: 10px 14px;
+        max-width: 100%;
+    }
+
+    .btnText {
+        font-size: 14px !important;
+    }
 }

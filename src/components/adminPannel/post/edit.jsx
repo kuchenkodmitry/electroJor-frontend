@@ -1,294 +1,350 @@
-import React, { useCallback, useState } from "react"
-import axios, { API_ROOT } from '../../../axios/axios'
-import style from "./style.module.css"
-import { useEffect } from "react"
-import { useSelector } from "react-redux"
-import { TextField, Typography } from '@mui/material'
-import Arrow from "./images/Arrow.png"
-import Arrow2 from "./images/Arrow2.png"
-import NoPhoto from "./images/no-foto-2.jpg"
-import 'easymde/dist/easymde.min.css';
-import SimpleMDE from 'react-simplemde-editor';
-import { useNavigate, useParams } from "react-router-dom"
+import React, { useState, useEffect, useCallback } from "react";
+import axios, { API_ROOT } from '../../../axios/axios';
+import style from "./edit.module.css";
+import { useSelector } from "react-redux";
+import {
+  TextField,
+  Typography,
+  Button,
+  Box,
+  IconButton,
+  Paper,
+  Alert,
+  Divider,
+  CircularProgress // Добавляем этот импорт
+} from '@mui/material';
+import { CloudUpload, Delete, ArrowBack, Save, Help, Image, } from '@mui/icons-material';
+import { useNavigate, useParams } from "react-router-dom";
 import MDEditor from '@uiw/react-md-editor';
+import { motion } from 'framer-motion';
 
-const styleTitle = {
-  fontFamily: "SourceCodePro-SemiBold",
-  fontSize: "24px",
-  lineHeight: "100%",
-  letterSpacing: "0%",
-  textAlign: "left",
-  textTransform: "uppercase",
-  textAlign: "center",
-  marginTop: "27px",
-  marginBottom: "60px"
-}
+const EditPost = () => {
+  const [text, setText] = useState('');
+  const [title, setTitle] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [description, setDescription] = useState('');
+  const [galleryUrls, setGalleryUrls] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
-const styleSubTitile = {
-  fontFamily: "SourceCodePro-SemiBold",
-  fontSize: "24px",
-  lineHeight: "100%",
-  letterSpacing: "0%",
-  textAlign: "left"
-}
-const styleInput = {
-  padding: "10px 0"
-}
+  const navigate = useNavigate();
+  const { params } = useParams();
+  const isEditing = Boolean(params?.includes('edit'));
+  const idPost = params?.split('-')[1];
 
-function EditPost() {
-  const inputFileRef = React.useRef(null)
-  const inputPhotoRef = React.useRef(null)
-  const [text, setText] = React.useState('');
-  const [title, setTitle] = React.useState('');
-  const [imageUrl, setImageUrl] = React.useState('');
-  const [description, setDescription] = React.useState('');
-  const [arrayImageUrl, setArrayImageUrl] = React.useState([]);
-  const [photoURL, setPhotoURL] = React.useState([]);
-  const [photoMapList, setPhotoMapList] = React.useState([]);
-  const [update, setUpdate] = React.useState(false);
-
-  const navigate = useNavigate()
-  const { params } = useParams()
-  const isEditing = Boolean(params.includes('edit'));
-  const idPost = params.split('-')[1]
-  let [arrayTimes, setArrayTimes] = React.useState([])
-  // const isEditable = async () => {
-  //   try {
-  //     const { data } = await axios.get(`/posts/${}`)
-  //   } catch(err){
-  //     alert("Ошибка")
-  //   }
-  // }
-  // if(params != undefined) {
-  //   const { data } = axios
-  // }
-
+  // Загрузка данных поста при редактировании
   useEffect(() => {
     if (idPost) {
-      axios.get(`/posts/${idPost}`).then(({ data }) => {
-        setTitle(data.title);
-        setText(data.text);
-        setDescription(data.description);
-        setImageUrl(data.imageUrl);
-        setArrayImageUrl(data.gallaryUrl);
-        setArrayTimes(data.gallaryUrl)
-        setUpdate(true);
-      }).catch(err => {
-        console.warn(err);
-        alert("Ошибка получения статьи")
-      })
+      setIsLoading(true);
+      axios.get(`/posts/${idPost}`)
+        .then(({ data }) => {
+          setTitle(data.title);
+          setText(data.text);
+          setDescription(data.description);
+          setImageUrl(data.imageUrl);
+          setGalleryUrls(data.gallaryUrl || []);
+          setIsLoading(false);
+        })
+        .catch(err => {
+          console.warn(err);
+          setError("Ошибка получения статьи");
+          setIsLoading(false);
+        });
     }
-  }, [])
+  }, [idPost]);
 
-
-
-  const handleChangeFile = async (event) => {
+  // Загрузка изображения
+  const handleUploadImage = async (event, isGallery = false) => {
     try {
-      const formData = new FormData()
-      const file = event.target.files[0]
-      formData.append('image', file)
-      const { data } = await axios.post('/uploads', formData)
-      console.log(data)
-      setImageUrl(`${API_ROOT}${data.url}`)
-    } catch (err) {
-      console.warn(err)
-      alert('Ошибка загрузки фото')
-    }
-  };
+      const file = event.target.files[0];
+      if (!file) return;
 
-  const handleAddImage = async (event) => {
-    try {
-      const formData = new FormData()
-      const file = event.target.files[0]
-      formData.append('image', file)
-      const { data } = await axios.post('/uploads', formData)
-      console.log(data)
-      arrayTimes.push(`${API_ROOT}${data.url}`)
-      console.log(arrayTimes);
-      setUpdate(true)
-    } catch (err) {
-      console.warn(err)
-      alert('Ошибка загрузки фото')
-    }
-  };
-
-  const mapList = arrayTimes.map((e) => {
-    return (
-      <div style={{
-        display: "flex"
-      }}>
-        <p style={{
-          display: "block",
-          width: "300px",
-          overflow: "hidden",
-          whiteSpace: "nowrap",
-          textOverflow: "ellipsis",
-        }} key={e}>
-          {e}
-        </p>
-        <p onClick={() => {
-          const deleteLink = arrayImageUrl.filter((el) => el != e)
-          setArrayImageUrl(deleteLink);
-          setArrayTimes(deleteLink)
-          setUpdate(true);
-          console.log(arrayImageUrl);
-        }} style={{
-          background: "red",
-          color: "white",
-          borderRadius: "10px",
-          padding: "1px 8px 3px",
-          webkitBoxShadow: "8px 7px 10px 0px rgba(124, 133, 140, 0.2)",
-          mozBoxShadow: "8px 7px 10px 0px rgba(124, 133, 140, 0.2)",
-          boxShadow: "8px 7px 10px 0px rgba(124, 133, 140, 0.2)",
-          fontFamily: "SourceCodePro-SemiBold",
-          cursor: "pointer"
-        }}>Удалить</p>
-      </div>
-    )
-  })
-
-  React.useEffect(() => {
-    if (update) {
-      setArrayImageUrl(arrayTimes);
-      setPhotoMapList(mapList)
-      setUpdate(false)
-    }
-  }, [update]);
-
-  const onChange = React.useCallback((value) => {
-    setText(value);
-  }, []);
-
-  // useEffect(() => { }, [arrayImageUrl])
-
-  const onSubmit = async () => {
-    try {
-      const fields = {
-        title, imageUrl, text, imageUrl, description, gallaryUrl: arrayImageUrl
+      if (file.size > 1024 * 1024) { // 1MB limit
+        setError("Файл слишком большой (макс. 1MB)");
+        return;
       }
-      const { data } = isEditing ? await axios.patch(`/posts/${idPost}`, fields) : await axios.post('/posts', fields)
-      // const _id = isEditing ? id : data._id
-      navigate(`/admin/posts`)
-      isEditing ? alert("Успешно отредактированна") : alert("Статья опубликованна")
+
+      const formData = new FormData();
+      formData.append('image', file);
+
+      setIsLoading(true);
+      const { data } = await axios.post('/uploads', formData);
+      const url = `${API_ROOT}${data.url}`;
+
+      if (isGallery) {
+        setGalleryUrls(prev => [...prev, url]);
+      } else {
+        setImageUrl(url);
+      }
+
+      setSuccess("Изображение успешно загружено");
+      setIsLoading(false);
     } catch (err) {
       console.warn(err);
-      alert('Ошибка создания статьи')
+      setError('Ошибка загрузки изображения');
+      setIsLoading(false);
     }
+  };
+
+  // Удаление изображения из галереи
+  const handleRemoveGalleryImage = (urlToRemove) => {
+    setGalleryUrls(prev => prev.filter(url => url !== urlToRemove));
+  };
+
+  // Отправка формы
+  const handleSubmit = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+
+      const postData = {
+        title,
+        imageUrl,
+        text,
+        description,
+        gallaryUrl: galleryUrls
+      };
+
+      const { data } = isEditing
+        ? await axios.patch(`/posts/${idPost}`, postData)
+        : await axios.post('/posts', postData);
+
+      setSuccess(isEditing ? "Пост успешно обновлен" : "Пост успешно создан");
+      setTimeout(() => navigate('/admin/posts'), 1500);
+    } catch (err) {
+      console.warn(err);
+      setError('Ошибка сохранения поста');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  if (isLoading && !isEditing) {
+    return (
+      <Box className={style.loadingContainer}>
+        <CircularProgress size={60} />
+        <Typography variant="h6">Загрузка...</Typography>
+      </Box>
+    );
   }
 
-
-
-
-
-
-  console.log(imageUrl);
   return (
-    <div className={style.EditBlock}>
-      <Typography sx={styleTitle}>
-        Редактирование поста
-      </Typography>
-      <img src={Arrow} alt="" />
-      <div className={style.imageUploadBlock}>
-        <div className={style.imageBlock}>
-          <img src={imageUrl == '' ? NoPhoto : imageUrl} className={style.imageUpload} alt="" />
-          <Typography>Текущее изображение</Typography>
-        </div>
-        <div className={style.inputUploadImage}>
-          <Typography sx={styleSubTitile}>Загрузите или вставьте ссылку на изображение:</Typography>
-          <div className={style.inputAndButton}>
-            <input onChange={(e) => { setImageUrl(e.target.value) }} value={imageUrl} style={styleInput} placeholder="Ссылка на фото" />
-            <button onClick={() => inputFileRef.current.click()} className={style.btnUpload}>Обзор</button>
-            <input ref={inputFileRef} type="file" onChange={handleChangeFile} hidden />
-          </div>
-          <button onClick={() => { setImageUrl('') }} className={style.btnUpload}>Удалить фото</button>
-        </div>
-      </div>
-      <Typography sx={{
-        fontFamily: "SourceCodePro-Light",
-        fontSize: "18px",
-        lineHeight: "100%",
-        letterSpacing: "0%",
-        textAlign: "left",
-        width: "700px",
-        color: "rgba(174, 174, 174, 0.759)",
-        marginBottom: "50px"
-      }}>
-        Загружаемый файл не должен привышать размер в 1 мб и должен иметь уникальное имя. Чтобы сжать изображение воспользуйтесь ресурсом: <a href="https://www.iloveimg.com/ru/compress-image" target="_blank">Перейти на ресурс сжатия фото</a>
-      </Typography>
-      <img src={Arrow2} alt="" />
-      <div className={style.titleEdit}>
-        <Typography sx={styleSubTitile}>
-          Введите заголовок статьи:
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+      className={style.container}
+    >
+      <Box className={style.header}>
+        <Button
+          startIcon={<ArrowBack />}
+          onClick={() => navigate('/admin/posts')}
+          className={style.backButton}
+        >
+          Назад
+        </Button>
+
+        <Typography variant="h4" className={style.title}>
+          {isEditing ? 'Редактирование поста' : 'Создание нового поста'}
         </Typography>
-        <input onChange={(e) => setTitle(e.target.value)} style={styleInput} value={title} placeholder="Заголовок" />
-      </div>
-      <div className={style.titleEdit}>
-        <Typography sx={styleSubTitile}>
-          Введите краткое описание:
+      </Box>
+
+      {error && (
+        <Alert severity="error" onClose={() => setError(null)} className={style.alert}>
+          {error}
+        </Alert>
+      )}
+
+      {success && (
+        <Alert severity="success" onClose={() => setSuccess(null)} className={style.alert}>
+          {success}
+        </Alert>
+      )}
+
+      <Paper elevation={3} className={style.section}>
+        <Typography variant="h6" className={style.sectionTitle}>
+          Основное изображение
         </Typography>
-        <input onChange={(e) => setDescription(e.target.value)} style={styleInput} value={description} placeholder="краткое описание" />
-      </div>
-      <div className={style.editorBlock}>
-        <Typography sx={styleSubTitile} style={{ marginTop: "50px" }}>
-          Введите текст статьи в редактор:
+
+        <Box className={style.imageSection}>
+          <Box className={style.imagePreview}>
+            <img
+              src={imageUrl || '/no-image.jpg'}
+              alt="Превью"
+              className={style.previewImage}
+            />
+            <Typography variant="body2" className={style.imageCaption}>
+              {imageUrl ? 'Текущее изображение' : 'Изображение не выбрано'}
+            </Typography>
+          </Box>
+
+          <Box className={style.imageControls}>
+            <input
+              accept="image/*"
+              id="main-image-upload"
+              type="file"
+              onChange={(e) => handleUploadImage(e, false)}
+              hidden
+            />
+
+            <label htmlFor="main-image-upload">
+              <Button
+                component="span"
+                variant="outlined"
+                startIcon={<CloudUpload />}
+                className={style.uploadButton}
+                disabled={isLoading}
+              >
+                Загрузить
+              </Button>
+            </label>
+
+            <TextField
+              label="Или вставьте ссылку"
+              variant="outlined"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+              fullWidth
+              className={style.urlInput}
+            />
+
+            <Button
+              variant="outlined"
+              color="error"
+              startIcon={<Delete />}
+              onClick={() => setImageUrl('')}
+              disabled={!imageUrl || isLoading}
+              className={style.deleteButton}
+            >
+              Удалить
+            </Button>
+          </Box>
+        </Box>
+
+        <Typography variant="body2" className={style.imageHint}>
+          Максимальный размер файла: 1MB. Для сжатия изображений используйте{' '}
+          <a href="https://www.iloveimg.com/ru/compress-image" target="_blank" rel="noopener noreferrer">
+            онлайн-инструмент
+          </a>.
         </Typography>
-        <Typography sx={{
-          fontFamily: "SourceCodePro-Light",
-          fontSize: "18px",
-          lineHeight: "100%",
-          letterSpacing: "0%",
-          textAlign: "left",
-          width: "500px",
-          color: "rgba(174, 174, 174, 0.759)"
-        }} style={{ marginTop: "50px" }}>
-          Инструкция, как пользоваться редактором {<a href="https://paulradzkov.com/2014/markdown_cheatsheet/" target="_blank">Перейти к инструкции</a>}
+      </Paper>
+
+      <Paper elevation={3} className={style.section}>
+        <Typography variant="h6" className={style.sectionTitle}>
+          Основная информация
         </Typography>
+
+        <TextField
+          label="Заголовок поста"
+          variant="outlined"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          fullWidth
+          className={style.textField}
+        />
+
+        <TextField
+          label="Краткое описание"
+          variant="outlined"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          fullWidth
+          multiline
+          rows={3}
+          className={style.textField}
+        />
+      </Paper>
+
+      <Paper elevation={3} className={style.section}>
+        <Box className={style.editorHeader}>
+          <Typography variant="h6" className={style.sectionTitle}>
+            Содержание поста
+          </Typography>
+
+          <Button
+            variant="text"
+            startIcon={<Help />}
+            href="https://paulradzkov.com/2014/markdown_cheatsheet/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={style.helpButton}
+          >
+            Справка по Markdown
+          </Button>
+        </Box>
+
         <MDEditor
           value={text}
           onChange={setText}
           height={500}
+          className={style.editor}
         />
-      </div>
-      <div>
-        <div style={{
-          display: "flex", gap: "15px", alignItems: "center", marginBottom: "30px"
-        }}>
-          <div style={{
-            flexDirection: "column"
-          }} className={style.inputAndButton}>
-            <Typography sx={{ marginBottom: "0", ...styleSubTitile }} style={{ marginTop: "50px" }}>
-              Загрузить фото для галлереи
-            </Typography>
-            <input onChange={(e) => { setPhotoURL(e.target.value) }} style={styleInput} placeholder="Ссылка на фото" />
-            <button onClick={() => inputPhotoRef.current.click()} className={style.btnUpload}>Обзор</button>
-            <input ref={inputPhotoRef} type="file" onChange={handleAddImage} hidden />
-          </div>
-          <Typography sx={{
-            fontFamily: "SourceCodePro-Light",
-            fontSize: "18px",
-            lineHeight: "100%",
-            letterSpacing: "0%",
-            textAlign: "left",
-            width: "300px",
-            color: "rgba(174, 174, 174, 0.759)"
-          }} style={{ marginTop: "50px" }}>
-            Загружаемый файл не должен привышать размер в 1 мб и должен иметь уникальное имя. Чтобы сжать изображение воспользуйтесь ресурсом: <a href="https://www.iloveimg.com/ru/compress-image" target="_blank">Перейти на ресурс сжатия фото</a>
-          </Typography>
-        </div>
-        <Typography
-          sx={{
-            fontFamily: "SourceCodePro-Regular",
-            fontSize: "22px",
-            lineHeight: "100%",
-            letterSpacing: "0%",
-            textAlign: "left",
-          }}
-        >Загруженные файлы:</Typography>
-        {photoMapList}
-      </div>
-      <button onClick={onSubmit} className={style.savePost}>Cохранить и вернуться назад!</button>
-    </div>
-  )
-}
+      </Paper>
 
-export default EditPost
+      <Paper elevation={3} className={style.section}>
+        <Typography variant="h6" className={style.sectionTitle}>
+          Галерея изображений
+        </Typography>
+
+        <Box className={style.galleryControls}>
+          <input
+            accept="image/*"
+            id="gallery-image-upload"
+            type="file"
+            onChange={(e) => handleUploadImage(e, true)}
+            hidden
+          />
+
+          <label htmlFor="gallery-image-upload">
+            <Button
+              component="span"
+              variant="outlined"
+              startIcon={<Image />}
+              className={style.uploadButton}
+              disabled={isLoading}
+            >
+              Добавить в галерею
+            </Button>
+          </label>
+        </Box>
+
+        {galleryUrls.length > 0 ? (
+          <Box className={style.galleryGrid}>
+            {galleryUrls.map((url, index) => (
+              <Box key={index} className={style.galleryItem}>
+                <img src={url} alt={`Галерея ${index}`} className={style.galleryImage} />
+                <IconButton
+                  onClick={() => handleRemoveGalleryImage(url)}
+                  className={style.deleteGalleryButton}
+                >
+                  <Delete fontSize="small" />
+                </IconButton>
+              </Box>
+            ))}
+          </Box>
+        ) : (
+          <Typography variant="body2" className={style.emptyGallery}>
+            В галерее пока нет изображений
+          </Typography>
+        )}
+      </Paper>
+
+      <Box className={style.actionButtons}>
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          startIcon={<Save />}
+          onClick={handleSubmit}
+          disabled={isLoading || !title || !text}
+          className={style.submitButton}
+        >
+          {isLoading ? 'Сохранение...' : 'Сохранить пост'}
+        </Button>
+      </Box>
+    </motion.div>
+  );
+};
+
+export default EditPost;

@@ -1,52 +1,62 @@
-import style from './style.module.css'
+import style from './style.module.css';
 import { useEffect } from 'react';
-import CardPost from "./cardPost"
-import { Typography } from '@mui/material'
-import { useDispatch, useSelector } from 'react-redux'; 
-import { fetchPosts } from '../../../redux/slices/posts'
+import CardPost from "./cardPost";
+import { Typography, Grid, Button } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPosts } from '../../../redux/slices/posts';
 import PostLoading from '../skeleton/skeleton';
+import { Add } from '@mui/icons-material';
+import { motion } from 'framer-motion';
 
 function CardList() {
     const dispatch = useDispatch();
-    const { posts } = useSelector((state) => state.posts)
+    const { posts } = useSelector((state) => state.posts);
     const isLoadingPosts = posts.status === 'loading';
 
     useEffect(() => {
-        dispatch(fetchPosts()) //Производим экщон (параметр функция из слайса постс);
-      },[])
+        dispatch(fetchPosts());
+    }, []);
 
+    return (
+        <div className={style.container}>
+            <div className={style.header}>
+                <Typography variant="h4" className={style.title}>
+                    Управление постами
+                </Typography>
+                <Button
+                    variant="contained"
+                    startIcon={<Add />}
+                    className={style.createButton}
+                    href="/admin/create"
+                >
+                    Новый пост
+                </Button>
+            </div>
 
-    return ( 
-    <>
-    <Typography sx={{
-        fontFamily: "SourceCodePro-SemiBold",
-        fontSize: "24px",
-        lineHeight: "100%",
-        letterSpacing: "0%",
-        textAlign: "left",
-        textTransform: "uppercase",
-        textAlign: "center",
-        marginTop: "27px",
-        marginBottom: "60px"
-    }}>
-    Редактирование и удаление постов
-    </Typography>
-    <div className={style.listBlock}>
-    {(isLoadingPosts ? [...Array(9)] : posts.items).map((e) =>
-        isLoadingPosts ? (
-            <PostLoading/>
-        ) : (
-            <CardPost
-                id={e.id}
-                title={e.title}
-                UrlImage={e.imageUrl}
-                description={e.description}
-            />
-        )
-    )}
-    </div>
-    </>
-    )
+            <Grid container spacing={3} className={style.postsGrid}>
+                {(isLoadingPosts ? [...Array(9)] : posts.items).map((post, index) => (
+                    <Grid item xs={12} sm={6} md={4} key={isLoadingPosts ? index : post.id}>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.05 }}
+                        >
+                            {isLoadingPosts ? (
+                                <PostLoading />
+                            ) : (
+                                <CardPost
+                                    id={post.id}
+                                    title={post.title}
+                                    UrlImage={post.imageUrl}
+                                    description={post.description}
+                                />
+                            )}
+                        </motion.div>
+                    </Grid>
+                ))}
+            </Grid>
+        </div>
+    );
 }
 
-export default CardList
+export default CardList;

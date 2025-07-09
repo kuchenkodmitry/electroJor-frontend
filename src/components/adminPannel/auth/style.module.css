@@ -1,108 +1,122 @@
-.authBox {
-    width: 509px;
-    height: 331px;
+/* Основные стили */
+.authContainer {
     display: flex;
-    flex-direction: column;
-    padding: 16px 18px 16px 18px;
-    border: 2px solid rgb(0, 0, 0);
-    box-shadow: -4px 4px 0px 0px rgb(0, 0, 0);
-    background: rgb(255, 255, 255);
-    margin: 150px auto 0;
-}
-
-
-.inputBox {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    width: 480px;
-    justify-content: space-between;
-}
-
-.inputS {
-    box-sizing: border-box;
-    border: 1px solid rgb(226, 225, 229);
-    border-radius: 5px;
-    width: 250px;
-    outline: none;
-    outline-offset: 0;
-    background: rgb(255, 255, 255);
-    margin-bottom: 10px;
-    /* Frame */
-height: 40px;
-/* Автолейаут */
-padding: 5px 15px 5px 15px;
-
-
-}
-
-.fromAuth {
-    margin-top: 75px;
-}
-
-.auth {
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-}
-.button{
-    /* Button */
-width: 331px;
-height: 34px;
-/* Автолейаут */
-padding: 11px 8px 11px 8px;
-/* Inside Auto Layout */
-flex: none;
-order: 0;
-flex-grow: 0;
-box-sizing: border-box;
-border: 2px solid rgb(0, 0, 0);
-box-shadow: -4px 4px 0px 0px rgb(0, 0, 0);
-background: rgb(255, 255, 255);
-font-size: 16px;
-font-weight: 600;
-line-height: 100%;
-letter-spacing: 0%;
-text-align: center;
-
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
-.button:hover{
-    box-sizing: border-box;
-border: 2px solid rgb(0, 0, 0);
-box-shadow: -6px 6px 0px 0px rgb(0, 0, 0);
-background: rgb(255, 255, 255);
+.authCard {
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.userIsAuth{
-    box-sizing: border-box;
-border: 2px solid rgb(0, 0, 0);
-box-shadow: -4px 4px 0px 0px rgb(0, 0, 0);
-background: rgb(255, 255, 255);
-display: flex;
-align-items: center;
-/* Button */
-position: relative;
-width: 276px;
-height: 60px;
-top: 42px;
+.authTitle {
+    margin-bottom: 30px;
+    font-weight: 600 !important;
+    color: #2d3748;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
-.btnIsAuth{
-cursor: pointer;
-border: 2px solid rgb(0, 0, 0);
-box-shadow: -4px 4px 0px 0px rgb(0, 0, 0);
-background: rgb(255, 255, 255);
-width: 108px;
-height: 34px;
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 16px 18px 14px 18px;
-font-family: "SourceCodePro-SemiBold";
-font-size: 16px;
-line-height: 100%;
-letter-spacing: 0%;
-text-align: center;
+
+.authIcon {
+    font-size: 28px !important;
+    color: #4c51bf;
+}
+
+.authForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.inputIcon {
+    color: #a0aec0;
+    margin-right: 10px;
+}
+
+.submitButton {
+    margin-top: 20px !important;
+    padding: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px;
+    text-transform: none;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.submitButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Стили для авторизованного пользователя */
+.userIsAuth {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 12px;
+    padding: 12px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.greeting {
+    font-weight: 500 !important;
+    color: #2d3748;
+}
+
+.logoutBtn {
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+}
+
+/* Анимации и адаптивность */
+@media (max-width: 600px) {
+    .authCard {
+        padding: 30px 20px;
+    }
+
+    .userIsAuth {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+    }
+
+    .userInfo {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Эффекты для полей ввода */
+.MuiOutlinedInput-root {
+    border-radius: 8px !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #4c51bf !important;
+    border-width: 2px !important;
+}
+
+.MuiFormLabel-root.Mui-focused {
+    color: #4c51bf !important;
 }

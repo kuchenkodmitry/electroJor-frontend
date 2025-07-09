@@ -1,79 +1,57 @@
-import { useEffect } from "react"
-import style from "./style.module.css"
-import FullPost from "../fullPost"
-import { useParams } from "react-router-dom"
-import CardList from '../post/cardList'
-import EditPost from "../post/edit"
-import EditPhone from "../phone/edit"
-import EditPassword from "../password/edit"
-import { Typography } from "@mui/material"
+import { useEffect } from "react";
+import style from "./style.module.css";
+import FullPost from "../fullPost";
+import { useParams } from "react-router-dom";
+import CardList from '../post/cardList';
+import EditPost from "../post/edit";
+import EditPhone from "../phone/edit";
+import EditPassword from "../password/edit";
+import { Typography, Box } from "@mui/material";
+import { ElectricBolt } from "@mui/icons-material";
 
 function ContentArea() {
-    const { params } = useParams()
+    const { params } = useParams();
 
-    if(params != undefined) {
-        if (params == 'create') {
+    const renderContent = () => {
+        if (!params) {
             return (
-                <div className={style.areaBox}>
-                    <EditPost/>
-                </div>
-            )
+                <Box className={style.welcomeContainer}>
+                    <ElectricBolt className={style.welcomeIcon} />
+                    <Typography variant="h4" className={style.welcomeTitle}>
+                        Панель управления
+                    </Typography>
+                    <Typography variant="subtitle1" className={style.welcomeSubtitle}>
+                        Выберите раздел для редактирования в меню слева
+                    </Typography>
+                </Box>
+            );
         }
-        if (params == 'posts') {
-            return (
-                <div className={style.areaBox}>
-                    <CardList/>
-                </div>
-            )
+
+        switch (true) {
+            case params === 'create':
+                return <EditPost />;
+            case params === 'posts':
+                return <CardList />;
+            case params === 'phone':
+                return <EditPhone />;
+            case params === 'password':
+                return <EditPassword />;
+            case params.includes('full'):
+                return <FullPost id={params.split("-")[1]} />;
+            case params.includes('edit'):
+                return <EditPost id={params.split("-")[1]} />;
+            default:
+                return null;
         }
-        if (params == 'phone') {
-            return (
-                <div className={style.areaBox}>
-                    <EditPhone/>
-                </div>
-            )
-        }
-        if (params == 'password') {
-            return (
-                <div className={style.areaBox}>
-                    <EditPassword/>
-                </div>
-            )
-        }
-        if (params.includes('full')) {
-            const _id = params.split("-")[1]
-            return (
-                <div className={style.areaBox}>
-                    <FullPost/>
-                </div>
-            )
-        }
-        if (params.includes('edit')) {
-            const _id = params.split("-")[1]
-            return (
-                <div className={style.areaBox}>
-                    <EditPost/>
-                </div>
-            )
-        }
-    }
+    };
 
     return (
-        <div className={style.areaBox}>
-            <Typography sx={{
-            fontFamily: "SourceCodePro-SemiBold",
-            fontSize: "24px",
-            lineHeight: "100%",
-            letterSpacing: "0%",
-            textAlign: "left",
-            textTransform: "uppercase",
-            textAlign: "center",
-            marginTop: "27px",
-            marginBottom: "60px"
-        }}>
-        Выбери, что будем редактировать
-        </Typography>
+        <div className={style.contentArea}>
+            <div className={style.contentContainer}>
+                {renderContent()}
+            </div>
         </div>
-    )
+    );
 }
-export default ContentArea
+
+export default ContentArea;

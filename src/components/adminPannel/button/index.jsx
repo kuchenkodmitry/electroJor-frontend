@@ -1,21 +1,30 @@
-import { Link } from "react-router-dom"
-import style from "./style.module.css"
-import { Typography } from "@mui/material"
+import { Link } from "react-router-dom";
+import style from "./style.module.css";
+import { Typography } from "@mui/material";
+import { forwardRef } from "react";
 
-function Button({icon, text, path}) {
+const Button = forwardRef(({ icon, text, path, color = "#4e73df" }, ref) => {
+    const hoverColor = `${color}30`; // Добавляем прозрачность для hover эффекта
 
     return (
-        <Link style={{}} className={style.muneBtn} to={path}>
-            <img width="19px" src={icon} alt="" />
-            <Typography sx={{
-                width: "190px",
-                fontFamily: "SourceCodePro-SemiBold",
-                fontSize: "18px"
-            }} className={style.text}>
-            {text}
+        <Link
+            to={path}
+            className={style.menuBtn}
+            style={{
+                '--btn-color': color,
+                '--hover-color': hoverColor,
+            }}
+            ref={ref}
+        >
+            <div className={style.iconContainer}>
+                <img src={icon} alt={`${text} icon`} className={style.btnIcon} />
+            </div>
+            <Typography variant="body1" className={style.btnText}>
+                {text}
             </Typography>
+            <div className={style.arrowIcon}>&rarr;</div>
         </Link>
-    )
-}
+    );
+});
 
-export default Button
+export default Button;

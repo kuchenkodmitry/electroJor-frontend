@@ -1,0 +1,174 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.backButton {
+    margin-right: 2rem;
+    text-transform: none !important;
+    font-weight: 500 !important;
+}
+
+.title {
+    font-weight: 700 !important;
+    color: #2d3748;
+}
+
+.alert {
+    margin-bottom: 2rem;
+}
+
+.section {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 12px !important;
+}
+
+.sectionTitle {
+    font-weight: 600 !important;
+    color: #2d3748;
+    margin-bottom: 1.5rem !important;
+}
+
+.imageSection {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+    .imageSection {
+        flex-direction: column;
+    }
+}
+
+.imagePreview {
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.previewImage {
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.imageCaption {
+    color: #718096;
+}
+
+.imageControls {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.uploadButton {
+    align-self: flex-start;
+    text-transform: none !important;
+}
+
+.urlInput {
+    margin-top: 1rem !important;
+}
+
+.deleteButton {
+    align-self: flex-start;
+    text-transform: none !important;
+}
+
+.imageHint {
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+.textField {
+    margin-bottom: 1.5rem !important;
+}
+
+.editorHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.helpButton {
+    text-transform: none !important;
+}
+
+.editor {
+    margin-top: 1rem;
+}
+
+.galleryControls {
+    margin-bottom: 1.5rem;
+}
+
+.galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.galleryItem {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.galleryImage {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.deleteGalleryButton {
+    position: absolute !important;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    color: #e53e3e !important;
+}
+
+.emptyGallery {
+    color: #718096;
+    text-align: center;
+    padding: 1rem;
+}
+
+.actionButtons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.submitButton {
+    padding: 0.8rem 2rem !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    border-radius: 8px !important;
+}
+
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    gap: 1rem;
+}

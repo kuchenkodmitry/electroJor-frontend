@@ -2,29 +2,36 @@ import style from "./style.module.css";
 import logo from '../images/logoAdmin.png';
 import { Typography } from "@mui/material";
 import { Link } from 'react-router-dom';
+import { ElectricBolt, ExitToApp } from "@mui/icons-material";
 
 function Header() {
     return (
-        <div className={style.contentBox}>
-            <div className={style.flexLogo}>
-                <img src={logo} alt="admin logo" />
-                <div className={style.logoText}>
-                    <Typography
-                        sx={{ fontFamily: 'Inter-SemiBold', fontSize: '28px' }}
-                        className={style.logoTitle}
-                    >
-                        ЭлектроЖор
-                    </Typography>
-                    <Typography
-                        sx={{ fontFamily: 'Inter-ExtraLight', fontSize: '20px' }}
-                        className={style.logoDescription}
-                    >
-                        Управление сайтом
-                    </Typography>
+        <header className={style.adminHeader}>
+            <div className={style.headerContainer}>
+                <div className={style.brandWrapper}>
+                    <div className={style.logoContainer}>
+                        <ElectricBolt className={style.logoIcon} />
+                        <img src={logo} alt="Логотип ЭлектроЖор" className={style.logoImage} />
+                    </div>
+                    <div className={style.brandText}>
+                        <Typography variant="h4" className={style.brandTitle}>
+                            ЭлектроЖор
+                            <span className={style.brandBadge}>ADMIN</span>
+                        </Typography>
+                        <Typography variant="subtitle1" className={style.brandSubtitle}>
+                            Панель управления сайтом
+                        </Typography>
+                    </div>
                 </div>
+
+                <Link to="/" className={style.returnButton}>
+                    <ExitToApp className={style.buttonIcon} />
+                    <span>На сайт</span>
+                </Link>
             </div>
-            <Link className={style.button} to="/">Вернуться на сайт</Link>
-        </div>
+
+            <div className={style.headerDivider}></div>
+        </header>
     );
 }
 
