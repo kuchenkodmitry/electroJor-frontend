@@ -112,6 +112,26 @@
     margin-bottom: 1rem !important;
 }
 
+.markdown {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #1a202c;
+    word-break: break-word;
+}
+
+.markdown ul {
+    margin-left: 20px;
+    list-style-type: disc;
+}
+
+.markdown code {
+    background-color: #f4f4f4;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: "Source Code Pro", monospace;
+}
+
 @media (max-width: 768px) {
     .postContainer {
         padding: 1rem;
@@ -123,5 +143,4 @@
 
     .postDescription {
         font-size: 1rem !important;
-    }
-}
+    }}

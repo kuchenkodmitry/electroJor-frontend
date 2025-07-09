@@ -3,6 +3,8 @@ import axios from "../../../axios/axios";
 import { useParams } from "react-router-dom";
 import { Typography, Box, CircularProgress, Container } from "@mui/material";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import { ElectricBolt, ErrorOutline } from "@mui/icons-material";
 import style from "./style.module.css";
 
@@ -93,7 +95,10 @@ function FullPost() {
 
                 <Box className={style.markdownContainer}>
                     <ReactMarkdown
+                        className={style.markdown}
                         children={postData.text}
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw]}
                         components={{
                             img: ({ node, ...props }) => (
                                 <img {...props} style={{ maxWidth: '100%', borderRadius: '8px' }} alt="" />
