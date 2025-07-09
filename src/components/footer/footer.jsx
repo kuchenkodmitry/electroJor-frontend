@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 import { phoneDigits } from "../../utils/phone";
 import {
     Phone, Email, LocationOn, AccessTime,
-    WhatsApp, Telegram, Instagram, Facebook
+    WhatsApp, Telegram, Instagram, Facebook,
+    Copyright, Policy, Description
 } from '@mui/icons-material';
 import Logo from "./images/logo.png";
 
@@ -15,22 +16,23 @@ function Footer() {
             {/* Верхняя часть футера */}
             <Box className={styled.topSection}>
                 <Box className={styled.logoColumn}>
-                    <img src={Logo} alt="ЭлектроЖор" className={styled.logo} />
-                    <Typography variant="h6" className={styled.tagline}>
-                        Профессиональные электромонтажные решения
-                    </Typography>
+                    <Box className={styled.logoWrapper}>
+                        <img src={Logo} alt="ЭлектроЖор" className={styled.logo} />
+                        <div>
+                            <Typography sx={{ fontSize: '24px' }} variant="h2" className={styled.brandName}>
+                                ЭлектроЖор
+                            </Typography>
+                            <Typography variant="subtitle2" className={styled.tagline}>
+                                Профессиональные электромонтажные решения
+                            </Typography>
+                        </div>
+                    </Box>
                     <Box className={styled.socialIcons}>
                         <a href={`https://wa.me/${phoneDigits(phone)}`} className={styled.socialLink}>
                             <WhatsApp className={styled.icon} />
                         </a>
                         <a href={`https://t.me/+${phoneDigits(phone)}`} className={styled.socialLink}>
                             <Telegram className={styled.icon} />
-                        </a>
-                        <a href="https://vk.com/elektriks34" className={styled.socialLink}>
-                            <Facebook className={styled.icon} />
-                        </a>
-                        <a href="#" className={styled.socialLink}>
-                            <Instagram className={styled.icon} />
                         </a>
                     </Box>
                 </Box>
@@ -66,7 +68,7 @@ function Footer() {
                         href={`tel:${phoneDigits(phone)}`}
                         startIcon={<Phone />}
                     >
-                        Заказать звонок
+                        Связаться с нами
                     </Button>
                 </Box>
             </Box>
@@ -74,11 +76,15 @@ function Footer() {
             {/* Нижняя часть футера */}
             <Box className={styled.bottomSection}>
                 <Typography className={styled.copyright}>
-                    © {new Date().getFullYear()} ЭлектроЖор. Все права защищены.
+                    <Copyright fontSize="small" /> {new Date().getFullYear()} Электрофор. Все права защищены.
                 </Typography>
                 <Box className={styled.links}>
-                    <a href="#" className={styled.footerLink}>Политика конфиденциальности</a>
-                    <a href="#" className={styled.footerLink}>Договор оферты</a>
+                    <a href="#" className={styled.footerLink}>
+                        <Policy fontSize="small" /> Политика конфиденциальности
+                    </a>
+                    <a href="#" className={styled.footerLink}>
+                        <Description fontSize="small" /> Договор оферты
+                    </a>
                 </Box>
             </Box>
         </footer>
