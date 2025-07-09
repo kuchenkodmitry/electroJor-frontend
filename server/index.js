@@ -37,7 +37,8 @@ const upload = multer({
   limits: { fileSize: 50 * 1024 * 1024 },
 });
 
-app.use(express.json());
+// Allow large JSON payloads (e.g. when sending long posts)
+app.use(express.json({ limit: '50mb' }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -261,22 +262,31 @@ app.delete('/api/posts/:id', authMiddleware, async (req, res) => {
   res.json({ message: 'Post deleted', doc: post });
 });
 
-app.post('/api/uploads', authMiddleware, upload.single('image'), async (req, res) => {
-  try {
-    if (!req.file) return res.status(400).json({ message: 'No file uploaded' });
+app.post('/api/uploads', authMiddleware, (req, res) => {
+  upload.single('image')(req, res, async (err) => {
+    if (err instanceof multer.MulterError && err.code === 'LIMIT_FILE_SIZE') {
+      return res.status(400).json({ message: 'File too big. Max 50MB allowed.' });
+    } else if (err) {
+      console.error('Upload error', err);
+      return res.status(500).json({ message: 'Upload failed' });
+    }
 
-    const filePath = path.join(req.file.destination, req.file.filename);
-    await sharp(filePath)
-      .resize({ width: 1920, withoutEnlargement: true })
-      .jpeg({ quality: 80 })
-      .toBuffer()
-      .then((data) => fs.writeFileSync(filePath, data));
+    try {
+      if (!req.file) return res.status(400).json({ message: 'No file uploaded' });
 
-    res.json({ url: `/uploads/${req.file.filename}` });
-  } catch (e) {
-    console.error('Image processing error', e);
-    res.status(500).json({ message: 'Upload failed' });
-  }
+      const filePath = path.join(req.file.destination, req.file.filename);
+      await sharp(filePath)
+        .resize({ width: 1920, withoutEnlargement: true })
+        .jpeg({ quality: 80 })
+        .toBuffer()
+        .then((data) => fs.writeFileSync(filePath, data));
+
+      res.json({ url: `/uploads/${req.file.filename}` });
+    } catch (e) {
+      console.error('Image processing error', e);
+      res.status(500).json({ message: 'Upload failed' });
+    }
+  });
 });
 
 // 🧱 Отдача фронта
