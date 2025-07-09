@@ -278,6 +278,11 @@ const EditPost = () => {
           value={text}
           onChange={setText}
           height={500}
+          preview="live"
+          visibleDragbar={false}
+          textareaProps={{
+            placeholder: 'Введите текст поста...'
+          }}
           className={style.editor}
         />
       </Paper>
