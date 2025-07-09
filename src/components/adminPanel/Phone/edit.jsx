@@ -22,7 +22,7 @@ function EditPhone() {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <Typography
         sx={{
           fontFamily: "SourceCodePro-SemiBold",
