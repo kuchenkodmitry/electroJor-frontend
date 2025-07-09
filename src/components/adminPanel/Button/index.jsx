@@ -3,7 +3,7 @@ import style from "./style.module.css";
 import { Typography } from "@mui/material";
 import { forwardRef } from "react";
 
-const Button = forwardRef(({ icon, text, path, color = "#4e73df" }, ref) => {
+const Button = forwardRef(({ Icon, text, path, color = "#4e73df" }, ref) => {
     const hoverColor = `${color}30`; // Добавляем прозрачность для hover эффекта
 
     return (
@@ -17,7 +17,7 @@ const Button = forwardRef(({ icon, text, path, color = "#4e73df" }, ref) => {
             ref={ref}
         >
             <div className={style.iconContainer}>
-                <img src={icon} alt={`${text} icon`} className={style.btnIcon} />
+                {Icon && <Icon className={style.btnIcon} />}
             </div>
             <Typography variant="body1" className={style.btnText}>
                 {text}
@@ -26,5 +26,4 @@ const Button = forwardRef(({ icon, text, path, color = "#4e73df" }, ref) => {
         </Link>
     );
 });
-
 export default Button;
