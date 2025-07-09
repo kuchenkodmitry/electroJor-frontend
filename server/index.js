@@ -121,6 +121,20 @@ app.get('/api/me', authMiddleware, async (req, res) => {
   res.json(user);
 });
 
+// 🔄 Смена пароля
+app.put('/api/password', authMiddleware, async (req, res) => {
+  const { oldPassword = '', newPassword = '' } = req.body;
+  const user = await db.get('SELECT * FROM users WHERE id = ?', req.userId);
+  if (!user) return res.status(404).json({ message: 'User not found' });
+
+  const isValid = await bcrypt.compare(oldPassword, user.password);
+  if (!isValid) return res.status(400).json({ message: 'Wrong password' });
+
+  const hash = await bcrypt.hash(newPassword, 10);
+  await db.run('UPDATE users SET password = ? WHERE id = ?', hash, req.userId);
+  res.json({ message: 'Password updated' });
+});
+
 // ❓ Проверка наличия админа
 app.get('/api/admin-exists', async (req, res) => {
   const row = await db.get('SELECT 1 FROM users LIMIT 1');
