@@ -72,7 +72,17 @@ const btnData = [
         btn: [
             {
                 ImageUrl: Party,
-                btnName: "Изменить описание и фото" 
+                btnName: "Изменить описание и фото"
+            },
+        ]
+    },
+    {
+        menuTitle: "Управление аккаунтом:",
+        btn: [
+            {
+                ImageUrl: Direction,
+                btnName: "Сменить пароль",
+                linkTo: '/admin/password'
             },
         ]
     },
@@ -116,5 +126,4 @@ function Menu() {
         })}
         </div>
     )
-}
-export default Menu
+}export default Menu

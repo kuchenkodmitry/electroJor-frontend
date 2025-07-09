@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom"
 import CardList from '../post/cardList'
 import EditPost from "../post/edit"
 import EditPhone from "../phone/edit"
+import EditPassword from "../password/edit"
 import { Typography } from "@mui/material"
 
 function ContentArea() {
@@ -29,6 +30,13 @@ function ContentArea() {
             return (
                 <div className={style.areaBox}>
                     <EditPhone/>
+                </div>
+            )
+        }
+        if (params == 'password') {
+            return (
+                <div className={style.areaBox}>
+                    <EditPassword/>
                 </div>
             )
         }
@@ -68,5 +76,4 @@ function ContentArea() {
         </div>
     )
 }
-
 export default ContentArea

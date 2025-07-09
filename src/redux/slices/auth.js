@@ -16,6 +16,11 @@ export const fetchRegister = createAsyncThunk('auth/fetchRegister' ,  async (par
     return data
 })
 
+export const changePassword = createAsyncThunk('auth/changePassword', async (params) => {
+    const { data } = await axios.put('/password', params)
+    return data
+})
+
 
 const initialState = {
     data: null,
@@ -85,6 +90,18 @@ const authSlice = createSlice({
         builder.addCase(fetchRegister.rejected, (state) => { // rejected - если ошибка
             state.status = 'error';
             state.data = null;
+        });
+
+        builder.addCase(changePassword.pending, (state) => {
+            state.status = 'loading';
+        });
+
+        builder.addCase(changePassword.fulfilled, (state) => {
+            state.status = 'loaded';
+        });
+
+        builder.addCase(changePassword.rejected, (state) => {
+            state.status = 'error';
         });
     }
 })
