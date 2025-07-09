@@ -1,118 +1,171 @@
-.linkWorks {
-    display: flex;
-    flex-direction: column;
+/* footer.module.css */
+
+.footerContainer {
+    background-color: #1a202c;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    padding: 60px 20px 30px;
 }
 
-.sections {
-    display: flex;
-    flex-direction: column;
-}
-
-.footerInfo {
-    display: flex;
-    flex-direction: column;
-}
-
-.footerFlex {
-    display: flex;
-    flex-direction: row;
-    width: 1200px;
-    margin: 0 auto;
-    justify-content: space-between;
-    line-height: 30px;
-}
-
-.footerFlex a {
-    text-decoration: none;
-    color: #0016A1;
-}
-
-.socialBtn {
+.topSection {
     display: grid;
-    gap: 30px;
-    grid-template-columns: .1fr .1fr .1fr;
-    margin-top: 30px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.logoWithSocial {
-    width: 300px;
-}
-
-.logoText {
+.logoColumn {
     display: flex;
     flex-direction: column;
-    gap: 0px;
-    align-items: end;
-    justify-content: end;
+    gap: 20px;
 }
 
-.logoContent {
+.logo {
+    width: 180px;
+    height: auto;
+    /* filter: brightness(0) invert(1); */
+}
+
+.tagline {
+    font-weight: 500;
+    color: #a0aec0;
+    line-height: 1.5;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.socialLink {
+    color: #a0aec0;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 30px;
-    cursor: pointer;
+    justify-content: center;
 }
 
-.footerInfoFlex {
+.socialLink:hover {
+    color: #4299e1;
+    transform: translateY(-3px);
+}
+
+.icon {
+    font-size: 24px !important;
+}
+
+.sectionTitle {
+    font-weight: 600;
+    margin-bottom: 20px !important;
+    color: white;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.sectionTitle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4299e1;
+}
+
+.contactsColumn,
+.hoursColumn {
     display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contactItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.contactIcon {
+    color: #4299e1;
+    font-size: 24px !important;
+    margin-top: 2px;
+}
+
+.contactText {
+    font-weight: 400;
+    color: #e2e8f0;
+    line-height: 1.5;
+}
+
+.callButton {
+    margin-top: 20px !important;
+    background-color: #4299e1 !important;
+    color: white !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.callButton:hover {
+    background-color: #3182ce !important;
+    transform: translateY(-2px);
+}
+
+.bottomSection {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 5px;
-    color: #1C274C;
-    margin-bottom: 17px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 30px auto 0;
+    text-align: center;
 }
 
-@media screen and (max-width : 1024px) {
-    .footerFlex {
-        display: block;
-        flex-direction: row;
-        width: 100%;
-        margin: 0 auto;
-        justify-content: space-between;
+.copyright {
+    color: #a0aec0;
+    font-size: 14px;
+}
 
-    }
+.links {
+    display: flex;
+    gap: 20px;
+}
 
-    .footerInfo {
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-        width: 260px;
-    }
+.footerLink {
+    color: #a0aec0;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
 
-    .socialBtn {
-        display: grid;
+.footerLink:hover {
+    color: #4299e1;
+    text-decoration: underline;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .topSection {
+        grid-template-columns: 1fr;
         gap: 30px;
-        grid-template-columns: .1fr .1fr .1fr;
-        margin-top: 30px;
-        margin: 0 auto;
     }
-}
 
-@media screen and (max-width : 800px) {
-    .footerFlex {
-        display: block;
-        flex-direction: row;
+    .sectionTitle {
+        margin-bottom: 15px !important;
+    }
+
+    .callButton {
         width: 100%;
-        margin: 0 auto;
-        justify-content: space-between;
-
     }
 
-    .footerInfo {
-        display: flex;
+    .links {
         flex-direction: column;
-        margin: 0 auto;
-        width: 260px;
-    }
-
-    .socialBtn {
-        display: grid;
-        gap: 30px;
-        grid-template-columns: .1fr .1fr .1fr;
-        margin-top: 30px;
-        margin: 0 auto;
+        gap: 10px;
     }
 }
-
-@media screen and (max-width : 420px) {}
