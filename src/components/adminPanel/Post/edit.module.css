@@ -112,6 +112,17 @@
 
 .editor {
     margin-top: 1rem;
+    width: 100%;
+}
+
+/* Prevent the markdown editor from growing horizontally when typing */
+.editor :global(.w-md-editor) {
+    width: 100% !important;
+}
+
+.editor :global(textarea) {
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 .galleryControls {
