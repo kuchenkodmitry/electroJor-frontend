@@ -10,7 +10,7 @@ import TelegramIco from '../buttons/img/TelegramIcon.png'
 import PhoneIco from '../buttons/img/PhoneIcon.png'
 import { useForm } from "react-hook-form";
 import vkIco from "./img/download.png"
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from './logo.png';
@@ -18,12 +18,15 @@ import { useSelector } from "react-redux";
 import { phoneDigits, maskPhoneInput } from "../../utils/phone";
 import axios from "../../axios/axios";
 
+
 function InfoHeader() {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
     const phone = useSelector((state) => state.settings.phone);
-
+    const handleMobileMenuClose = () => {
+        setMobileMenuOpen(false);
+    };
     async function onSubmit(data) {
         try {
             await axios.post('/feedback', data);
@@ -73,21 +76,31 @@ function InfoHeader() {
             </div>
 
             {/* Мобильное меню */}
-            {isMobile && mobileMenuOpen && (
-                <motion.div
-                    className={s.mobileMenu}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                >
-                    <a href="#uslugi" className={s.mobileNavLink} onClick={toggleMobileMenu}>Услуги</a>
-                    <a href="#about" className={s.mobileNavLink} onClick={toggleMobileMenu}>О компании</a>
-                    <a href="#works" className={s.mobileNavLink} onClick={toggleMobileMenu}>Наши работы</a>
-                    <a href="#footer" className={s.mobileNavLink} onClick={toggleMobileMenu}>Контакты</a>
-                    <Link to="/admin" className={s.mobileNavLink} onClick={toggleMobileMenu}>Админ панель</Link>
-                    <a href={`tel:+${phoneDigits(phone)}`} className={s.mobilePhoneLink}>Позвонить: {phone}</a>
-                </motion.div>
-            )}
+            <AnimatePresence>
+                {isMobile && mobileMenuOpen && (
+                    <motion.div
+                        className={s.mobileMenu}
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
+                        style={{
+                            position: 'fixed',
+                            top: '70px', // Высота вашего хедера
+                            left: 0,
+                            right: 0,
+                            zIndex: 1000
+                        }}
+                    >
+                        <a href="#uslugi" className={s.mobileNavLink} onClick={handleMobileMenuClose}>Услуги</a>
+                        <a href="#about" className={s.mobileNavLink} onClick={handleMobileMenuClose}>О компании</a>
+                        <a href="#works" className={s.mobileNavLink} onClick={handleMobileMenuClose}>Наши работы</a>
+                        <a href="#footer" className={s.mobileNavLink} onClick={handleMobileMenuClose}>Контакты</a>
+                        <Link to="/admin" className={s.mobileNavLink} onClick={handleMobileMenuClose}>Админ панель</Link>
+                        <a href={`tel:+${phoneDigits(phone)}`} className={s.mobilePhoneLink} onClick={handleMobileMenuClose}>Позвонить: {phone}</a>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             <div className={s.contentWrapper}>
                 {/* Левый блок - информация о компании */}
