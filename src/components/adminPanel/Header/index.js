@@ -2,9 +2,9 @@ import style from "./style.module.css";
 import logo from '../images/logoAdmin.png';
 import { Typography } from "@mui/material";
 import { Link } from 'react-router-dom';
-import { ElectricBolt, ExitToApp } from "@mui/icons-material";
+import { ElectricBolt, ExitToApp, Menu as MenuIcon } from "@mui/icons-material";
 
-function Header() {
+function Header({ onMenuToggle }) {
     return (
         <header className={style.adminHeader}>
             <div className={style.headerContainer}>
@@ -23,7 +23,9 @@ function Header() {
                         </Typography>
                     </div>
                 </div>
-
+                <div className={style.burger} onClick={onMenuToggle}>
+                    <MenuIcon className={style.burgerIcon} />
+                </div>
                 <Link to="/" className={style.returnButton}>
                     <ExitToApp className={style.buttonIcon} />
                     <span>На сайт</span>
