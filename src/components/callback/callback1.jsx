@@ -1,6 +1,6 @@
 import style from "./callback1.module.css";
 import Typography from "@mui/material/Typography";
-import TreeSocialBtn from "../buttons/threeSocialButton";
+import ButtonGroup from "../buttons/SocialButtons/ButtonGroup";
 import FlagImg from "./img/flag.png";
 import pliers from "./img/pliers.png";
 import { Box } from "@mui/material";
@@ -122,7 +122,7 @@ function CallBack1() {
                     </Box>
 
                     <Box className={style.socialButtons}>
-                        <TreeSocialBtn />
+                        <ButtonGroup />
                     </Box>
                 </Box>
 

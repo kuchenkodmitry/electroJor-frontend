@@ -5,9 +5,9 @@ import RussianFlagIco from "./img/RussianFlag.png"
 import BuilderIco from "./img/builder.png"
 import LikeIco from "./img/like.png"
 import ClockIco from "./img/clock.png"
-import WhatsAppIco from '../buttons/img/WhatsAppIcon.png'
-import TelegramIco from '../buttons/img/TelegramIcon.png'
-import PhoneIco from '../buttons/img/PhoneIcon.png'
+import WhatsAppIco from '../buttons/SocialButtons/icons/whatsapp.png'
+import TelegramIco from '../buttons/SocialButtons/icons/telegram.png'
+import PhoneIco from '../buttons/SocialButtons/icons/phone.png'
 import { useForm } from "react-hook-form";
 import vkIco from "./img/download.png"
 import { motion, AnimatePresence } from "framer-motion";
