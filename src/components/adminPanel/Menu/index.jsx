@@ -85,9 +85,9 @@ const btnData = [
     },
 ];
 
-function Menu() {
+function Menu({ isOpen, toggleMenu }) {
     return (
-        <div className={style.adminPanel}>
+        <div className={`${style.adminPanel} ${isOpen ? style.open : ''}`}>
             <div className={style.header}>
                 <ElectricBolt className={style.logoIcon} />
                 <Typography variant="h6" className={style.title}>
@@ -113,6 +113,7 @@ function Menu() {
                                     Icon={btn.Icon}
                                     text={btn.btnName}
                                     color={btn.color}
+                                    onClick={toggleMenu}
                                 />
                             ))}
                         </div>

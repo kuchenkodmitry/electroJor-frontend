@@ -15,6 +15,9 @@ function AdminPanel() {
     const { status } = useSelector((state)=> state.auth);
     const isLoading = status === 'loading';
     const [exists, setExists] = React.useState(true);
+    const [menuOpen, setMenuOpen] = React.useState(false);
+
+    const toggleMenu = () => setMenuOpen(prev => !prev);
 
     React.useEffect(() => {
         dispatch(fetchAuthMe());
@@ -22,17 +25,17 @@ function AdminPanel() {
     }, []);
     return (
         <div className={style.background}>
-            <div className={style.layout}> 
-                <Header />
-               {isLoading ? (
-                   <Loading />
-               ) : isAuth ? (
-                   <AdminLayout />
-               ) : exists ? (
-                   <Auth />
-               ) : (
-                   <Register />
-               )}
+            <div className={style.layout}>
+                <Header onMenuToggle={toggleMenu} />
+                {isLoading ? (
+                    <Loading />
+                ) : isAuth ? (
+                    <AdminLayout isMenuOpen={menuOpen} toggleMenu={toggleMenu} />
+                ) : exists ? (
+                    <Auth />
+                ) : (
+                    <Register />
+                )}
             </div>
         </div>
     )
