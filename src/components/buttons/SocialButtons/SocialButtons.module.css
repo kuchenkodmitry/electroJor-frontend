@@ -1,0 +1,104 @@
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(10px, 2vw, 20px);
+  justify-content: flex-end;
+}
+
+.button {
+  width: clamp(120px, 10vw, 160px);
+  height: clamp(55px, 8vw, 75px);
+  border-radius: clamp(8px, 1.5vw, 18px);
+  background: #fff;
+  display: grid;
+  grid-template-columns: clamp(30px, 3vw, 40px) 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 0 clamp(6px, 1vw, 12px);
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  background: var(--accent-color);
+  color: #fff;
+}
+
+.button img {
+  width: clamp(30px, 3vw, 40px);
+  height: clamp(30px, 3vw, 40px);
+  transition: transform 0.3s ease;
+}
+
+.button:hover img {
+  transform: scale(1.1);
+}
+
+.button p {
+  margin: 0;
+  font-size: clamp(10px, 1.2vw, 13px);
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    justify-items: center;
+  }
+
+  .group > *:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 180px;
+    height: 65px;
+  }
+}
+
+@media (max-width: 480px) {
+  .group {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 180px;
+    height: 55px;
+    grid-template-columns: 35px 1fr;
+  }
+
+  .button p {
+    font-size: 10px;
+  }
+
+  .button img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .button {
+    height: 50px;
+  }
+
+  .button p {
+    font-size: 9px;
+  }
+}

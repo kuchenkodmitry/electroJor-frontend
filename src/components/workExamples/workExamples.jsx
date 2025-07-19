@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { Box } from "@mui/material";
-import VkBtn from "../buttons/vkButton";
+import { VkButton } from "../buttons";
 import s from "./workExamples.module.css"
 import { GallaryContext, ModalContext, Context } from "../context"
 import _ from 'lodash'
@@ -219,7 +219,7 @@ function WorkExamples() {
                 <GalleryMobile />
             </Box>
             <div className={style.vkBtnPosition}>
-                <VkBtn />
+                <VkButton />
             </div>
         </div>
     )
