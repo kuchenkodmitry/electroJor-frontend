@@ -1,116 +1,131 @@
 /* footer.module.css */
 
+:root {
+    --primary-color: #4299e1;
+    --primary-dark: #3182ce;
+    --secondary-color: #63b3ed;
+    --text-dark: #1a202c;
+    --text-gray: #718096;
+    --text-light: #4a5568;
+    --bg-light: rgba(113, 128, 150, 0.08);
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease;
+}
+
 .footerContainer {
-    color: #2d3748;
+    color: var(--text-gray);
     font-family: 'Inter', sans-serif;
-    padding: 60px 20px 30px;
-    max-width: 1200px;
+    padding: 4rem 1.25rem 2rem;
+    max-width: 75rem;
     margin: 0 auto;
     position: relative;
-    /* background-color: white; */
-    box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.03);
+    background-color: white;
+    box-shadow: var(--shadow-soft);
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
 }
 
 .footerContainer::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 20px;
-    right: 20px;
+    left: 1.25rem;
+    right: 1.25rem;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
 }
 
 .topSection {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    max-width: 1200px;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 2.5rem;
+    max-width: 75rem;
     margin: 0 auto;
-    padding-bottom: 40px;
+    padding-bottom: 2.5rem;
 }
 
 .logoColumn {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.25rem;
 }
 
 .logoWrapper {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 0.75rem;
 }
 
 .logo {
-    width: 120px;
+    width: 7.5rem;
     height: auto;
     opacity: 0.95;
+    transition: var(--transition);
+}
+
+.logo:hover {
+    opacity: 1;
+    transform: scale(1.05);
 }
 
 .brandName {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 10px;
-    font-size: 20px;
-    color: #1a202c;
-    letter-spacing: 0.5px;
-    margin-top: 5px;
-    background: linear-gradient(90deg, #2b6cb0, #4299e1);
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    letter-spacing: 0.03rem;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
 }
 
 .tagline {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
-    color: #718096;
+    color: var(--text-gray);
     line-height: 1.6;
-    font-size: 15px;
-    max-width: 280px;
+    font-size: 0.9375rem;
+    max-width: 17.5rem;
 }
 
 .socialIcons {
     display: flex;
-    gap: 12px;
-    margin-top: 15px;
+    gap: 0.75rem;
 }
 
 .socialLink {
-    color: #718096;
-    transition: all 0.3s ease;
+    color: var(--text-gray);
+    transition: var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
-    background-color: rgba(113, 128, 150, 0.08);
+    background-color: var(--bg-light);
 }
 
 .socialLink:hover {
     color: white;
-    background-color: #4299e1;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(66, 153, 225, 0.2);
+    background-color: var(--primary-color);
+    transform: translateY(-0.1875rem);
+    box-shadow: 0 0.25rem 0.5rem rgba(66, 153, 225, 0.2);
 }
 
 .icon {
-    font-size: 20px !important;
+    font-size: 1.25rem !important;
 }
 
 .sectionTitle {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    margin-bottom: 22px !important;
-    color: #1a202c;
+    margin-bottom: 1.375rem !important;
+    color: var(--text-dark);
     position: relative;
-    padding-bottom: 12px;
-    font-size: 18px;
-    letter-spacing: 0.3px;
+    padding-bottom: 0.75rem;
+    font-size: 1.125rem;
+    letter-spacing: 0.02rem;
 }
 
 .sectionTitle::after {
@@ -118,62 +133,62 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 45px;
-    height: 3px;
-    background: linear-gradient(90deg, #4299e1, #63b3ed);
-    border-radius: 3px;
+    width: 2.8125rem;
+    height: 0.1875rem;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 0.1875rem;
 }
 
 .contactsColumn,
 .hoursColumn {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.25rem;
 }
 
 .contactItem {
     display: flex;
     align-items: flex-start;
-    gap: 15px;
+    gap: 0.9375rem;
 }
 
 .contactIcon {
-    color: #4299e1;
-    font-size: 22px !important;
-    margin-top: 2px;
+    color: var(--primary-color);
+    font-size: 1.375rem !important;
+    margin-top: 0.125rem;
     opacity: 0.9;
-    min-width: 24px;
+    min-width: 1.5rem;
 }
 
 .contactText {
     font-weight: 400;
-    color: #4a5568;
+    color: var(--text-light);
     line-height: 1.6;
-    font-size: 15px;
+    font-size: 0.9375rem;
 }
 
 .callButton {
-    margin-top: 20px !important;
-    background: linear-gradient(90deg, #4299e1, #63b3ed) !important;
+    margin-top: 1.25rem !important;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) !important;
     color: white !important;
-    padding: 12px 24px !important;
-    border-radius: 8px !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 0.5rem !important;
     font-weight: 500 !important;
     text-transform: none !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 3px 6px rgba(66, 153, 225, 0.2) !important;
-    font-size: 15px !important;
-    letter-spacing: 0.3px;
+    transition: var(--transition) !important;
+    box-shadow: 0 0.1875rem 0.375rem rgba(66, 153, 225, 0.2) !important;
+    font-size: 0.9375rem !important;
+    letter-spacing: 0.02rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 0.5rem;
 }
 
 .callButton:hover {
-    background: linear-gradient(90deg, #3182ce, #4299e1) !important;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(66, 153, 225, 0.25) !important;
+    background: linear-gradient(90deg, var(--primary-dark), var(--primary-color)) !important;
+    transform: translateY(-0.1875rem);
+    box-shadow: 0 0.375rem 0.75rem rgba(66, 153, 225, 0.25) !important;
 }
 
 .bottomSection {
@@ -181,55 +196,55 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 35px auto 0;
-    padding-top: 30px;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    gap: 1.25rem;
+    max-width: 75rem;
+    margin: 2.1875rem auto 0;
+    padding-top: 1.875rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .copyright {
-    color: #718096;
-    font-size: 14px;
+    color: var(--text-gray);
+    font-size: 0.875rem;
     font-family: 'Inter', sans-serif;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.0125rem;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.5rem;
 }
 
 .links {
     display: flex;
-    gap: 25px;
+    gap: 1.5625rem;
 }
 
 .footerLink {
-    color: #718096;
+    color: var(--text-gray);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-family: 'Inter', sans-serif;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     position: relative;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.0125rem;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 0.375rem;
 }
 
 .footerLink:hover {
-    color: #4299e1;
+    color: var(--primary-color);
 }
 
 .footerLink::after {
     content: '';
     position: absolute;
-    bottom: -3px;
+    bottom: -0.1875rem;
     left: 0;
     width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #4299e1, #63b3ed);
+    height: 0.125rem;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
     transition: width 0.3s ease;
-    border-radius: 2px;
+    border-radius: 0.125rem;
 }
 
 .footerLink:hover::after {
@@ -237,20 +252,49 @@
 }
 
 /* Адаптивные стили */
+@media (max-width: 1024px) {
+    .footerContainer {
+        padding: 3rem 1rem 1.5rem;
+    }
+
+    .topSection {
+        gap: 2rem;
+    }
+
+    .logo {
+        width: 6rem;
+    }
+
+    .brandName {
+        font-size: 1.25rem;
+    }
+}
+
 @media (max-width: 768px) {
     .topSection {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 2rem;
     }
 
     .bottomSection {
         flex-direction: column;
         text-align: center;
-        gap: 15px;
+        gap: 1rem;
+        margin-top: 1.5rem;
     }
 
     .sectionTitle {
-        margin-bottom: 18px !important;
+        margin-bottom: 1.125rem !important;
+        text-align: center;
+    }
+
+    .sectionTitle::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .contactItem {
+        justify-content: center;
     }
 
     .callButton {
@@ -259,11 +303,35 @@
 
     .links {
         flex-direction: column;
-        gap: 12px;
+        gap: 0.75rem;
     }
 
     .footerLink,
     .copyright {
         justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footerContainer {
+        padding: 2.5rem 0.75rem 1rem;
+    }
+
+    .logoWrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .socialIcons {
+        justify-content: center;
+    }
+
+    .contactText {
+        text-align: center;
+    }
+
+    .callButton {
+        font-size: 0.875rem !important;
+        padding: 0.625rem 1.25rem !important;
     }
 }

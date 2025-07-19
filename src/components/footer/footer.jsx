@@ -1,70 +1,70 @@
-import styled from "./footer.module.css";
+
+import styles from "./footer.module.css";
 import { Typography, Box, Button } from "@mui/material";
 import { useSelector } from "react-redux";
 import { phoneDigits } from "../../utils/phone";
 import {
     Phone, Email, LocationOn, AccessTime,
-    WhatsApp, Telegram, Instagram, Facebook,
-    Copyright, Policy, Description
+    WhatsApp, Telegram
 } from '@mui/icons-material';
 import Logo from "./images/logo.png";
 
 function Footer() {
     const phone = useSelector((state) => state.settings.phone);
     return (
-        <footer className={styled.footerContainer}>
+        <footer className={styles.footerContainer}>
             {/* Верхняя часть футера */}
-            <Box className={styled.topSection}>
-                <Box className={styled.logoColumn}>
-                    <Box className={styled.logoWrapper}>
-                        <img src={Logo} alt="ЭлектроЖор" className={styled.logo} />
+            <Box className={styles.topSection}>
+                <Box className={styles.logoColumn}>
+                    <Box className={styles.logoWrapper}>
+                        <img src={Logo} alt="ЭлектроТочка-34" className={styles.logo} />
                         <div>
-                            <Typography sx={{ fontSize: '24px' }} variant="h2" className={styled.brandName}>
-                                ЭлектроЖор
+                            <Typography variant="h2" className={styles.brandName}>
+                                ЭлектроТочка-34
                             </Typography>
-                            <Typography variant="subtitle2" className={styled.tagline}>
+                            <Typography variant="subtitle2" className={styles.tagline}>
                                 Профессиональные электромонтажные решения
                             </Typography>
                         </div>
                     </Box>
-                    <Box className={styled.socialIcons}>
-                        <a href={`https://wa.me/${phoneDigits(phone)}`} className={styled.socialLink}>
-                            <WhatsApp className={styled.icon} />
+                    <Box className={styles.socialIcons}>
+                        <a href={`https://wa.me/${phoneDigits(phone)}`} className={styles.socialLink}>
+                            <WhatsApp className={styles.icon} />
                         </a>
-                        <a href={`https://t.me/+${phoneDigits(phone)}`} className={styled.socialLink}>
-                            <Telegram className={styled.icon} />
+                        <a href={`https://t.me/+${phoneDigits(phone)}`} className={styles.socialLink}>
+                            <Telegram className={styles.icon} />
                         </a>
                     </Box>
                 </Box>
 
-                <Box className={styled.contactsColumn}>
-                    <Typography variant="h6" className={styled.sectionTitle}>Контакты</Typography>
-                    <Box className={styled.contactItem}>
-                        <Phone className={styled.contactIcon} />
-                        <Typography className={styled.contactText}>{phone}</Typography>
+                <Box className={styles.contactsColumn}>
+                    <Typography variant="h6" className={styles.sectionTitle}>Контакты</Typography>
+                    <Box className={styles.contactItem}>
+                        <Phone className={styles.contactIcon} />
+                        <Typography className={styles.contactText}>{phone}</Typography>
                     </Box>
-                    <Box className={styled.contactItem}>
-                        <Email className={styled.contactIcon} />
-                        <Typography className={styled.contactText}>ElectroJor@yandex.ru</Typography>
+                    <Box className={styles.contactItem}>
+                        <Email className={styles.contactIcon} />
+                        <Typography className={styles.contactText}>ElectroJor@yandex.ru</Typography>
                     </Box>
-                    <Box className={styled.contactItem}>
-                        <LocationOn className={styled.contactIcon} />
-                        <Typography className={styled.contactText}>Волгоград и область</Typography>
+                    <Box className={styles.contactItem}>
+                        <LocationOn className={styles.contactIcon} />
+                        <Typography className={styles.contactText}>Волгоград и область</Typography>
                     </Box>
                 </Box>
 
-                <Box className={styled.hoursColumn}>
-                    <Typography variant="h6" className={styled.sectionTitle}>Режим работы</Typography>
-                    <Box className={styled.contactItem}>
-                        <AccessTime className={styled.contactIcon} />
+                <Box className={styles.hoursColumn}>
+                    <Typography variant="h6" className={styles.sectionTitle}>Режим работы</Typography>
+                    <Box className={styles.contactItem}>
+                        <AccessTime className={styles.contactIcon} />
                         <Box>
-                            <Typography className={styled.contactText}>Пн-Пт: 8:00-20:00</Typography>
-                            <Typography className={styled.contactText}>Сб-Вс: 9:00-18:00</Typography>
+                            <Typography className={styles.contactText}>Пн-Пт: 8:00-20:00</Typography>
+                            <Typography className={styles.contactText}>Сб-Вс: 9:00-18:00</Typography>
                         </Box>
                     </Box>
                     <Button
                         variant="contained"
-                        className={styled.callButton}
+                        className={styles.callButton}
                         href={`tel:${phoneDigits(phone)}`}
                         startIcon={<Phone />}
                     >
@@ -74,18 +74,10 @@ function Footer() {
             </Box>
 
             {/* Нижняя часть футера */}
-            <Box className={styled.bottomSection}>
-                <Typography className={styled.copyright}>
-                    <Copyright fontSize="small" /> {new Date().getFullYear()} Электрофор. Все права защищены.
+            <Box className={styles.bottomSection}>
+                <Typography className={styles.copyright}>
+                    <Phone fontSize="small" sx={{ opacity: 0.8 }} /> {new Date().getFullYear()} ЭлектроТочка-34. Все права защищены.
                 </Typography>
-                <Box className={styled.links}>
-                    <a href="#" className={styled.footerLink}>
-                        <Policy fontSize="small" /> Политика конфиденциальности
-                    </a>
-                    <a href="#" className={styled.footerLink}>
-                        <Description fontSize="small" /> Договор оферты
-                    </a>
-                </Box>
             </Box>
         </footer>
     )
