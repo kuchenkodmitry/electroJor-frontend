@@ -3,7 +3,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1100;
     padding: 0 2rem;
     border-radius: 15px;
 }
@@ -124,5 +124,11 @@
 @media (max-width: 768px) {
     .burger {
         display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    .returnButton {
+        display: none;
     }
 }
