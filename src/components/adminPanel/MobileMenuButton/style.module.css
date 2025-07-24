@@ -1,0 +1,13 @@
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1200;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .fab {
+        display: flex;
+    }
+}
