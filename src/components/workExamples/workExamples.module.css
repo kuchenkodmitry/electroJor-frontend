@@ -131,6 +131,40 @@ line-height: 1.3em;
 height: 3.9em; */
 }
 
+.emptyStateContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 100%;
+}
+
+.emptyStateContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.emptyStateTitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #2A5067;
+    margin: 20px 0 10px;
+}
+
+.emptyStateText {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #536976;
+    line-height: 1.5;
+    margin: 0;
+}
+
 @keyframes example {
     from {
         box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.25);

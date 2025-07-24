@@ -41,6 +41,7 @@ function CallBack1() {
                     <Typography
                         variant="h3"
                         className={style.title}
+                        sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' } }}
                     >
                         Не нашли нужную услугу?
                     </Typography>
@@ -121,7 +122,9 @@ function CallBack1() {
                         </Typography>
                     </Box>
 
-                    <Box className={style.socialButtons}>
+                    <Box sx={{
+                        dispplay: { sm: "none", md: 'none', xs: 'flex' }
+                    }} className={style.socialButtons}>
                         <ButtonGroup />
                     </Box>
                 </Box>

@@ -273,6 +273,7 @@
 
 .leftBlockContent {
     max-width: 500px;
+    flex-direction: column-reverse;
 }
 
 .leftBlockTitle {
@@ -600,6 +601,7 @@
 
     .advantages {
         flex-direction: column;
+        /* display: none; */
     }
 }
 
@@ -615,10 +617,12 @@
 
     .leftBlockTitle {
         font-size: 1.4rem !important;
+        display: none;
     }
 
     .leftBlockSubtitle {
         font-size: 1rem !important;
+        display: none;
     }
 
     .formTitle {

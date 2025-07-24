@@ -57,7 +57,7 @@ const About = () => {
             sx={{
                 maxWidth: '1200px',
                 margin: '0 auto',
-                padding: { xs: '0 16px', sm: '0 20px', md: '0 24px' },
+                padding: { xs: '0 20px', sm: '0 0px', md: '0 0px' },
                 position: 'relative',
                 overflow: 'hidden',
                 '&::before': {

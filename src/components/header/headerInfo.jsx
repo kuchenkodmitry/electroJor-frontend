@@ -45,9 +45,9 @@ function InfoHeader() {
             {/* Верхняя панель с меню */}
             <div className={s.topBar}>
                 <div className={s.logoContainer}>
-                    <img src={logo} alt="ЭлектроЖор" className={s.logo} />
+                    <img src={logo} alt="ЭлектроТочка34" className={s.logo} />
                     <div className={s.logoText}>
-                        <Typography variant="h6" className={s.logoTitle}>ЭлектроЖор</Typography>
+                        <Typography variant="h6" className={s.logoTitle}>ЭлектроТочка 34</Typography>
                         <Typography variant="caption" className={s.logoSubtitle}>Электромонтажные работы</Typography>
                     </div>
                 </div>
@@ -112,7 +112,7 @@ function InfoHeader() {
                 >
                     <div className={s.leftBlockContent}>
                         <Typography variant="h4" className={s.leftBlockTitle}>
-                            ЭлектроЖор
+                            ЭлектроТочка 34
                         </Typography>
                         <Typography variant="subtitle1" className={s.leftBlockSubtitle}>
                             Профессиональные электромонтажные работы

@@ -202,13 +202,14 @@
     }
 
     .toolsImage {
-        position: relative;
-        left: auto;
-        top: auto;
+        position: absolute;
+        left: 10px;
+        bottom: -50px;
         transform: none;
-        margin-top: 30px;
+        margin-top: 0px;
         align-self: flex-end;
         order: 2;
+        z-index: 10;
     }
 
     .inputGroup {
@@ -228,12 +229,18 @@
         background: rgba(233, 241, 250, 0.7);
     }
 
+    .socialButtons {
+        display: none;
+    }
+
     .title {
         margin-bottom: 15px;
+        font-size: 10px;
     }
 
     .subtitle {
         margin-bottom: 20px;
+        font-weight: 100;
     }
 
     .callBackForm {
@@ -261,7 +268,7 @@
     }
 
     .toolsImage {
-        margin-top: 20px;
+        /* margin-top: 20px; */
     }
 
     .toolsImage img {
