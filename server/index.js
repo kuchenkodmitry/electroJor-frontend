@@ -26,7 +26,7 @@ const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '';
 const corsOptions = {
   origin: [
     'http://localhost:3000', // Локальный фронтенд
-    'https://electrotochka34.ru.ru', // Продакшен-домен
+    'https://electrotochka34.ru', // Продакшен-домен
   ],
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -178,8 +178,8 @@ app.get('/api/me', authMiddleware, async (req, res) => {
 // Запуск сервера
 if (process.env.NODE_ENV === 'production') {
   const options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/electrotochka34.ru.ru/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/electrotochka34.ru.ru/fullchain.pem'),
+    key: fs.readFileSync('/etc/letsencrypt/live/electrotochka34.ru/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/electrotochka34.ru/fullchain.pem'),
   };
   https.createServer(options, app).listen(443, () => {
     console.log('✅ HTTPS server running on port 443');
