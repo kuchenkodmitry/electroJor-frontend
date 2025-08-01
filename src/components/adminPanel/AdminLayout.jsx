@@ -7,7 +7,7 @@ import style from "./AdminLayout.module.css";
 function AdminLayout({ isMenuOpen, toggleMenu }) {
     return (
         <div className={style.container}>
-            <div>
+            <div >
                 <UserIsAuth />
                 <Menu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
             </div>

@@ -7,11 +7,14 @@
     background: white;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    min-height: calc(100vh - 200px);
+    min-height: calc(100vh - 225px);
     padding: 2rem;
     transition: all 0.3s ease;
     min-width: 850px;
     max-width: 850px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
 }
 
 @media (max-width: 850px) {

@@ -21,16 +21,6 @@ const btnData = [
             }
         ]
     },
-    // {
-    //     menuTitle: "Управление отзывами",
-    //     btn: [
-    //         {
-    //             Icon: Reviews,
-    //             btnName: "Загрузка и удаление",
-    //             color: "#FF9800"
-    //         },
-    //     ]
-    // },
     {
         menuTitle: "Контактная информация",
         btn: [
@@ -42,36 +32,6 @@ const btnData = [
             },
         ]
     },
-    // {
-    //     menuTitle: "Блоки услуг",
-    //     btn: [
-    //         {
-    //             Icon: Construction,
-    //             btnName: "Редактировать",
-    //             color: "#00BCD4"
-    //         },
-    //     ]
-    // },
-    // {
-    //     menuTitle: "Шапка сайта",
-    //     btn: [
-    //         {
-    //             Icon: Settings,
-    //             btnName: "Изменить",
-    //             color: "#607D8B"
-    //         },
-    //     ]
-    // },
-    // {
-    //     menuTitle: "О компании",
-    //     btn: [
-    //         {
-    //             Icon: AccountCircle,
-    //             btnName: "Изменить описание",
-    //             color: "#E91E63"
-    //         },
-    //     ]
-    // },
     {
         menuTitle: "Аккаунт",
         btn: [

@@ -1,7 +1,7 @@
 .adminPanel {
     position: fixed;
-    top: 80px;
-    left: 0;
+    top: 155px;
+    /* left: 0; */
     width: 300px;
     height: 80vh;
     background: #2c3e50;
