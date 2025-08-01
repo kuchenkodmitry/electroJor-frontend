@@ -161,7 +161,8 @@ app.post('/api/login', async (req, res) => {
 });
 
 // Проверить, создан ли администратор
-app.get('/api/admin-exists', async (req, res) => {
+// Поддерживаем старый и новый путь на случай различий в конфигурации фронтенда
+app.get(['/api/admin-exists', '/admin-exists'], async (req, res) => {
   try {
     const admin = await db.get('SELECT id FROM users LIMIT 1');
     res.json({ exists: Boolean(admin) });
