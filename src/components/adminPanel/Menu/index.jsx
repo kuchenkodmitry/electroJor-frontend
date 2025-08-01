@@ -1,7 +1,7 @@
 import style from "./style.module.css";
 import Button from "../Button";
 import { Typography } from "@mui/material";
-import { ElectricBolt, Edit, Add, Reviews, Contacts, Construction, Settings, AccountCircle, ArrowDownward } from "@mui/icons-material";
+import { ElectricBolt, Edit, Add, Reviews, Contacts, Construction, Settings, AccountCircle, ArrowDownward, Home } from "@mui/icons-material";
 
 const btnData = [
     {
@@ -120,8 +120,14 @@ function Menu({ isOpen, toggleMenu }) {
                     </div>
                 ))}
             </div>
-
             <div className={style.footer}>
+                <Button
+                    path="/"
+                    Icon={Home}
+                    text="Перейти на главную страницу"
+                    color="#FF5722"
+                    onClick={toggleMenu}
+                />
                 <Typography variant="caption">
                     © {new Date().getFullYear()} Электромонтаж
                 </Typography>
