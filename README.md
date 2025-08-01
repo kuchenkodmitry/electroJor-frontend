@@ -1,4 +1,4 @@
-# ElectroJor Frontend
+# ЭлектроТочка34 Frontend
 
 ![React](https://img.shields.io/badge/React-18.0.0-blue)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow)
@@ -7,7 +7,7 @@
 
 ## Описание проекта
 
-ElectroJor - это веб-приложение, разработанное с использованием React, для компании "ЭлектроЖор". 
+ЭлектроТочка34 - это веб-приложение, разработанное с использованием React для компании "ЭлектроТочка34".
 
 ## Возможности
 

@@ -11,11 +11,11 @@ function Header({ onMenuToggle }) {
                 <div className={style.brandWrapper}>
                     <div className={style.logoContainer}>
                         {/* <ElectricBolt className={style.logoIcon} /> */}
-                        <img src={logo} alt="Логотип ЭлектроЖор" className={style.logoImage} />
+                        <img src={logo} alt="Логотип ЭлектроТочка34" className={style.logoImage} />
                     </div>
                     <div className={style.brandText}>
                         <Typography variant="h4" className={style.brandTitle}>
-                            ЭлектроЖор
+                            ЭлектроТочка34
                             <span className={style.brandBadge}>ADMIN</span>
                         </Typography>
                         <Typography variant="subtitle1" className={style.brandSubtitle}>
