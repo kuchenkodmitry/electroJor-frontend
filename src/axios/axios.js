@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const RAW_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000/api';
+// Use backend port 3001 by default to match the server configuration
+const RAW_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
 
 const API_URL = RAW_URL.endsWith('/api')
   ? RAW_URL
