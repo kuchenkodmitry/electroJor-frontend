@@ -221,8 +221,101 @@ app.put('/api/password', authMiddleware, async (req, res) => {
   }
 });
 
-// Остальные маршруты (posts, settings, feedback) остаются без изменений
-// ...
+// ----------------------- Posts routes -----------------------
+app.get('/api/posts', async (req, res) => {
+  try {
+    const rows = await db.all('SELECT * FROM posts ORDER BY created_at DESC');
+    const posts = rows.map((r) => ({
+      ...r,
+      gallaryUrl: r.gallaryUrl ? JSON.parse(r.gallaryUrl) : [],
+    }));
+    res.json(posts);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+app.get('/api/posts/:id', async (req, res) => {
+  try {
+    const post = await db.get('SELECT * FROM posts WHERE id = ?', req.params.id);
+    if (!post) return res.status(404).json({ message: 'Post not found' });
+    post.gallaryUrl = post.gallaryUrl ? JSON.parse(post.gallaryUrl) : [];
+    res.json(post);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+app.post('/api/posts', authMiddleware, async (req, res) => {
+  try {
+    const {
+      title = '',
+      text = '',
+      description = '',
+      imageUrl = '',
+      gallaryUrl = [],
+    } = req.body;
+
+    const result = await db.run(
+      'INSERT INTO posts(title, text, description, imageUrl, gallaryUrl) VALUES(?, ?, ?, ?, ?)',
+      title,
+      text,
+      description,
+      imageUrl,
+      JSON.stringify(gallaryUrl)
+    );
+
+    const post = await db.get('SELECT * FROM posts WHERE id = ?', result.lastID);
+    post.gallaryUrl = post.gallaryUrl ? JSON.parse(post.gallaryUrl) : [];
+    res.status(201).json(post);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+app.patch('/api/posts/:id', authMiddleware, async (req, res) => {
+  try {
+    const {
+      title = '',
+      text = '',
+      description = '',
+      imageUrl = '',
+      gallaryUrl = [],
+    } = req.body;
+
+    const exists = await db.get('SELECT id FROM posts WHERE id = ?', req.params.id);
+    if (!exists) return res.status(404).json({ message: 'Post not found' });
+
+    await db.run(
+      'UPDATE posts SET title = ?, text = ?, description = ?, imageUrl = ?, gallaryUrl = ? WHERE id = ?',
+      title,
+      text,
+      description,
+      imageUrl,
+      JSON.stringify(gallaryUrl),
+      req.params.id
+    );
+
+    const post = await db.get('SELECT * FROM posts WHERE id = ?', req.params.id);
+    post.gallaryUrl = post.gallaryUrl ? JSON.parse(post.gallaryUrl) : [];
+    res.json(post);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+app.delete('/api/posts/:id', authMiddleware, async (req, res) => {
+  try {
+    const post = await db.get('SELECT * FROM posts WHERE id = ?', req.params.id);
+    if (!post) return res.status(404).json({ message: 'Post not found' });
+    await db.run('DELETE FROM posts WHERE id = ?', req.params.id);
+    res.json({ message: 'Post deleted', doc: post });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// -------------------------------------------------------------
 
 // Запуск сервера
 if (process.env.NODE_ENV === 'production') {
