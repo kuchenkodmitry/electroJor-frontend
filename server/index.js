@@ -221,6 +221,29 @@ app.put('/api/password', authMiddleware, async (req, res) => {
   }
 });
 
+// ----------------------- Settings routes -----------------------
+app.get('/api/settings/phone', async (req, res) => {
+  try {
+    const row = await db.get("SELECT value FROM settings WHERE key = 'phone'");
+    res.json({ phone: row?.value || '' });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+app.put('/api/settings/phone', authMiddleware, async (req, res) => {
+  try {
+    const { phone = '' } = req.body;
+    await db.run(
+      "INSERT INTO settings(key, value) VALUES('phone', ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+      phone
+    );
+    res.json({ phone });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 // ----------------------- Posts routes -----------------------
 app.get('/api/posts', async (req, res) => {
   try {
