@@ -14,7 +14,7 @@ function NavBar() {
         <img className={style.logo} src={logo} alt="" />
         <div>
           <p className={style.logoTitle}>
-            ЭлектроЖор
+            ЭлектроТочка34
           </p>
           <p className={style.logoDecription}>Электромонтажные работы</p>
         </div>
