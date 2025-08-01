@@ -119,6 +119,8 @@
 .burgerIcon {
     color: white;
     font-size: 2rem !important;
+    /* position: fixed; */
+    /* left: 0; */
 }
 
 @media (max-width: 768px) {
@@ -130,5 +132,36 @@
 @media (max-width: 600px) {
     .returnButton {
         display: none;
+    }
+
+    .brandTitle,
+    .brandSubtitle {
+        display: none;
+    }
+
+    .headerContainer {
+        flex-direction: row-reverse;
+    }
+
+    .logoImage {
+        transform: scaleX(-1);
+    }
+
+    .headerContainer {
+        /* padding: 0 0; */
+        /* width: 90%; */
+    }
+
+    .adminHeader {
+        padding: 0 30px;
+    }
+
+    .brandWrapper {
+        gap: 0;
+    }
+
+    .adminHeader {
+        width: 95%;
+        margin: 0 auto;
     }
 }

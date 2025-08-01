@@ -67,7 +67,8 @@
 @media (max-width: 1200px) {
     .contentArea {
         margin-left: 0;
-        padding: 1rem;
+        padding: 0 10px;
+        ;
     }
 }
 
@@ -78,5 +79,9 @@
 
     .welcomeTitle {
         font-size: 1.8rem !important;
+    }
+
+    .contentContainer {
+        min-height: auto;
     }
 }

@@ -27,9 +27,10 @@ function EditPhone() {
         sx={{
           fontFamily: "SourceCodePro-SemiBold",
           fontSize: "24px",
-          textAlign: "center",
-          marginTop: "27px",
-          marginBottom: "20px",
+          textAlign: "left",
+          // marginTop: "27px",
+          // marginBottom: "20px",
+          lineHeight: '24px'
         }}
       >
         Изменить номер телефона

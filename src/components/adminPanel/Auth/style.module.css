@@ -103,8 +103,8 @@
     }
 
     .userInfo {
-        flex-direction: column;
-        gap: 10px;
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 
