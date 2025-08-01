@@ -69,6 +69,26 @@ const upload = multer({
 
 app.use('/uploads', express.static(uploadsDir));
 
+// Загрузка изображений
+app.post('/api/uploads', upload.single('image'), async (req, res) => {
+  try {
+    const filePath = req.file.path;
+
+    // Оптимизируем изображение без изменения формата
+    const optimizedBuffer = await sharp(filePath)
+      .resize({ width: 1200, withoutEnlargement: true })
+      .toBuffer();
+
+    await fs.promises.writeFile(filePath, optimizedBuffer);
+
+    const relativePath = `/uploads/${path.basename(filePath)}`;
+    res.json({ url: relativePath });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Upload error' });
+  }
+});
+
 // Инициализация базы данных
 let db;
 (async () => {
