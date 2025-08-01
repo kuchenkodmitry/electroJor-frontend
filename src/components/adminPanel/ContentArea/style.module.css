@@ -1,8 +1,6 @@
 .contentArea {
-    /* flex: 1; */
-    /* padding: 2rem; */
-    /* margin-left: 340px; */
-    /* Ширина сайдбара + отступ */
+    margin-left: 320px;
+    padding: 2rem;
 }
 
 .contentContainer {

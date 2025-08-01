@@ -2,7 +2,6 @@ import React from "react";
 import Menu from "./Menu";
 import { UserIsAuth } from "./Auth";
 import ContentArea from "./ContentArea";
-import MobileMenuButton from "./MobileMenuButton";
 import style from "./AdminLayout.module.css";
 
 function AdminLayout({ isMenuOpen, toggleMenu }) {
@@ -13,7 +12,6 @@ function AdminLayout({ isMenuOpen, toggleMenu }) {
                 <Menu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
             </div>
             <ContentArea />
-            {!isMenuOpen && <MobileMenuButton onClick={toggleMenu} />}
             {isMenuOpen && <div className={style.overlay} onClick={toggleMenu}></div>}
         </div>
     );
