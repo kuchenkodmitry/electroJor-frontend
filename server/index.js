@@ -17,7 +17,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4000;
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';
 const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN || '';
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '';
@@ -160,6 +160,16 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+// Проверить, создан ли администратор
+app.get('/api/admin-exists', async (req, res) => {
+  try {
+    const admin = await db.get('SELECT id FROM users LIMIT 1');
+    res.json({ exists: Boolean(admin) });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 app.get('/api/me', authMiddleware, async (req, res) => {
   try {
     const user = await db.get(
@@ -167,6 +177,24 @@ app.get('/api/me', authMiddleware, async (req, res) => {
       req.userId
     );
     res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Сменить пароль администратора
+app.put('/api/password', authMiddleware, async (req, res) => {
+  try {
+    const { oldPassword, newPassword } = req.body;
+    const user = await db.get('SELECT * FROM users WHERE id = ?', req.userId);
+    if (!user) return res.status(400).json({ message: 'User not found' });
+
+    const isValid = await bcrypt.compare(oldPassword, user.password);
+    if (!isValid) return res.status(400).json({ message: 'Wrong password' });
+
+    const hash = await bcrypt.hash(newPassword, 10);
+    await db.run('UPDATE users SET password = ? WHERE id = ?', hash, req.userId);
+    res.json({ success: true });
   } catch (err) {
     res.status(500).json({ message: 'Server error' });
   }
