@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import axios, { API_ROOT } from '../../../axios/axios';
 import style from "./edit.module.css";
 import { useSelector } from "react-redux";
@@ -10,13 +10,15 @@ import {
   IconButton,
   Paper,
   Alert,
-  Divider,
-  CircularProgress // Добавляем этот импорт
+  CircularProgress
 } from '@mui/material';
-import { CloudUpload, Delete, ArrowBack, Save, Help, Image, } from '@mui/icons-material';
+import { CloudUpload, Delete, ArrowBack, Save, Help, Image } from '@mui/icons-material';
 import { useNavigate, useParams } from "react-router-dom";
-import MDEditor from '@uiw/react-md-editor';
-import { motion } from 'framer-motion';
+import MdEditor from 'react-markdown-editor-lite';
+import MarkdownIt from 'markdown-it';
+import 'react-markdown-editor-lite/lib/index.css';
+
+const mdParser = new MarkdownIt();
 
 const EditPost = () => {
   const [text, setText] = useState('');
@@ -33,7 +35,6 @@ const EditPost = () => {
   const isEditing = Boolean(params?.includes('edit'));
   const idPost = params?.split('-')[1];
 
-  // Загрузка данных поста при редактировании
   useEffect(() => {
     if (idPost) {
       setIsLoading(true);
@@ -54,12 +55,10 @@ const EditPost = () => {
     }
   }, [idPost]);
 
-  // Загрузка изображения
   const handleUploadImage = async (event, isGallery = false) => {
     try {
       const file = event.target.files[0];
       if (!file) return;
-
 
       const formData = new FormData();
       formData.append('image', file);
@@ -83,12 +82,10 @@ const EditPost = () => {
     }
   };
 
-  // Удаление изображения из галереи
   const handleRemoveGalleryImage = (urlToRemove) => {
     setGalleryUrls(prev => prev.filter(url => url !== urlToRemove));
   };
 
-  // Отправка формы
   const handleSubmit = async () => {
     try {
       setIsLoading(true);
@@ -116,6 +113,16 @@ const EditPost = () => {
     }
   };
 
+  const onImageUpload = (file) => {
+    return new Promise(resolve => {
+      const reader = new FileReader();
+      reader.onload = (data) => {
+        resolve(data.target.result);
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
   if (isLoading && !isEditing) {
     return (
       <Box className={style.loadingContainer}>
@@ -126,12 +133,7 @@ const EditPost = () => {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
-      className={style.container}
-    >
+    <div className={style.container}>
       <Box className={style.header}>
         <Button
           startIcon={<ArrowBack />}
@@ -164,7 +166,8 @@ const EditPost = () => {
         </Typography>
 
         <Box className={style.imageSection}>
-          <Box className={style.imagePreview}>
+          <Box className={style.imagePreview} style={{ backgroundImage: imageUrl ? `url(${imageUrl})` : 'none' }}>
+            <div className={style.imageBlur}></div>
             <img
               src={imageUrl || '/no-image.jpg'}
               alt="Превью"
@@ -267,16 +270,26 @@ const EditPost = () => {
           </Button>
         </Box>
 
-        <MDEditor
+        <MdEditor
           value={text}
-          onChange={setText}
-          height={500}
-          preview="live"
-          visibleDragbar={false}
-          textareaProps={{
-            placeholder: 'Введите текст поста...'
+          style={{ height: "500px" }}
+          renderHTML={(text) => mdParser.render(text)}
+          onChange={({ text }) => setText(text)}
+          onImageUpload={onImageUpload}
+          imageAccept=".jpg,.jpeg,.png,.gif"
+          config={{
+            view: {
+              menu: true,
+              md: true,
+              html: false
+            },
+            canView: {
+              fullScreen: false,
+              hideMenu: false
+            }
           }}
-          className={style.editor}
+          placeholder="Введите текст поста..."
+          className={style.mobileEditor}
         />
       </Paper>
 
@@ -310,7 +323,8 @@ const EditPost = () => {
         {galleryUrls.length > 0 ? (
           <Box className={style.galleryGrid}>
             {galleryUrls.map((url, index) => (
-              <Box key={index} className={style.galleryItem}>
+              <Box key={index} className={style.galleryItem} style={{ backgroundImage: `url(${url})` }}>
+                <div className={style.galleryBlur}></div>
                 <img src={url} alt={`Галерея ${index}`} className={style.galleryImage} />
                 <IconButton
                   onClick={() => handleRemoveGalleryImage(url)}
@@ -341,7 +355,7 @@ const EditPost = () => {
           {isLoading ? 'Сохранение...' : 'Сохранить пост'}
         </Button>
       </Box>
-    </motion.div>
+    </div>
   );
 };
 

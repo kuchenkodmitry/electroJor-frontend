@@ -7,7 +7,6 @@ import { fetchPostRemove } from "../../../redux/slices/posts"
 function CardPost({ title, description, UrlImage, id }) {
     const Navigate = useNavigate()
     const dispatch = useDispatch()
-    
 
     const handleNavPost = () => {
         Navigate(`/admin/fullpost-${id}`)
@@ -15,47 +14,40 @@ function CardPost({ title, description, UrlImage, id }) {
 
     const onClickRemove = () => {
         const result = window.confirm("Уверены, что хотите удалить ?");
-        if (result){
+        if (result) {
             alert("Пост удалён")
             dispatch(fetchPostRemove(id))
             Navigate('/admin/posts')
         } else {
             alert("удаление отменено")
         }
-      };
+    };
 
     const onClickEdit = () => {
         Navigate(`/admin/edit-${id}`)
     }
 
-    return ( 
-    <div className={style.cardBlock}>
-        <img width="236px" height="157px" style={{
-            borderRadius: "14px"
-        }} src={UrlImage} alt={title} />
-        <Typography onClick={handleNavPost} sx={{
-            width: "230px",
-            fontFamily: "SourceCodePro-SemiBold",
-            lineHeight: "30px",
-            fontSize: "24px",
-            marginBottom: "10px",
-            cursor: "pointer"
-        }} className={style.cardTitle}>
-            {title}
-        </Typography>
-        <Typography sx={{
-            fontFamily: "SourceCodePro-Light",
-            width: "230px",
-        }}
-        className={style.cardTitle}
-        >
-            {description}
-        </Typography>
-        <div className={style.btnBox}>
-            <button onClick={onClickRemove} className={style.btnEdit}>Удалить</button>
-            <button onClick={onClickEdit} className={style.btnEdit}>Изменить</button>
+    return (
+        <div className={style.cardBlock}>
+            <div
+                className={`${style.imageContainer} ${style.hasSpace}`}
+                style={{ backgroundImage: `url(${UrlImage})` }}
+            >
+                <img src={UrlImage} alt={title} />
+            </div>
+            <div className={style.cardContent}>
+                <Typography onClick={handleNavPost} className={style.cardTitle}>
+                    {title}
+                </Typography>
+                <Typography className={style.cardDescription}>
+                    {description}
+                </Typography>
+                <div className={style.btnBox}>
+                    <button onClick={onClickRemove} className={style.btnEdit}>Удалить</button>
+                    <button onClick={onClickEdit} className={style.btnEdit}>Изменить</button>
+                </div>
+            </div>
         </div>
-    </div>
     )
 }
 
