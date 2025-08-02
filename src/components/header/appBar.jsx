@@ -47,7 +47,7 @@ function NavBar() {
           Контакты
         </NavDropdown.Item>
         <NavDropdown.Divider />
-        <NavDropdown.Item href="/admin">Админ панель</NavDropdown.Item>
+        <NavDropdown.Item as={Link} to="/admin">Админ панель</NavDropdown.Item>
       </NavDropdown>
     </div>
   )
