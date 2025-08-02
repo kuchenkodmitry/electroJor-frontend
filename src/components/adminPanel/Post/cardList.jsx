@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import CardPost from "./cardPost";
 import { Typography, Grid, Button, useMediaQuery, useTheme } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link as RouterLink } from 'react-router-dom';
 import { fetchPosts } from '../../../redux/slices/posts';
 import PostLoading from '../Skeleton/skeleton';
 import { Add } from '@mui/icons-material';
@@ -35,7 +36,8 @@ function CardList() {
                         variant="contained"
                         startIcon={<Add />}
                         className={style.createButton}
-                        href="/admin/create"
+                        component={RouterLink}
+                        to="/admin/create"
                         sx={{
                             borderRadius: '12px',
                             textTransform: 'none',
