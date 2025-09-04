@@ -10,10 +10,13 @@ import Logo from "./images/logo.png";
 
 function Footer() {
     const phone = useSelector((state) => state.settings.phone);
+    const formattedPhone = phoneDigits(phone);
+
     return (
         <footer className={styles.footerContainer}>
-            {/* Верхняя часть футера */}
+            {/* Верхняя часть */}
             <Box className={styles.topSection}>
+                {/* Логотип + Соцсети */}
                 <Box className={styles.logoColumn}>
                     <Box className={styles.logoWrapper}>
                         <img src={Logo} alt="ЭлектроТочка-34" className={styles.logo} />
@@ -26,21 +29,28 @@ function Footer() {
                             </Typography>
                         </Box>
                     </Box>
-                    <Box id={styles.mobileOFF} className={styles.socialIcons}>
-                        <div className={styles.mobileOFF}>
-                            <a href={`https://wa.me/${phoneDigits(phone)}`} className={styles.socialLink} aria-label="WhatsApp">
-                                <WhatsApp className={styles.icon} />
-                            </a>
-                        </div>
-                        <div className={styles.mobileOFF}>
-                            <a href={`https://t.me/+${phoneDigits(phone)}`} className={styles.socialLink} aria-label="Telegram">
-                                <Telegram className={styles.icon} />
-                            </a>
-                        </div>
 
+                    <Box className={styles.socialIcons}>
+                        <a href={`tel:${formattedPhone}`} className={styles.socialLink} aria-label="Позвонить">
+                            <Phone className={styles.icon} />
+                            Звонок
+                        </a>
+                        <a href={`https://wa.me/${formattedPhone}`} className={styles.socialLink} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                            <WhatsApp className={styles.icon} />
+                            WhatsApp
+                        </a>
+                        <a href={`https://t.me/+${formattedPhone}`} className={styles.socialLink} target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                            <Telegram className={styles.icon} />
+                            Telegram
+                        </a>
+                        <a href={`mailto:ElectroJor@yandex.ru`} className={styles.socialLink} aria-label="Email">
+                            <Email className={styles.icon} />
+                            Email
+                        </a>
                     </Box>
                 </Box>
 
+                {/* Контакты */}
                 <Box className={styles.contactsColumn}>
                     <Typography variant="h6" className={styles.sectionTitle}>Контакты</Typography>
                     <Box className={styles.contactList}>
@@ -59,48 +69,35 @@ function Footer() {
                     </Box>
                 </Box>
 
+                {/* Режим работы + Кнопка */}
                 <Box className={styles.hoursColumn}>
-                    <Typography variant="h6" className={styles.sectionTitle}>Режим работы</Typography>
+                    <Typography variant="h6" className={styles.sectionTitle}>Работаем</Typography>
                     <Box className={styles.contactItem}>
                         <AccessTime className={styles.contactIcon} />
                         <Box className={styles.workingHours}>
-                            <Typography className={styles.contactText}>Пн-Пт: 8:00-20:00</Typography>
-                            <Typography className={styles.contactText}>Сб-Вс: 9:00-18:00</Typography>
+                            <Typography className={styles.contactText}>Пн–Пт: 8:00–20:00</Typography>
+                            <Typography className={styles.contactText}>Сб–Вс: 9:00–18:00</Typography>
                         </Box>
                     </Box>
                     <Button
                         variant="contained"
                         className={styles.callButton}
-                        href={`tel:${phoneDigits(phone)}`}
+                        href={`tel:${formattedPhone}`}
                         startIcon={<Phone className={styles.buttonIcon} />}
                     >
                         Связаться с нами
                     </Button>
                 </Box>
             </Box>
-            <Box className={styles.socialIcons}>
-                <a href={`tel:${phoneDigits(phone)}`} className={styles.socialLink} aria-label="Позвонить">
-                    <Phone className={styles.icon} />
-                </a>
-                <a href={`mailto:ElectroJor@yandex.ru`} className={styles.socialLink} aria-label="Email">
-                    <Email className={styles.icon} />
-                </a>
-                <a href={`https://wa.me/${phoneDigits(phone)}`} className={styles.socialLink} aria-label="WhatsApp">
-                    <WhatsApp className={styles.icon} />
-                </a>
-                <a href={`https://t.me/+${phoneDigits(phone)}`} className={styles.socialLink} aria-label="Telegram">
-                    <Telegram className={styles.icon} />
-                </a>
-            </Box>
 
-            {/* Нижняя часть футера */}
+            {/* Нижняя часть */}
             <Box className={styles.bottomSection}>
                 <Typography className={styles.copyright}>
                     © {new Date().getFullYear()} ЭлектроТочка-34. Все права защищены.
                 </Typography>
             </Box>
         </footer>
-    )
+    );
 }
 
 export default Footer;

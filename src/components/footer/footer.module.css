@@ -8,6 +8,7 @@
     --bg-light: rgba(113, 128, 150, 0.08);
     --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
     --transition: all 0.3s ease;
+    --border-radius: 12px;
 }
 
 .footerContainer {
@@ -16,10 +17,10 @@
     padding: 3rem 1.5rem 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: white;
+    background: white;
     box-shadow: var(--shadow-soft);
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
     position: relative;
 }
 
@@ -35,13 +36,14 @@
 
 .topSection {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 2rem;
+    padding-bottom: 2.5rem;
 }
 
+/* Логотип и соцсети */
 .logoColumn {
     display: flex;
     flex-direction: column;
@@ -54,77 +56,88 @@
     gap: 1rem;
 }
 
+.logo {
+    width: 80px;
+    height: auto;
+    transition: var(--transition);
+}
+
 .brandWrapper {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
 }
 
-.logo {
-    width: 80px;
-    height: auto;
-    object-fit: contain;
-    transition: var(--transition);
-}
-
 .brandName {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: var(--text-dark);
-    line-height: 1.3;
     background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    line-height: 1.2;
 }
 
 .tagline {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    color: var(--text-gray);
+    font-size: 0.9rem;
+    color: var(--text-light);
+    max-width: 240px;
     line-height: 1.5;
-    font-size: 0.875rem;
-    max-width: 220px;
 }
 
 .socialIcons {
     display: flex;
-    gap: 0.75rem;
+    gap: 1rem;
     margin-top: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .socialLink {
-    color: var(--text-gray);
-    transition: var(--transition);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
+    gap: 0.3rem;
+    color: var(--text-gray);
+    transition: var(--transition);
+    width: 70px;
+    padding: 0.5rem 0;
+    border-radius: 10px;
     background-color: var(--bg-light);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
 }
 
 .socialLink:hover {
-    color: white;
     background-color: var(--primary-color);
+    color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 171, 228, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 171, 228, 0.2);
 }
 
-.icon {
-    font-size: 1.25rem !important;
+.socialLink .icon {
+    font-size: 1.5rem;
+}
+
+/* Контакты */
+.contactsColumn,
+.hoursColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .sectionTitle {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    margin-bottom: 1.25rem;
+    font-size: 1.125rem;
     color: var(--text-dark);
+    margin-bottom: 1rem;
     position: relative;
     padding-bottom: 0.5rem;
-    font-size: 1.125rem;
 }
 
 .sectionTitle::after {
@@ -134,20 +147,14 @@
     left: 0;
     width: 40px;
     height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
     border-radius: 3px;
-}
-
-.contactsColumn,
-.hoursColumn {
-    display: flex;
-    flex-direction: column;
 }
 
 .contactList {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
 .contactItem {
@@ -159,9 +166,8 @@
 .contactIcon {
     color: var(--primary-color);
     font-size: 1.25rem;
-    margin-top: 0.125rem;
-    opacity: 0.9;
     min-width: 24px;
+    opacity: 0.9;
 }
 
 .contactText {
@@ -177,11 +183,11 @@
     gap: 0.25rem;
 }
 
+/* Кнопка */
 .callButton {
-    margin-top: 1.5rem;
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
     color: white;
-    padding: 0.75rem 1.5rem;
+    padding: 0.8rem 1.5rem;
     border-radius: 8px;
     font-weight: 500;
     text-transform: none;
@@ -195,10 +201,11 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    align-self: flex-start;
 }
 
 .callButton:hover {
-    background: linear-gradient(90deg, var(--primary-dark), var(--primary-color));
+    background: linear-gradient(90deg, var(--primary-dark), #007cb0);
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 171, 228, 0.25);
 }
@@ -207,6 +214,7 @@
     font-size: 1.1rem;
 }
 
+/* Нижняя часть */
 .bottomSection {
     display: flex;
     justify-content: center;
@@ -214,44 +222,50 @@
     padding-top: 1.5rem;
     margin-top: 1.5rem;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
+    font-size: 0.8125rem;
+    color: var(--text-light);
 }
 
 .copyright {
-    color: var(--text-gray);
-    font-size: 0.8125rem;
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    text-align: center;
+    line-height: 1.5;
 }
 
-/* Адаптивные стили */
+/* === Адаптивность === */
+
 @media (max-width: 1024px) {
     .topSection {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .logoColumn {
-        grid-column: span 2;
+        grid-template-columns: 1fr 1fr;
     }
 }
 
 @media (max-width: 768px) {
     .footerContainer {
-        padding: 2rem 1.25rem;
+        padding: 2.5rem 1.5rem;
     }
 
     .logoWrapper {
-        flex-direction: row;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .brandWrapper {
         align-items: center;
     }
 
-    .tagline {
-        max-width: none;
+    .logo {
+        width: 70px;
+    }
+
+    .socialIcons {
+        justify-content: center;
+    }
+
+    .callButton {
+        align-self: center;
     }
 }
 
-/* Обновленные стили только для мобильной версии */
 @media (max-width: 600px) {
     .footerContainer {
         padding: 1.5rem 1rem;
@@ -261,133 +275,76 @@
     .topSection {
         grid-template-columns: 1fr;
         gap: 1.5rem;
-        padding-bottom: 1rem;
+        padding-bottom: 1.5rem;
     }
 
     .logoColumn {
-        grid-column: span 1;
-        align-items: center;
         text-align: center;
-        gap: 1rem;
+        align-items: center;
     }
 
     .logoWrapper {
         flex-direction: column;
     }
 
-    .brandWrapper {
-        align-items: center;
-    }
-
-    .logo {
-        width: 60px;
-    }
-
-    .brandName {
-        font-size: 1.1rem;
-    }
-
     .tagline {
-        display: none;
-        /* Убираем слоган на мобильных */
+        font-size: 0.85rem;
     }
 
     .socialIcons {
+        flex-direction: row;
         justify-content: center;
-        margin-top: 1rem;
-        gap: 1rem;
+        gap: 0.8rem;
     }
 
     .socialLink {
-        width: 44px;
-        height: 44px;
-    }
-
-    .sectionTitle {
-        display: none;
-        /* Убираем заголовки секций */
-    }
-
-    .contactsColumn,
-    .hoursColumn {
-        display: none;
-        align-items: center;
-        text-align: center;
-    }
-
-    .contactList {
-        gap: 0.75rem;
+        width: 60px;
+        padding: 0.5rem 0;
+        font-size: 0.7rem;
     }
 
     .contactItem {
-        justify-content: center;
-        gap: 0.5rem;
-    }
-
-    .contactIcon {
-        font-size: 1.1rem;
+        justify-content: flex-start;
+        gap: 0.6rem;
     }
 
     .contactText {
-        font-size: 0.9rem;
+        font-size: 0.875rem;
     }
 
-    /* Скрываем ненужные элементы */
-    .workingHours,
-    .hoursColumn .contactItem {
-        display: none;
+    .sectionTitle {
+        font-size: 1rem;
     }
 
     .callButton {
         width: 100%;
-        max-width: none;
-        margin: 1rem auto 0;
-        padding: 0.8rem;
-        font-size: 0.9rem;
+        max-width: 300px;
+        align-self: center;
     }
 
     .bottomSection {
-        padding: 1rem 0 0;
+        padding-top: 1rem;
         margin-top: 1rem;
     }
 
     .copyright {
         font-size: 0.75rem;
-        text-align: center;
     }
 }
 
-/* Еще более компактная версия для очень маленьких экранов */
 @media (max-width: 400px) {
-    .footerContainer {
-        padding: 1rem 0.8rem;
+    .socialLink {
+        width: 55px;
+        font-size: 0.65rem;
+        gap: 0.2rem;
     }
 
-    .mobileOFF {
-        display: none;
-    }
-
-    .socialIcons {
-        /* display: none; */
-        margin-top: 0rem;
-        padding: 0;
-        gap: 55px;
-    }
-
-    .brandWrapper {
-        display: none;
-    }
-
-    .logoWrapper {
-        display: none;
-    }
-
-    .contactText {
-        font-size: 0.85rem;
+    .socialLink .icon {
+        font-size: 1.3rem;
     }
 
     .callButton {
-        margin-top: 0.5rem;
         padding: 0.7rem;
+        font-size: 0.85rem;
     }
 }
