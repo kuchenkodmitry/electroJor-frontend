@@ -9,6 +9,7 @@ import '../../App.css';
 import React, { useContext } from "react";
 import { Context } from "../context";
 import LazyImage from "../LazyImage";
+import classNames from "classnames";
 
 
 function ServiceCard() {
@@ -42,7 +43,7 @@ function ServiceCard() {
                     <p className={s.tridCardTitle}>
                         Монтаж в производственных помещениях
                     </p>
-                    <LazyImage width="160px" src={production} style={{ borderRadius: "0 0 30px 30px" }} className={s.production} alt="Производство" />
+                    <LazyImage width="160px" src={production} className={s.production} alt="Производство" />
                 </div>
                 <div style={{
                     background: "linear-gradient(90deg, #00467F 0%, #A5CC82 100%)"
@@ -50,7 +51,7 @@ function ServiceCard() {
                     <p className={s.fourCardTitile}>
                         Замена старой проводки
                     </p>
-                    <LazyImage src={house2} style={{ borderRadius: "0 0 30px 30px" }} className={s.img} alt="Старая проводка" />
+                    <LazyImage src={house2}  className={classNames(s.img, s.imageFoure )} alt="Старая проводка" />
                 </div>
         </div>
         </div >
