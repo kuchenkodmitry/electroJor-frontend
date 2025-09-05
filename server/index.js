@@ -11,6 +11,9 @@ import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import cors from 'cors'; // Добавляем cors
 import https from 'https'; // Для HTTPS
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+import { z } from 'zod';
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -21,6 +24,11 @@ const PORT = process.env.PORT || 3001;
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';
 const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN || '';
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '';
+
+// Security middlewares
+app.use(helmet());
+const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100 });
+app.use(limiter);
 
 // Настройка CORS
 const corsOptions = {
@@ -68,6 +76,16 @@ const upload = multer({
 });
 
 app.use('/uploads', express.static(uploadsDir));
+
+// Validation schemas
+const phoneSchema = z.object({ phone: z.string().min(1) });
+const postSchema = z.object({
+  title: z.string().min(1),
+  text: z.string().min(1),
+  description: z.string().optional(),
+  imageUrl: z.string().optional(),
+  gallaryUrl: z.array(z.string()).optional(),
+});
 
 // Загрузка изображений
 app.post('/api/uploads', upload.single('image'), async (req, res) => {
@@ -233,7 +251,11 @@ app.get('/api/settings/phone', async (req, res) => {
 
 app.put('/api/settings/phone', authMiddleware, async (req, res) => {
   try {
-    const { phone = '' } = req.body;
+    const parsed = phoneSchema.safeParse(req.body);
+    if (!parsed.success) {
+      return res.status(400).json({ message: parsed.error.message });
+    }
+    const { phone } = parsed.data;
     await db.run(
       "INSERT INTO settings(key, value) VALUES('phone', ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value",
       phone
@@ -271,13 +293,11 @@ app.get('/api/posts/:id', async (req, res) => {
 
 app.post('/api/posts', authMiddleware, async (req, res) => {
   try {
-    const {
-      title = '',
-      text = '',
-      description = '',
-      imageUrl = '',
-      gallaryUrl = [],
-    } = req.body;
+    const parsed = postSchema.safeParse(req.body);
+    if (!parsed.success) {
+      return res.status(400).json({ message: parsed.error.message });
+    }
+    const { title, text, description = '', imageUrl = '', gallaryUrl = [] } = parsed.data;
 
     const result = await db.run(
       'INSERT INTO posts(title, text, description, imageUrl, gallaryUrl) VALUES(?, ?, ?, ?, ?)',
@@ -298,13 +318,11 @@ app.post('/api/posts', authMiddleware, async (req, res) => {
 
 app.patch('/api/posts/:id', authMiddleware, async (req, res) => {
   try {
-    const {
-      title = '',
-      text = '',
-      description = '',
-      imageUrl = '',
-      gallaryUrl = [],
-    } = req.body;
+    const parsed = postSchema.partial().safeParse(req.body);
+    if (!parsed.success) {
+      return res.status(400).json({ message: parsed.error.message });
+    }
+    const { title = '', text = '', description = '', imageUrl = '', gallaryUrl = [] } = parsed.data;
 
     const exists = await db.get('SELECT id FROM posts WHERE id = ?', req.params.id);
     if (!exists) return res.status(404).json({ message: 'Post not found' });
@@ -339,6 +357,12 @@ app.delete('/api/posts/:id', authMiddleware, async (req, res) => {
 });
 
 // -------------------------------------------------------------
+
+// Centralized error handler
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ message: 'Server error' });
+});
 
 // Запуск сервера
 if (process.env.NODE_ENV === 'production') {
