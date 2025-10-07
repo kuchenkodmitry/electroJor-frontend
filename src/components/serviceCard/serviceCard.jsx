@@ -1,13 +1,15 @@
-import Typography from "@mui/material/Typography"
-import Box from "@mui/material/Box"
-import s from "./serviceCard.module.css"
-import house1 from './img/house1.png'
-import house2 from './img/house2.png'
-import office from "./img/office.png"
-import production from './img/production.png'
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import s from "./serviceCard.module.css";
+import house1 from './img/house1.png';
+import house2 from './img/house2.png';
+import office from "./img/office.png";
+import production from './img/production.png';
 import '../../App.css';
 import React, { useContext } from "react";
 import { Context } from "../context";
+import LazyImage from "../LazyImage";
+import classNames from "classnames";
 
 
 function ServiceCard() {
@@ -25,7 +27,7 @@ function ServiceCard() {
                         <p className={s.firstCardTitle}>
                         Монтаж Электрики в Новостройке
                     </p>
-                    <img src={house1} className={s.house1} />
+                    <LazyImage src={house1} className={s.house1} alt="Новостройка" />
                 </div>
                 <div style={{
                     background: "linear-gradient(90deg, #304352 0%, #D7D2CC 100%)"
@@ -33,7 +35,7 @@ function ServiceCard() {
                     <p className={s.secondCardTitle}>
                         Монтаж в Офисных помещениях
                     </p>
-                    <img src={office} className={s.img} />
+                    <LazyImage src={office} className={s.img} alt="Офис" />
                 </div>
                 <div style={{
                     background: "linear-gradient(90deg, #2980B9 0%, #2C3E50 100%)"
@@ -41,7 +43,7 @@ function ServiceCard() {
                     <p className={s.tridCardTitle}>
                         Монтаж в производственных помещениях
                     </p>
-                    <img width="160px" src={production} style={{ borderRadius: "0 0 30px 30px" }} className={s.production} />
+                    <LazyImage width="160px" src={production} className={s.production} alt="Производство" />
                 </div>
                 <div style={{
                     background: "linear-gradient(90deg, #00467F 0%, #A5CC82 100%)"
@@ -49,7 +51,7 @@ function ServiceCard() {
                     <p className={s.fourCardTitile}>
                         Замена старой проводки
                     </p>
-                    <img src={house2} style={{ borderRadius: "0 0 30px 30px" }} className={s.img} />
+                    <LazyImage src={house2}  className={classNames(s.img, s.imageFoure )} alt="Старая проводка" />
                 </div>
         </div>
         </div >

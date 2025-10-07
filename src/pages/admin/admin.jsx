@@ -8,6 +8,7 @@ import Loading  from '../../components/adminPanel/Loading/loading';
 import { selectIsAuth, fetchAuthMe } from '../../redux/slices/auth';
 import { useSelector, useDispatch } from "react-redux";
 import axios from '../../axios/axios';
+import SEO from '../../components/SEO';
 
 function AdminPanel() {
     const dispatch = useDispatch();
@@ -25,6 +26,24 @@ function AdminPanel() {
     }, []);
     return (
         <div className={style.background}>
+            <SEO
+                title="Панель администратора — ЭлектроТочка34"
+                description="Панель управления сайтом ЭлектроТочка34."
+                canonical="https://example.com/admin"
+                og={{
+                    title: "Панель администратора — ЭлектроТочка34",
+                    description: "Панель управления сайтом ЭлектроТочка34.",
+                    type: "website",
+                    image: "https://example.com/logo192.png"
+                }}
+                twitter={{
+                    card: "summary_large_image",
+                    title: "Панель администратора — ЭлектроТочка34",
+                    description: "Панель управления сайтом ЭлектроТочка34.",
+                    image: "https://example.com/logo192.png"
+                }}
+                robots="noindex, nofollow"
+            />
             <div className={style.layout}>
                 <Header onMenuToggle={toggleMenu} />
                 {isLoading ? (
@@ -42,3 +61,4 @@ function AdminPanel() {
 }
 
 export default AdminPanel
+

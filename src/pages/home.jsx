@@ -17,6 +17,7 @@ import Gallary from '../components/PhotoGallary/gallary';
 // import TestMap from '../textMap.jsx';
 import { GallaryContext, ModalContext, Context, GallaryIndex, GallaryOpen } from '../components/context';
 import { useState } from 'react';
+import SEO from '../components/SEO';
 
 
 
@@ -36,6 +37,23 @@ function Home() {
 
     return (
         <>
+            <SEO
+                title="ЭлектроТочка34 — Электромонтажные работы"
+                description="Электромонтажные работы в Волгограде и Волгоградской области."
+                canonical="https://example.com/"
+                og={{
+                    title: "ЭлектроТочка34 — Электромонтажные работы",
+                    description: "Электромонтажные работы в Волгограде и Волгоградской области.",
+                    type: "website",
+                    image: "https://example.com/logo192.png"
+                }}
+                twitter={{
+                    card: "summary_large_image",
+                    title: "ЭлектроТочка34 — Электромонтажные работы",
+                    description: "Электромонтажные работы в Волгограде и Волгоградской области.",
+                    image: "https://example.com/logo192.png"
+                }}
+            />
             <Context.Provider value={[context, setContext]}>
                 <ModalContext.Provider value={[modalContext, setModalContext]}>
                     <GallaryContext.Provider value={[gallaryContext, setGallaryContext]}>
