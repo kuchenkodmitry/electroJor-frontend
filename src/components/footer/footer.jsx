@@ -26,7 +26,7 @@ function Footer() {
                             </Typography>
                         </Box>
                     </Box>
-                    <Box id={styles.mobileOFF} className={styles.socialIcons}>
+                    {/* <Box id={styles.mobileOFF} className={styles.socialIcons}>
                         <div className={styles.mobileOFF}>
                             <a href={`https://wa.me/${phoneDigits(phone)}`} className={styles.socialLink} aria-label="WhatsApp">
                                 <WhatsApp className={styles.icon} />
@@ -38,7 +38,7 @@ function Footer() {
                             </a>
                         </div>
 
-                    </Box>
+                    </Box> */}
                 </Box>
 
                 <Box className={styles.contactsColumn}>
