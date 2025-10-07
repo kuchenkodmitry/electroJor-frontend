@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import turnOnImg from "./img/switch.png";
 import WebFont from 'webfontloader';
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { Box, IconButton } from "@mui/material";
