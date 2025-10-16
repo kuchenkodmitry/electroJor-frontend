@@ -1,57 +1,55 @@
-/* Основные стили */
+/* Контейнер */
 .main {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    background: white;
+    background: #ffffff;
+    box-shadow: 0 10px 35px rgba(18, 45, 90, 0.12);
 }
 
-/* Верхняя панель с меню */
+/* Верхняя панель */
 .topBar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
-    background: white;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 18px 32px;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(18, 45, 90, 0.08);
     position: relative;
-    z-index: 100;
+    z-index: 2;
 }
 
 .logoContainer {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 16px;
 }
 
 .logo {
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     object-fit: contain;
 }
 
 .logoText {
     display: flex;
     flex-direction: column;
+    gap: 4px;
 }
 
 .logoTitle {
     font-weight: 700 !important;
-    color: #2c3e50 !important;
+    color: #1a2d4f !important;
     margin: 0 !important;
-    line-height: 1 !important;
 }
 
 .logoSubtitle {
-    color: #7f8c8d !important;
-    font-size: 0.8rem !important;
-    margin-top: 3px !important;
+    color: #607096 !important;
+    font-size: 0.85rem !important;
 }
 
-/* Навигационное меню */
 .navMenu {
     display: flex;
     align-items: center;
@@ -59,78 +57,43 @@
 }
 
 .navLink {
-    color: #2c3e50;
+    color: #1a2d4f;
     text-decoration: none;
     font-weight: 500;
-    font-size: 1rem;
-    padding: 8px 12px;
-    border-radius: 6px;
+    font-size: 0.95rem;
+    padding: 10px 14px;
+    border-radius: 999px;
     transition: all 0.3s ease;
     position: relative;
 }
 
 .navLink:hover {
-    color: #3498db;
-    background: rgba(52, 152, 219, 0.1);
+    background: rgba(53, 132, 228, 0.12);
+    color: #1f5cc5;
 }
 
-.navLink::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: #3498db;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-}
-
-.navLink:hover::after {
-    width: 70%;
-}
-
-.adminLink {
-    color: #e74c3c !important;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-}
-
-.adminLink:hover {
-    background: rgba(231, 76, 60, 0.1);
-}
-
-/* Блок с телефоном */
 .phoneBlock {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    gap: 4px;
 }
 
 .phoneNumber {
     font-weight: 600 !important;
-    color: #2c3e50 !important;
-    margin: 0 !important;
-    line-height: 1 !important;
+    color: #1a2d4f !important;
 }
 
 .phoneLink {
-    color: #3498db !important;
+    color: #1f5cc5 !important;
     text-decoration: none;
-    font-size: 0.9rem !important;
-    margin-top: 3px !important;
-    transition: all 0.2s ease;
+    font-size: 0.85rem !important;
 }
 
 .phoneLink:hover {
     text-decoration: underline;
 }
 
-/* Мобильное меню */
 .mobileMenuButton {
     display: none;
     background: none;
@@ -139,15 +102,13 @@
     padding: 10px;
     flex-direction: column;
     gap: 5px;
-    z-index: 101;
 }
 
 .menuIcon {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background: #2c3e50;
-    transition: all 0.3s ease;
+    width: 26px;
+    height: 3px;
+    background: #1a2d4f;
+    border-radius: 2px;
 }
 
 .mobileMenu {
@@ -155,63 +116,240 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: #ffffff;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    z-index: 99;
+    gap: 12px;
+    box-shadow: 0 12px 30px rgba(18, 45, 90, 0.12);
+    border-radius: 0 0 20px 20px;
+    z-index: 5;
 }
 
 .mobileNavLink {
-    color: #2c3e50;
+    color: #1a2d4f;
     text-decoration: none;
     font-weight: 500;
-    padding: 10px 15px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
+    padding: 12px 16px;
+    border-radius: 12px;
+    transition: background 0.3s ease;
 }
 
 .mobileNavLink:hover {
-    background: rgba(52, 152, 219, 0.1);
-    color: #3498db;
+    background: rgba(53, 132, 228, 0.1);
 }
 
 .mobilePhoneLink {
-    margin-top: 15px;
-    padding: 12px 15px;
-    background: #3498db;
-    color: white !important;
+    margin-top: 8px;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, #1f5cc5, #2e7dff);
+    color: #ffffff !important;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 14px;
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
+}
+
+/* Контент */
+.contentWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.leftBlock {
+    flex: 1;
+    padding: 48px;
+    background: linear-gradient(135deg, #1f3b73 0%, #2e7dff 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+.leftBlockContent {
+    max-width: 520px;
+}
+
+.leftBlockTitle {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    margin-bottom: 12px !important;
+    font-size: 2.4rem !important;
+}
+
+.leftBlockSubtitle {
+    color: rgba(255, 255, 255, 0.85) !important;
+    margin-bottom: 28px !important;
+    font-size: 1.15rem !important;
+}
+
+.featuresList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+}
+
+.featuresList li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 14px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.featuresList li::before {
+    content: '⟡';
+    position: absolute;
+    left: 0;
+    color: #ffd166;
+    font-size: 1.1rem;
+}
+
+.advantages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.advantageItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    backdrop-filter: blur(6px);
+}
+
+.advantageIcon {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.advantageIcon img {
+    width: 100%;
+    height: auto;
+}
+
+.rightBlock {
+    flex: 1;
+    padding: 48px;
+    background: linear-gradient(180deg, rgba(46, 125, 255, 0.08) 0%, rgba(46, 125, 255, 0.16) 100%);
+    display: flex;
+    align-items: center;
+}
+
+.contactPanel {
+    width: 100%;
+    background: #ffffff;
+    padding: 36px;
+    border-radius: 24px;
+    box-shadow: 0 20px 45px rgba(18, 45, 90, 0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.panelTitle {
+    font-weight: 700 !important;
+    color: #1a2d4f !important;
+}
+
+.panelSubtitle {
+    color: #5a6b8c !important;
+    line-height: 1.6 !important;
+}
+
+.contactCards {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contactCard {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-decoration: none;
+    padding: 18px 20px;
+    border-radius: 18px;
+    border: 1px solid rgba(31, 92, 197, 0.1);
+    background: linear-gradient(135deg, rgba(31, 92, 197, 0.06), rgba(46, 125, 255, 0.12));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 12px 30px rgba(31, 92, 197, 0.18);
+}
+
+.contactCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(31, 92, 197, 0.24);
+}
+
+.cardIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: rgba(31, 92, 197, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardIcon img {
+    width: 30px;
+    height: 30px;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cardTitle {
+    font-weight: 600 !important;
+    color: #1a2d4f !important;
+}
+
+.cardDescription {
+    color: #5a6b8c !important;
+    line-height: 1.45 !important;
+}
+
+.infoBanner {
+    border-radius: 18px;
+    padding: 18px 20px;
+    background: rgba(31, 92, 197, 0.08);
+    color: #1a2d4f;
+    text-align: center;
 }
 
 /* Адаптивность */
-@media screen and (max-width: 1024px) {
+@media (max-width: 1024px) {
+    .topBar {
+        padding: 16px 24px;
+    }
+
     .navMenu {
-        gap: 15px;
+        gap: 16px;
     }
 
-    .navLink,
-    .adminLink {
-        font-size: 0.9rem;
-        padding: 6px 10px;
+    .contentWrapper {
+        flex-direction: column;
     }
 
-    .phoneNumber {
-        font-size: 1rem !important;
+    .leftBlock,
+    .rightBlock {
+        padding: 36px 28px;
     }
 
-    .phoneLink {
-        font-size: 0.8rem !important;
+    .contactPanel {
+        padding: 28px;
     }
 }
 
-@media screen and (max-width: 768px) {
-
+@media (max-width: 768px) {
     .navMenu,
     .phoneBlock {
         display: none;
@@ -221,411 +359,40 @@
         display: flex;
     }
 
-    .logo {
-        width: 50px;
-        height: 50px;
-    }
-
-    .logoTitle {
-        font-size: 1.1rem !important;
-    }
-
-    .logoSubtitle {
-        font-size: 0.7rem !important;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .topBar {
-        padding: 12px 20px;
-    }
-
-    .logo {
-        width: 45px;
-        height: 45px;
-    }
-
-    .mobileMenu {
-        padding: 15px;
-    }
-
-    .mobileNavLink,
-    .mobilePhoneLink {
-        padding: 8px 12px;
-        font-size: 0.9rem;
-    }
-}
-
-.contentWrapper {
-    display: flex;
-    flex-direction: row;
-}
-
-/* Левый блок */
-.leftBlock {
-    flex: 1;
-    padding: 40px;
-    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-    color: white;
-    display: flex;
-    align-items: center;
-}
-
-.leftBlockContent {
-    max-width: 500px;
-    flex-direction: column-reverse;
-}
-
-.leftBlockTitle {
-    color: white !important;
-    font-weight: 700 !important;
-    margin-bottom: 8px !important;
-    font-size: 2.2rem !important;
-    position: relative;
-    display: inline-block;
-}
-
-.leftBlockTitle::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: #f39c12;
-}
-
-.leftBlockSubtitle {
-    color: rgba(255, 255, 255, 0.9) !important;
-    font-weight: 400 !important;
-    margin-bottom: 24px !important;
-    font-size: 1.2rem !important;
-}
-
-.featuresList {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 30px 0;
-}
-
-.featuresList li {
-    position: relative;
-    padding-left: 25px;
-    margin-bottom: 12px;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.featuresList li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: #f39c12;
-    font-weight: bold;
-}
-
-.advantages {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 30px;
-}
-
-.advantageItem {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 10px 15px;
-    border-radius: 8px;
-    backdrop-filter: blur(5px);
-}
-
-.advantageIcon {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.advantageIcon img {
-    width: 100%;
-    height: auto;
-    filter: invert(85%) sepia(30%) saturate(719%) hue-rotate(330deg) brightness(103%) contrast(92%);
-}
-
-/* Правый блок */
-.rightBlock {
-    flex: 1;
-    padding: 40px;
-    background: url(/src/components/header/img/schetch.png) center/cover no-repeat;
-    position: relative;
-}
-
-.rightBlock::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 0;
-}
-
-.contactForm {
-    position: relative;
-    z-index: 1;
-    color: white;
-}
-
-.formTitle {
-    color: white !important;
-    font-weight: 600 !important;
-    margin-bottom: 8px !important;
-    font-size: 1.8rem !important;
-}
-
-.formSubtitle {
-    color: rgba(255, 255, 255, 0.8) !important;
-    margin-bottom: 25px !important;
-    font-size: 1rem !important;
-}
-
-/* Добавьте это в ваш InfoHeader.module.css */
-
-/* Обновлённые стили для формы */
-.formSend {
-    margin-bottom: 30px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 25px;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.inputGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.inputContainer {
-    position: relative;
-    width: 100%;
-}
-
-.inputLabel {
-    position: absolute;
-    top: -10px;
-    left: 15px;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 0 8px;
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.8);
-    border-radius: 4px;
-}
-
-.nameInput,
-.phoneInput {
-    background: white;
-    border-radius: 8px;
-    padding: 15px;
-    color: #000;
-    width: 100%;
-    box-sizing: border-box;
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-}
-
-.nameInput:focus,
-.phoneInput:focus {
-    border-color: #f39c12;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.2);
-}
-
-.nameInput::placeholder,
-.phoneInput::placeholder {
-    color: #aaa;
-    opacity: 1;
-}
-
-.phoneInputContainer {
-    display: flex;
-    align-items: center;
-    background: white;
-    border-radius: 8px;
-    padding: 0 15px;
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-}
-
-.phoneInputContainer:focus-within {
-    border-color: #f39c12;
-    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.2);
-}
-
-.flagIcon {
-    width: 20px;
-    height: auto;
-    margin-right: 10px;
-    flex-shrink: 0;
-}
-
-.errorMessage {
-    color: #ff6b6b;
-    font-size: 0.8rem;
-    margin-top: 5px;
-    padding-left: 5px;
-}
-
-/* Улучшенная кнопка */
-.buttonSend {
-    background: #f39c12 !important;
-    color: white !important;
-    border: none;
-    padding: 15px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-}
-
-.buttonSend::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: 0.5s;
-}
-
-.buttonSend:hover {
-    background: #e67e22 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.buttonSend:hover::after {
-    left: 100%;
-}
-
-.buttonSend:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.contacts {
-    margin-top: 30px;
-}
-
-.contactsTitle {
-    color: rgba(255, 255, 255, 0.8) !important;
-    margin-bottom: 15px !important;
-    font-size: 1rem !important;
-}
-
-.socialLinks {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.socialLink {
-    display: flex;
-    align-items: center;
-    color: white;
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 12px 15px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.socialLink:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.socialLink img {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-}
-
-/* Адаптивность */
-@media screen and (max-width: 1024px) {
     .contentWrapper {
         flex-direction: column;
     }
 
     .leftBlock,
     .rightBlock {
-        padding: 30px;
+        padding: 32px 24px;
     }
 
-    .leftBlockTitle {
-        font-size: 1.8rem !important;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .topBanner {
-        padding: 10px 15px;
-    }
-
-    .bannerText {
-        font-size: 0.9rem !important;
-    }
-
-    .leftBlock,
-    .rightBlock {
-        padding: 25px;
-    }
-
-    .leftBlockTitle {
-        font-size: 1.6rem !important;
-    }
-
-    .formTitle {
-        font-size: 1.5rem !important;
-    }
-
-    .advantages {
-        flex-direction: column;
-        /* display: none; */
+    .contactPanel {
+        gap: 24px;
     }
 }
 
-@media screen and (max-width: 480px) {
-    .topBanner {
-        display: none;
+@media (max-width: 560px) {
+    .topBar {
+        padding: 14px 20px;
     }
 
-    .leftBlock,
-    .rightBlock {
-        padding: 20px;
+    .logo {
+        width: 52px;
+        height: 52px;
     }
 
     .leftBlockTitle {
-        font-size: 1.4rem !important;
-        display: none;
+        font-size: 1.9rem !important;
     }
 
     .leftBlockSubtitle {
         font-size: 1rem !important;
-        display: none;
     }
 
-    .formTitle {
-        font-size: 1.3rem !important;
+    .contactCard {
+        flex-direction: row;
+        align-items: flex-start;
     }
 }
