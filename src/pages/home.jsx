@@ -10,6 +10,7 @@ import Scheme from "../components/Scheme/Scheme"
 import WorkExamples from '../components/workExamples/workExamples';
 import Reviews from "../components/reviews/reviews"
 import About from "../components/about/about"
+import PrivacyNotice from '../components/privacyNotice/PrivacyNotice';
 import CallBackBottom from '../components/callback/callBack3';
 import Footer from "../components/footer/footer"
 import Modal from "../components/modal/modal"
@@ -37,6 +38,7 @@ function Home() {
 
     return (
         <>
+            <PrivacyNotice />
             <SEO
                 title="ЭлектроТочка34 — Электромонтажные работы"
                 description="Электромонтажные работы в Волгограде и Волгоградской области."

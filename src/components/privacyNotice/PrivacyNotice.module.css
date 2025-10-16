@@ -1,0 +1,70 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(13, 25, 54, 0.45);
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.notice {
+    max-width: 420px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 24px;
+    padding: 28px 32px;
+    box-shadow: 0 25px 50px rgba(13, 25, 54, 0.25);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.notice h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    color: #1a2d4f;
+}
+
+.notice p {
+    margin: 0;
+    color: #42506e;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.notice button {
+    align-self: center;
+    padding: 12px 26px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #1f5cc5, #2e7dff);
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 15px 30px rgba(31, 92, 197, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notice button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 34px rgba(31, 92, 197, 0.3);
+}
+
+.notice button:focus {
+    outline: none;
+}
+
+@media (max-width: 480px) {
+    .notice {
+        padding: 24px;
+        border-radius: 20px;
+    }
+
+    .notice h3 {
+        font-size: 1.2rem;
+    }
+}
