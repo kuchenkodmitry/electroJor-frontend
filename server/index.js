@@ -1,23 +1,27 @@
-import express from 'express';
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import path from 'path';
-import multer from 'multer';
-import sharp from 'sharp';
-import fs from 'fs';
-import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
-import cors from 'cors'; // Добавляем cors
-import https from 'https'; // Для HTTPS
-import helmet from 'helmet';
-import rateLimit from 'express-rate-limit';
-import { z } from 'zod';
+const express = require('express');
+const sqlite3 = require('sqlite3');
+const { open } = require('sqlite');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const path = require('path');
+const multer = require('multer');
+const fs = require('fs');
+const dotenv = require('dotenv');
+const https = require('https'); // Для HTTPS
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const { z } = require('zod');
+
 dotenv.config();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+let sharp;
+import('sharp')
+  .then((module) => {
+    sharp = module.default || module;
+  })
+  .catch((err) => {
+    console.warn('⚠️  Sharp is not installed. Image optimization is disabled.', err.message);
+  });
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -30,18 +34,27 @@ app.use(helmet());
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100 });
 app.use(limiter);
 
-// Настройка CORS
-const corsOptions = {
-  origin: [
-    'http://localhost:3000', // Локальный фронтенд
-    'https://electrotochka34.ru', // Продакшен-домен
-  ],
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-};
+// Настройка CORS без внешних зависимостей
+const allowedOrigins = new Set([
+  'http://localhost:3000',
+  'https://electrotochka34.ru',
+]);
 
-app.use(cors(corsOptions)); // Применяем CORS с настройками
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (origin && allowedOrigins.has(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204);
+  }
+
+  return next();
+});
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
@@ -92,12 +105,14 @@ app.post('/api/uploads', upload.single('image'), async (req, res) => {
   try {
     const filePath = req.file.path;
 
-    // Оптимизируем изображение без изменения формата
-    const optimizedBuffer = await sharp(filePath)
-      .resize({ width: 1200, withoutEnlargement: true })
-      .toBuffer();
+    if (sharp) {
+      // Оптимизируем изображение без изменения формата
+      const optimizedBuffer = await sharp(filePath)
+        .resize({ width: 1200, withoutEnlargement: true })
+        .toBuffer();
 
-    await fs.promises.writeFile(filePath, optimizedBuffer);
+      await fs.promises.writeFile(filePath, optimizedBuffer);
+    }
 
     const relativePath = `/uploads/${path.basename(filePath)}`;
     res.json({ url: relativePath });
