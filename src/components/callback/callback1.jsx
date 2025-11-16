@@ -1,31 +1,36 @@
 import style from "./callback1.module.css";
 import Typography from "@mui/material/Typography";
 import ButtonGroup from "../buttons/SocialButtons/ButtonGroup";
-import FlagImg from "./img/flag.png";
 import pliers from "./img/pliers.png";
 import { Box } from "@mui/material";
-import { useForm } from "react-hook-form";
-import { maskPhoneInput } from "../../utils/phone";
-import axios from "../../axios/axios";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import { phoneDigits } from "../../utils/phone";
 
 function CallBack1() {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors, isSubmitting },
-        reset
-    } = useForm();
+    const phone = useSelector((state) => state.settings.phone);
+    const phoneNumber = phoneDigits(phone);
 
-    async function onSubmit(data) {
-        try {
-            await axios.post('/feedback', data);
-            alert('Спасибо! Мы свяжемся с вами в течение 15 минут.');
-            reset();
-        } catch (e) {
-            alert('Произошла ошибка. Пожалуйста, попробуйте еще раз или свяжитесь с нами другим способом.');
-        }
-    }
+    const contactCards = [
+        {
+            title: "Позвонить мастеру",
+            description: "Обсудим задачу и сориентируем по срокам",
+            action: `tel:+${phoneNumber}`,
+            accent: "#00ABE4",
+        },
+        {
+            title: "Написать в Telegram",
+            description: "Задайте вопрос и получите фото-проекты",
+            action: `https://t.me/+${phoneNumber}`,
+            accent: "#2AABEE",
+        },
+        {
+            title: "Написать в WhatsApp",
+            description: "Удобно отправлять чертежи и адрес",
+            action: `https://api.whatsapp.com/send/?phone=%2B${phoneNumber}&text&type=phone_number&app_absent=0`,
+            accent: "#32B857",
+        },
+    ];
 
     return (
         <Box
@@ -37,99 +42,51 @@ function CallBack1() {
         >
             <Box className={style.contentWrapper}>
                 <Box className={style.textBlock}>
-                    {/* Заголовки */}
                     <Typography
                         variant="h3"
                         className={style.title}
-                        sx={{ fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' } }}
+                        sx={{ fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" } }}
                     >
                         Не нашли нужную услугу?
                     </Typography>
 
+                    <Typography variant="body1" className={style.subtitle}>
+                        Свяжитесь с нами — подскажем решение и подготовим смету в течение 15 минут
+                    </Typography>
 
-
-                    {/* Форма */}
-                    <Box
-                        component="form"
-                        onSubmit={handleSubmit(onSubmit)}
-                        className={style.callBackForm}
-                    >
-
-
-                        <div className={style.inputGroup}>
-                            <Box className={style.flagIcon}>
-                                <img src={FlagImg} alt="Флаг" />
-                            </Box>
-                            <Box className={style.inputWrapper}>
-                                <input
-                                    placeholder="+7 (___) ___-__-__"
-                                    className={style.phoneInput}
-                                    type="tel"
-                                    {...register('phone', {
-                                        required: "Укажите телефон",
-                                        pattern: {
-                                            value: /^(\+7|8)[0-9]{10}$/,
-                                            message: "Некорректный номер"
-                                        },
-                                        onChange: (e) => {
-                                            e.target.value = maskPhoneInput(e.target.value);
-                                        },
-                                    })}
-                                    aria-invalid={errors.phone ? "true" : "false"}
-                                />
-                                {errors.phone && (
-                                    <span className={style.errorMessage}>{errors.phone.message}</span>
-                                )}
-                            </Box>
-
-                            <Box className={style.inputWrapper}>
-                                <input
-                                    placeholder="Ваше имя"
-                                    className={style.nameInput}
-                                    type="text"
-                                    {...register('name', {
-                                        required: "Укажите ваше имя",
-                                        minLength: {
-                                            value: 2,
-                                            message: "Минимум 2 символа"
-                                        }
-                                    })}
-                                    aria-invalid={errors.name ? "true" : "false"}
-                                />
-                                {errors.name && (
-                                    <span className={style.errorMessage}>{errors.name.message}</span>
-                                )}
-                            </Box>
-
-
-                            <button
-                                type="submit"
-                                className={style.submitButton}
-                                disabled={isSubmitting}
-                            >
-                                {isSubmitting ? (
-                                    <span className={style.spinner}></span>
-                                ) : (
-                                    "Жду звонка"
-                                )}
-                            </button>
-                        </div>
-                        <Typography
-                            variant="body1"
-                            className={style.subtitle}
-                        >
-                            Свяжитесь с нами или оставьте номер — перезвоним в течение 15 минут
+                    <Box className={style.ctaPanel}>
+                        <Typography variant="subtitle1" className={style.ctaTitle}>
+                            Выберите удобный способ связи
                         </Typography>
-                    </Box>
+                        <div className={style.ctaCards}>
+                            {contactCards.map((card) => (
+                                <a
+                                    key={card.title}
+                                    href={card.action}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className={style.ctaCard}
+                                    style={{ borderColor: card.accent }}
+                                >
+                                    <span className={style.ctaBadge} style={{ background: card.accent }}></span>
+                                    <div>
+                                        <p className={style.ctaCardTitle}>{card.title}</p>
+                                        <p className={style.ctaCardDescription}>{card.description}</p>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
 
-                    <Box sx={{
-                        dispplay: { sm: "none", md: 'none', xs: 'flex' }
-                    }} className={style.socialButtons}>
-                        <ButtonGroup />
+                        <Typography variant="body2" className={style.supportText}>
+                            Или воспользуйтесь любимым мессенджером — кнопки ниже всегда под рукой
+                        </Typography>
+
+                        <div className={style.socialButtons}>
+                            <ButtonGroup />
+                        </div>
                     </Box>
                 </Box>
 
-                {/* Декоративные элементы */}
                 <Box className={style.toolsImage}>
                     <motion.img
                         src={pliers}
@@ -140,7 +97,7 @@ function CallBack1() {
                 </Box>
             </Box>
         </Box>
-    )
+    );
 }
 
 export default CallBack1;

@@ -18,6 +18,7 @@ import Gallary from '../components/PhotoGallary/gallary';
 import { GallaryContext, ModalContext, Context, GallaryIndex, GallaryOpen } from '../components/context';
 import { useState } from 'react';
 import SEO from '../components/SEO';
+import PrivacyNotice from '../components/privacyNotice/PrivacyNotice';
 
 
 
@@ -77,6 +78,7 @@ function Home() {
                     </GallaryContext.Provider>
                 </ModalContext.Provider>
             </Context.Provider>
+            <PrivacyNotice />
         </>
     )
 }

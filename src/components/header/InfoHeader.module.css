@@ -629,3 +629,108 @@
         font-size: 1.3rem !important;
     }
 }
+.contactActions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.contactCard {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.contactCard::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -30%;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: skewX(-25deg);
+    transition: left 0.5s ease;
+}
+
+.contactCard:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.contactCard:hover::after {
+    left: 130%;
+}
+
+.contactCardIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contactCardIcon img {
+    width: 28px;
+    height: 28px;
+}
+
+.contactCardText {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.contactCardTitle {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.contactCardDescription {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.contactCardAction {
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: #f5c16c;
+}
+
+.secondaryActions {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.secondaryHint {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+@media screen and (max-width: 768px) {
+    .contactActions {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+
+    .contactCard {
+        padding: 15px;
+        gap: 12px;
+    }
+}
