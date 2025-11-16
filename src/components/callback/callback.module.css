@@ -283,3 +283,77 @@
         padding: 0 40px 0 0;
     }
 }
+.contactGrid {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin: 0 auto 25px;
+}
+
+.contactCard {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 18px;
+    padding: 20px;
+    text-decoration: none;
+    color: #1c2a59;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.contactCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+.contactCardTitle {
+    font-weight: 600 !important;
+    color: #1c2a59 !important;
+}
+
+.contactCardDescription {
+    margin: 0;
+    font-size: 0.95rem;
+    color: rgba(28, 42, 89, 0.7);
+}
+
+.contactCardAction {
+    font-size: 0.85rem;
+    color: #3150b4;
+    font-weight: 600;
+}
+
+.messengerPanel {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 25px;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+}
+
+.messengerHint {
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .contactGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .messengerPanel {
+        padding: 20px;
+    }
+}
